@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67B5BA1E1800B7D700C87FB9 /* Dancer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67B5BA1C1800B7D700C87FB9 /* Dancer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -62,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		67B5BA1C1800B7D700C87FB9 /* Dancer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dancer.cpp; sourceTree = "<group>"; };
+		67B5BA1D1800B7D700C87FB9 /* Dancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dancer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -190,6 +193,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				67B5BA1C1800B7D700C87FB9 /* Dancer.cpp */,
+				67B5BA1D1800B7D700C87FB9 /* Dancer.h */,
 				FD2C1FBB16FECAA2007A9AE1 /* fft.cpp */,
 				FD2C1FBC16FECAA2007A9AE1 /* fft.h */,
 				FD2C1FBD16FECAA2007A9AE1 /* fftOctaveAnalyzer.cpp */,
@@ -298,6 +303,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				67B5BA1E1800B7D700C87FB9 /* Dancer.cpp in Sources */,
 				FD2C1FBF16FECAA2007A9AE1 /* fft.cpp in Sources */,
 				FD2C1FC016FECAA2007A9AE1 /* fftOctaveAnalyzer.cpp in Sources */,
 			);
