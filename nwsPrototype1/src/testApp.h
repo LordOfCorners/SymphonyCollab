@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Dancer.h"
 
 class testApp : public ofBaseApp{
 
