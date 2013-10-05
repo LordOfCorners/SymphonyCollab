@@ -41,6 +41,17 @@ class testApp : public ofBaseApp {
 		float spin[18];
     
     Dancer eltonJohn;
+    
+    /* Things we could work with:
+     pitch ( amplitude and frequency )
+     volume
+     difference between notes
+     time between notes
+     total time
+     harmony/dissonance
+     how many instruments playing at once
+     breathing--regularity
+     */
 };
 
 #endif	
