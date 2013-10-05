@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "fft.h"
 #include "FFTOctaveAnalyzer.h"
+#include "Dancer.h"
 
 #define BUFFER_SIZE 512
 
@@ -38,6 +39,8 @@ class testApp : public ofBaseApp {
 
 		float theta[18];
 		float spin[18];
+    
+    Dancer eltonJohn;
 };
 
 #endif	
