@@ -61,7 +61,7 @@ class testApp : public ofBaseApp {
     //Here we initiate our dancer
     vector < Dancer > newDancer;
     
-     Dancer eltonJohn;
+    
 };
 
 #endif	
