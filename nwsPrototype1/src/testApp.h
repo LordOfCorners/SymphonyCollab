@@ -40,7 +40,14 @@ class testApp : public ofBaseApp {
 		float theta[18];
 		float spin[18];
     
-    Dancer eltonJohn;
+    
+//------------------------Dancer functions and variables ---------
+    
+    //We use this function to add as many dancer as we want
+    void addDancer();
+    
+    //Here we initiate our dancer
+    vector < Dancer > newDancer;
 };
 
 #endif	

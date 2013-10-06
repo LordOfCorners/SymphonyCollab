@@ -1,19 +1,20 @@
 #include "testApp.h"
 		
 //--------------------------------------------------------------
-void testApp::setup(){	 
-	
-	// 0 output channels, 
+void testApp::setup(){
+    
+    ofSetVerticalSync(true);
+	// 0 output channels,
 	// 2 input channels
 	// 44100 samples per second
 	// BUFFER_SIZE samples per buffer
 	// 4 num buffers (latency)
 	
-	ofSoundStreamSetup(0,2,this, 44100, BUFFER_SIZE, 4);	
+	ofSoundStreamSetup(0,2,this, 44100, BUFFER_SIZE, 4);
 	
 	//left = new float[BUFFER_SIZE];
 	//right = new float[BUFFER_SIZE];
-
+    
 	ofSetHexColor(0x666666);
 	
 	
@@ -26,13 +27,39 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	ofSetRectMode(OF_RECTMODE_CENTER);
+    
+    
+    //We start our dancer here with a regular for loop. Change the number in the for loop to determine how many dancer you want to have.
+    for( int i = 0; i < 1; i++){
+        
+        addDancer();
+    }
 
 }
-
+//--------------------------------------------------------------
+void testApp::addDancer(){
+    
+    Dancer tmp;
+    
+    //This is the vector we will cast in our Dancer class
+    ofVec2f rVel = ofVec2f( ofRandom(-1.0,1.0), ofRandom(-1.0, 1.0));
+    tmp.setup(rVel);
+    newDancer.push_back(tmp);
+    
+    
+}
 
 //--------------------------------------------------------------
 void testApp::update(){
 		ofBackground(0);
+    
+    //We initialize our
+    vector<Dancer>::iterator it;
+    for( it = newDancer.begin(); it != newDancer.end(); ++it){
+        
+        it->update();
+        
+    }
 }
 
 //--------------------------------------------------------------
@@ -57,8 +84,19 @@ void testApp::draw(){
 	//ofRect(200+(i*4),600,4,-freq[i]*10.0f);
 	//}
 
-	for (int i = 0; i < FFTanalyzer.nAverages; i++){
+    //Let's print our 18 channels
+    
+  
+    
+    
+    for (int i = 0; i < FFTanalyzer.nAverages; i++){
 		
+        
+        //Let's print our channels and see which one has more action
+        ofDrawBitmapString(ofToString( FFTanalyzer.averages[i]), ofPoint( i*80, 200));
+        
+        
+        
 		// Add some amount of spin based on the volume, but decrease it over
 		// time by scaling it down 15%
 		// make sure it doesn't go below 0
@@ -74,8 +112,9 @@ void testApp::draw(){
 		ofPushMatrix();
 		ofTranslate(bandWidth * i, ofGetHeight() / 2);
 		ofRotateZ(theta[i]);
+     
 //		ofRect(bandWidth * i, 600, bandWidth, -FFTanalyzer.averages[i] * 6);
-		ofRect(0, 0, bandWidth * 2, FFTanalyzer.averages[i]);
+//		ofRect(0, 0, bandWidth * 2, FFTanalyzer.averages[i]);
 		
 //		for (int j = 0; j < 4; j ++) {
 //			ofPushMatrix();
@@ -93,6 +132,15 @@ void testApp::draw(){
 	for (int i = 0; i < FFTanalyzer.nAverages; i++){
 		//ofRect(bandWidth * i,600-FFTanalyzer.peaks[i] * 6, bandWidth,-4);
 	}
+    
+    
+    //We start our dancer
+    
+    vector<Dancer>::iterator it;
+    for( it = newDancer.begin(); it != newDancer.end(); ++it){
+        
+        it->draw();
+    }
 		 
 }
 

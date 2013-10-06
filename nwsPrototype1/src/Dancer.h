@@ -16,12 +16,11 @@ public:
     
     
     Dancer();
-    
+    void setup( ofVec2f rVel );
     void draw();
-    
     void update();
     
-    
+    ofVec2f pos, vel;
     
     
     
