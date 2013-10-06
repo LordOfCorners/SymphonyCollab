@@ -41,13 +41,27 @@ class testApp : public ofBaseApp {
 		float spin[18];
     
     
-//------------------------Dancer functions and variables ---------
+    /* Things we could work with:
+     pitch ( amplitude and frequency )
+     volume
+     difference between notes
+     time between notes
+     total time
+     harmony/dissonance
+     how many instruments playing at once
+     breathing--regularity
+     */
+
+    
+    //------------------------Dancer functions and variables ---------
     
     //We use this function to add as many dancer as we want
     void addDancer();
     
     //Here we initiate our dancer
     vector < Dancer > newDancer;
+    
+     Dancer eltonJohn;
 };
 
 #endif	
