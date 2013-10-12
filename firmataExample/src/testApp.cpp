@@ -9,11 +9,6 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
     
-    potValue = "analog pin:";
-
-	font.loadFont("franklinGothic.otf", 20);
-    smallFont.loadFont("franklinGothic.otf", 14);
-
     // replace the string below with the serial port for your Arduino board
     // you can get this from the Arduino application or via command line
     // for OSX, in your terminal type "ls /dev/tty.*" to get a list of serial devices
@@ -61,10 +56,7 @@ void testApp::updateArduino(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-
 	updateArduino();
-    ofLog(OF_LOG_NOTICE, "BREATHING VALUE IS %d", ard.getAnalog(0));
-
 }
 
 
@@ -73,9 +65,10 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::analogPinChanged(const int & pinNum) {
+    
+    ofLog(OF_LOG_NOTICE, "BREATHING VALUE IS %d", ard.getAnalog(0));
     // do something with the analog input. here we're simply going to print the pin number and
     // value to the screen each time it changes
-    potValue = "analog pin: " + ofToString(pinNum) + " = " + ofToString(ard.getAnalog(pinNum));
 }
 
 
