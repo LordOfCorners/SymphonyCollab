@@ -30,6 +30,9 @@ void testApp::setup(){
     
     
     //We start our dancer here with a regular for loop. Change the number in the for loop to determine how many dancer you want to have.
+    _motion = 0;
+    maxVal = 0;
+    
     for( int i = 0; i < 1; i++){
         
         addDancer();
@@ -57,7 +60,15 @@ void testApp::update(){
     vector<Dancer>::iterator it;
     for( it = newDancer.begin(); it != newDancer.end(); ++it){
         
+        newDancer[0].pos.x = _motion;
         it->update();
+        
+        if( FFTanalyzer.averages[6] > maxVal){
+            
+            maxVal = FFTanalyzer.averages[6];
+            
+            
+        }
         
     }
 }
@@ -134,6 +145,10 @@ void testApp::draw(){
 	}
     
     
+    //Let's map _motion
+    _motion = ofMap(FFTanalyzer.averages[6], 0, 40 , 0 , ofGetWindowWidth());
+    
+    
     //We start our dancer
     
     vector<Dancer>::iterator it;
@@ -141,6 +156,12 @@ void testApp::draw(){
         
         it->draw();
     }
+    
+    ofDrawBitmapString(ofToString(maxVal), ofPoint(20,20));
+    
+//    ofDrawBitmapString(ofSoundStream().listDevices(), ofPoint(100,200));
+    
+    ofSoundStream().listDevices();
 		 
 }
 

@@ -40,6 +40,10 @@ class testApp : public ofBaseApp {
 		float theta[18];
 		float spin[18];
     
+        float _motion;
+        float maxVal;
+        
+    
     
     /* Things we could work with:
      pitch ( amplitude and frequency )
