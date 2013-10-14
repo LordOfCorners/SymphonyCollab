@@ -6,6 +6,7 @@
 #include "FFTOctaveAnalyzer.h"
 #include "Dancer.h"
 
+
 #define BUFFER_SIZE 512
 
 class testApp : public ofBaseApp {
@@ -40,7 +41,8 @@ class testApp : public ofBaseApp {
 		float theta[18];
 		float spin[18];
     
-        float _motion;
+        float _motionX, _motionY;
+        int _shape;
         float maxVal;
         
     

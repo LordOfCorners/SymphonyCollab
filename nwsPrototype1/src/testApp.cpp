@@ -9,6 +9,8 @@ void testApp::setup(){
 	// 44100 samples per second
 	// BUFFER_SIZE samples per buffer
 	// 4 num buffers (latency)
+    ofSetBackgroundAuto(false);
+    ofBackground(0);
 	
 	ofSoundStreamSetup(0,2,this, 44100, BUFFER_SIZE, 4);
 	
@@ -30,7 +32,8 @@ void testApp::setup(){
     
     
     //We start our dancer here with a regular for loop. Change the number in the for loop to determine how many dancer you want to have.
-    _motion = 0;
+    _motionX = 0;
+    _motionY = 0;
     maxVal = 0;
     
     for( int i = 0; i < 1; i++){
@@ -54,21 +57,24 @@ void testApp::addDancer(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-		ofBackground(0);
+//		ofBackground(0);
     
     //We initialize our
     vector<Dancer>::iterator it;
     for( it = newDancer.begin(); it != newDancer.end(); ++it){
         
-        newDancer[0].pos.x = _motion;
+//        newDancer[0].pos.x = _motionX;
+//        (*it).pos.y = _motionY;
+//        newDancer[0].size = _shape;
+        
         it->update();
         
-        if( FFTanalyzer.averages[6] > maxVal){
-            
-            maxVal = FFTanalyzer.averages[6];
-            
-            
-        }
+//        if( FFTanalyzer.averages[6] > maxVal){
+//            
+//            maxVal = FFTanalyzer.averages[6];
+//            
+//            
+//        }
         
     }
 }
@@ -146,7 +152,13 @@ void testApp::draw(){
     
     
     //Let's map _motion
-    _motion = ofMap(FFTanalyzer.averages[6], 0, 40 , 0 , ofGetWindowWidth());
+    _motionX = ofMap(FFTanalyzer.averages[6], 0, 40 , 0 , ofGetWindowWidth());
+    
+    _motionY = ofMap(FFTanalyzer.averages[7], 0, 40, 0, ofGetWindowHeight());
+    
+    _shape = ofMap(FFTanalyzer.averages[2], 0, 40, 0, ofGetWindowHeight()/3);
+    
+    
     
     
     //We start our dancer
@@ -157,10 +169,11 @@ void testApp::draw(){
         it->draw();
     }
     
-    ofDrawBitmapString(ofToString(maxVal), ofPoint(20,20));
+//    ofDrawBitmapString(ofToString(maxVal), ofPoint(20,20));
     
 //    ofDrawBitmapString(ofSoundStream().listDevices(), ofPoint(100,200));
     
+    //Use this command to figure out your
     ofSoundStream().listDevices();
 		 
 }

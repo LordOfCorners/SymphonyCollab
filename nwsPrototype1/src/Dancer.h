@@ -21,7 +21,13 @@ public:
     void update();
     
     ofVec2f pos, vel;
+    float size;
     
+    float posCirX, posCirY;
+    
+    float spiralCoe, spiralCoeVel;
+    
+    ofVec2f posTo;
     
     
 private:

@@ -29,7 +29,7 @@ public:
 	ofArduino	ard;
 	bool		bSetupArduino;			// flag variable for setting up arduino once
     
-private:
+
     
     void setupArduino(const int & version);
     void analogPinChanged(const int & pinNum);
@@ -37,6 +37,8 @@ private:
     
     string buttonState;
     string potValue;
+    
+    private:
 
 };
 
