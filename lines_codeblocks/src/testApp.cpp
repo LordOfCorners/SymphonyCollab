@@ -3,6 +3,13 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    // Maintenance
+    ofSetVerticalSync( true );
+    ofSetFrameRate( 60 );
+    ofBackground( 0 );
+
+    myLine.setup( ofGetWindowSize() / 2, 100 );
+
 }
 
 //--------------------------------------------------------------
@@ -13,6 +20,22 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
+    myLine.draw();
+}
+
+Line::Line() {
+
+}
+
+void Line::setup( ofVec2f _pos, float _rad ) {
+
+    pos = _pos;
+    rad = _rad;
+}
+
+void Line::draw() {
+
+    ofLine( pos.x, pos.y - rad, pos.x, pos.y + rad );
 }
 
 //--------------------------------------------------------------
@@ -56,6 +79,6 @@ void testApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
