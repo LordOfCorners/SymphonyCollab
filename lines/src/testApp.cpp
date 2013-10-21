@@ -3,6 +3,15 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    // Maintenance
+    ofSetVerticalSync( true );
+    ofSetFrameRate( 60 );
+    ofSetCircleResolution( 100 );
+    
+    // May want to change this to a gradient or something else.
+    ofBackground( 0 );
+    
+    myLine.setup( ofGetWindowSize() / 2, 100 );
 }
 
 //--------------------------------------------------------------
@@ -13,6 +22,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
+    myLine.draw();
 }
 
 //--------------------------------------------------------------
