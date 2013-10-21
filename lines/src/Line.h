@@ -15,12 +15,12 @@ public:
     Line();
     
     // Pos and length are static for each individual line.
-    void setup( ofVec2f _pos, float _length );
+    void setup( ofVec2f _pos, float _length, float _angle );
     // Color can change.
     void update( ofColor _c );
     void draw();
     
     ofVec2f pos;
-    float length;
+    float length, angle;
     ofColor c;
 };

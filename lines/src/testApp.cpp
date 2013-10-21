@@ -13,7 +13,7 @@ void testApp::setup(){
     
     // First dancer. Test/default values, to be overwritten later.
     pos = ofVec2f( ofRandomWidth(), ofRandomHeight() );
-    vel = ofVec2f( -0.5, 0.0 );
+    vel = ofVec2f( -0.5, 0.5 );
     breath = 0;
     breathRad = 50;
     myDancer.setup();

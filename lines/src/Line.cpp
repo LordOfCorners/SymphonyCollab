@@ -14,10 +14,11 @@ Line::Line() {
     c = ofColor( 255 );
 }
 
-void Line::setup( ofVec2f _pos, float _length ) {
+void Line::setup( ofVec2f _pos, float _length, float _angle ) {
     
     pos = _pos;
     length = _length;
+    angle = _angle;
 }
 
 void Line::update(  ofColor _c ) {
@@ -28,5 +29,9 @@ void Line::update(  ofColor _c ) {
 void Line::draw() {
     
     ofSetColor( c );
-    ofLine( pos.x, pos.y - length, pos.x, pos.y + length );
+    ofPushMatrix();{
+        ofTranslate( pos );
+        ofRotate( ofRadToDeg( angle ) );
+        ofLine( 0, -length, 0, length );
+    }ofPopMatrix();
 }
