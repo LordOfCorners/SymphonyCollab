@@ -11,18 +11,19 @@ void testApp::setup(){
     // May want to change this to a gradient or something else.
     ofBackground( 0 );
     
-    myLine.setup( ofGetWindowSize() / 2, 100 );
+    myDancer.setup();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
+    myDancer.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    myLine.draw();
+    myDancer.draw();
 }
 
 //--------------------------------------------------------------

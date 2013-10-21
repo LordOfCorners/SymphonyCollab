@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Line.h"
+#include "Dancer.h"
 
 class testApp : public ofBaseApp{
     
@@ -20,5 +21,5 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    Line myLine;
+    Dancer myDancer;
 };
