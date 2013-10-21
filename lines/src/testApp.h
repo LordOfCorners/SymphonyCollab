@@ -21,6 +21,9 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    float breath;
+    float breathRad; // Temporarily simulate breathing.
+    
     // One dancer per instrument (at least right now).
     Dancer myDancer;
 };
