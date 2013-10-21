@@ -12,21 +12,20 @@ Dancer::Dancer() {
     
     // Test/default values, to be overwritten later.
     pos = ofGetWindowSize() / 2;
-    vel = ofVec2f( -0.5, 0.0 );
+    vel = ofVec2f( -0.5, 1.0 );
+    breath = 0;
     
     // Default is white (overwritten in update).
     c = ofColor( 255 );
 }
 
-void Dancer::setup( ofVec2f _pos ) {
-    
-    pos = _pos;
+void Dancer::setup() {
     
     // Create one line right off the bat with zero length (since we have no initial breathing data).
-    addLine( 0 );
+    addLine();
 }
 
-void Dancer::addLine( float breath ) {
+void Dancer::addLine() {
     
     // This function creates an instance of the Line class, sets it up with current values, and adds it to the vector.
     Line tmp;
@@ -34,13 +33,14 @@ void Dancer::addLine( float breath ) {
     lineList.push_back( tmp );
 }
 
-void Dancer::update( float breath ) {
+void Dancer::update( ofVec2f _pos, ofVec2f _vel, float _breath ) {
     
-    // Move the pos (based on data, tempo, other?).
-    pos += vel;
+    pos = _pos;
+    vel = _vel;
+    breath = _breath;
     
     // Add a new line every update.
-    addLine( breath );
+    addLine();
     
     // Update the lines.
     for ( int i = 0; i < lineList.size(); i++ ) {

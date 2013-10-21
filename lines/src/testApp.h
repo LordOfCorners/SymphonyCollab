@@ -21,9 +21,11 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    // One dancer per instrument (at least right now).
+    
+    // First instrument.
+    Dancer myDancer;
+    ofVec2f pos, vel;
     float breath;
     float breathRad; // Temporarily simulate breathing.
-    
-    // One dancer per instrument (at least right now).
-    Dancer myDancer;
 };
