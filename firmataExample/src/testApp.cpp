@@ -12,7 +12,7 @@ void testApp::setup(){
     // replace the string below with the serial port for your Arduino board
     // you can get this from the Arduino application or via command line
     // for OSX, in your terminal type "ls /dev/tty.*" to get a list of serial devices
-	ard.connect("/dev/tty.usbserial-A100WZRA", 57600);
+	ard.connect("/dev/tty.usbmodem1411", 57600);
 	
 	// listen for EInitialized notification. this indicates that
 	// the arduino is ready to receive commands and it is safe to
@@ -33,8 +33,8 @@ void testApp::setupArduino(const int & version) {
     ofLogNotice() << ard.getFirmwareName();
     ofLogNotice() << "firmata v" << ard.getMajorFirmwareVersion() << "." << ard.getMinorFirmwareVersion();
     
-    // set pin A0 to analog input
-    ard.sendAnalogPinReporting(0, ARD_ANALOG);
+    // set pin A5 to analog input
+    ard.sendAnalogPinReporting(5, ARD_ANALOG);
 	
     // Listen for changes on the digital and analog pins
     ofAddListener(ard.EAnalogPinChanged, this, &testApp::analogPinChanged);
@@ -57,6 +57,8 @@ void testApp::updateArduino(){
 //--------------------------------------------------------------
 void testApp::update(){
 	updateArduino();
+    ofLog(OF_LOG_NOTICE, "BREATHING VALUE IS %d", ard.getAnalog(5));
+
 }
 
 
@@ -66,7 +68,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::analogPinChanged(const int & pinNum) {
     
-    ofLog(OF_LOG_NOTICE, "BREATHING VALUE IS %d", ard.getAnalog(0));
+//    ofLog(OF_LOG_NOTICE, "BREATHING VALUE IS %d", ard.getAnalog(5));
     // do something with the analog input. here we're simply going to print the pin number and
     // value to the screen each time it changes
 }
