@@ -16,14 +16,14 @@ public:
     Dancer();
     
     void setup();
-    void addLine();
-    void update();
+    
+    // Breath data gets passed in through the update to the addLine method to control the length of the line.
+    void addLine( float breath );
+    void update( float breath );
+    
     void draw();
     
     ofVec2f pos, vel;
-    
-    // This controls the length of the current Line based on breathing data.
-    float breath;
     
     ofColor c;
     

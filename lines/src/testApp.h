@@ -21,5 +21,6 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    // One dancer per instrument (at least right now).
     Dancer myDancer;
 };

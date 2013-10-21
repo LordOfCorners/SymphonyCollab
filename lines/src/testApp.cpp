@@ -17,7 +17,8 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 
-    myDancer.update();
+    // Pass in the breathing data.
+    myDancer.update( 10 );
 }
 
 //--------------------------------------------------------------
