@@ -10,15 +10,17 @@
 
 Dancer::Dancer() {
     
+    // Test/default values, to be overwritten later.
+    pos = ofGetWindowSize() / 2;
+    vel = ofVec2f( -0.5, 0.0 );
+    
     // Default is white (overwritten in update).
     c = ofColor( 255 );
 }
 
-void Dancer::setup() {
+void Dancer::setup( ofVec2f _pos ) {
     
-    // Test/default values, to be overwritten later.
-    pos = ofGetWindowSize() / 2;
-    vel = ofVec2f( -0.5, 0.0 );
+    pos = _pos;
     
     // Create one line right off the bat with zero length (since we have no initial breathing data).
     addLine( 0 );
@@ -44,6 +46,11 @@ void Dancer::update( float breath ) {
     for ( int i = 0; i < lineList.size(); i++ ) {
         
         lineList[i].update( c );
+    }
+    
+    // Limit the size of the vector.
+    if ( lineList.size() > MAXLINES ) {
+        lineList.erase( lineList.begin() );
     }
 }
 

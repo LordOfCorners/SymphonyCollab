@@ -14,7 +14,7 @@ void testApp::setup(){
     breath = 0;
     breathRad = 50;
     
-    myDancer.setup();
+    myDancer.setup( ofVec2f( ofRandomWidth(), ofRandomHeight() ) );
 }
 
 //--------------------------------------------------------------
@@ -37,6 +37,11 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
+    // Reset everything with 'r' (debug).
+    if ( key == 'r' ) {
+        myDancer.lineList.clear();
+        setup();
+    }
 }
 
 //--------------------------------------------------------------
