@@ -16,6 +16,7 @@ public:
     Dancer();
     
     void setup();
+    void addLine();
     void update();
     void draw();
     
