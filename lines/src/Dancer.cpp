@@ -13,16 +13,10 @@ Dancer::Dancer() {
     // Test/default values, to be overwritten later.
     pos = posPrev = ofGetWindowSize() / 2;
     vel = ofVec2f( -0.5, 1.0 );
-    breath = 0;
+    breath = angle = 0;
     
     // Default is white (overwritten in update).
     c = ofColor( 255 );
-}
-
-void Dancer::setup() {
-    
-    // Create one line right off the bat with zero length (since we have no initial breathing data).
-    addLine();
 }
 
 void Dancer::addLine() {
@@ -55,6 +49,9 @@ void Dancer::update( ofVec2f _pos, ofVec2f _vel, float _breath ) {
     if ( lineList.size() > MAXLINES ) {
         lineList.erase( lineList.begin() );
     }
+    
+    // Store the current position (which will become the previous position next cycle).
+    posPrev = pos;
 }
 
 void Dancer::calcAngle() {
@@ -63,8 +60,7 @@ void Dancer::calcAngle() {
     float dx = pos.x - posPrev.x;
     angle = atan2( dy, dx );
     
-    // Store the current position (which will become the previous position next cycle).
-    posPrev = pos;
+    
 }
 
 void Dancer::draw() {

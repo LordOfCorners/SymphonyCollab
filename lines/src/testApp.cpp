@@ -16,7 +16,6 @@ void testApp::setup(){
     vel = ofVec2f( -0.5, 0.5 );
     breath = 0;
     breathRad = 50;
-    myDancer.setup();
 }
 
 //--------------------------------------------------------------
@@ -25,10 +24,12 @@ void testApp::update(){
     // First dancer.
     
     // Move the pos (based on data, tempo, other?). This will probably be rendered unnecessary if the data is used directly.
+    vel.y += 0.01;
+    vel.x += 0.01;
     pos += vel;
     
     // When we have real breathing data we won't need this, but for the time being, let's fake it.
-    float waveSpeed = 0.5;
+    float waveSpeed = 1;
     breath = sin( ofGetElapsedTimef() * waveSpeed ) * breathRad;
     
     // Pass in all the data.
