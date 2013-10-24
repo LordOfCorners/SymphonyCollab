@@ -3,8 +3,13 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    // First of all, clear out the vector (in case of reset).
-    myDancer.lineList.clear();
+    // First of all, clear out the vectors (in case of reset).
+    // First the lineLists inside the dancerList...
+    for ( int i = 0; i < dancerList.size(); i++) {
+        dancerList[ i ].lineList.clear();
+    }
+    // ...then the dancerList itself.
+    dancerList.clear();
     
     // Maintenance
     ofSetVerticalSync( true );
@@ -19,6 +24,10 @@ void testApp::setup(){
     vel = ofVec2f( -0.5, 0.5 );
     breath = 0;
     breathRad = 50;
+    
+    // Create a Dancer, feed in the pos and vel, and add it to the vector.
+    Dancer instrument( pos, vel );
+    dancerList.push_back( instrument );
 }
 
 //--------------------------------------------------------------
@@ -27,22 +36,26 @@ void testApp::update(){
     // First dancer.
     
     // Move the pos (based on data, tempo, other?). This will probably be rendered unnecessary if the data is used directly.
-    vel.y += 0.01;
-    vel.x += 0.01;
-    pos += vel;
+    /*vel.y += 0.01;
+    vel.x += 0.01;*/
+    
     
     // When we have real breathing data we won't need this, but for the time being, let's fake it.
     float waveSpeed = 1;
     breath = sin( ofGetElapsedTimef() * waveSpeed ) * breathRad;
     
-    // Pass in all the data.
-    myDancer.update( pos, vel, breath );
+    // Pass in the data and update the Dancers.
+    for ( int i = 0; i < dancerList.size(); i++ ) {
+        dancerList[ i ].update( breath );
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    myDancer.draw();
+    for ( int i = 0; i < dancerList.size(); i++ ) {
+        dancerList[ i ].draw();
+    }
 }
 
 //--------------------------------------------------------------

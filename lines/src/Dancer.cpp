@@ -9,10 +9,16 @@
 #include "Dancer.h"
 
 Dancer::Dancer() {
+    // Default constructor with no arguments.
+}
+
+Dancer::Dancer( ofVec2f _pos, ofVec2f _vel ) {
     
     // Test/default values, to be overwritten later.
-    pos = ofGetWindowSize() / 2;
-    vel = ofVec2f( -0.5, 1.0 );
+    /*pos = ofGetWindowSize() / 2;
+    vel = ofVec2f( -0.5, 1.0 );*/
+    pos = _pos;
+    vel = _vel;
     breath = angle = 0;
     
     // Default is white (overwritten in update).
@@ -27,11 +33,19 @@ void Dancer::addLine() {
     lineList.push_back( tmp );
 }
 
-void Dancer::update( ofVec2f _pos, ofVec2f _vel, float _breath ) {
+void Dancer::update( float _breath ) {
     
-    pos = _pos;
-    vel = _vel;
     breath = _breath;
+    
+    // Bounce off the walls, for testing purposes.
+    if ( pos.x < 0 || pos.x > ofGetWidth() ) {
+        vel.x *= -1;
+    }
+    if ( pos.y < 0 || pos.y > ofGetHeight() ) {
+        vel.y *= -1;
+    }
+    
+    pos += vel;
     
     // Set the rotation angle in the direction of movement.
     angle = atan2( vel.y, vel.x );

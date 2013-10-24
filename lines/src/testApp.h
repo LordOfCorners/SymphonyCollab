@@ -23,9 +23,9 @@ public:
     
     // One dancer per instrument (at least right now).
     
-    // First instrument.
-    Dancer myDancer;
     ofVec2f pos, vel;
     float breath;
     float breathRad; // Temporarily simulate breathing.
+    
+    vector< Dancer > dancerList;
 };
