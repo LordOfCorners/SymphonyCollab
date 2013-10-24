@@ -19,26 +19,18 @@ void testApp::setup(){
     // May want to change this to a gradient or something else.
     ofBackground( 0 );
     
-    // First dancer. Test/default values, to be overwritten later.
-    pos = ofVec2f( ofRandomWidth(), ofRandomHeight() );
-    vel = ofVec2f( -0.5, 0.5 );
     breath = 0;
     breathRad = 50;
     
-    // Create a Dancer, feed in the pos and vel, and add it to the vector.
-    Dancer instrument( pos, vel );
-    dancerList.push_back( instrument );
+    // Create Dancers, feed in a pos and vel, and add them to the vector.
+    for ( int i = 0; i < NUMDANCERS; i++ ) {
+        Dancer instrument( ofVec2f( ofRandomWidth(), ofRandomHeight() ),  ofVec2f( ofRandom( -0.5, 0.5 ), ofRandom( -0.5, 0.5 ) ) );
+        dancerList.push_back( instrument );
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
-    // First dancer.
-    
-    // Move the pos (based on data, tempo, other?). This will probably be rendered unnecessary if the data is used directly.
-    /*vel.y += 0.01;
-    vel.x += 0.01;*/
-    
     
     // When we have real breathing data we won't need this, but for the time being, let's fake it.
     float waveSpeed = 1;

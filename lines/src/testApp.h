@@ -4,6 +4,8 @@
 #include "Line.h"
 #include "Dancer.h"
 
+#define NUMDANCERS 3
+
 class testApp : public ofBaseApp{
     
 public:
@@ -23,7 +25,6 @@ public:
     
     // One dancer per instrument (at least right now).
     
-    ofVec2f pos, vel;
     float breath;
     float breathRad; // Temporarily simulate breathing.
     

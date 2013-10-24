@@ -45,6 +45,9 @@ void Dancer::update( float _breath ) {
         vel.y *= -1;
     }
     
+    vel.y += 0.01;
+    vel.x += 0.01;
+    
     pos += vel;
     
     // Set the rotation angle in the direction of movement.
