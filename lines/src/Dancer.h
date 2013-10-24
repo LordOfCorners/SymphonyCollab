@@ -22,12 +22,9 @@ public:
     void addLine();
     void update( ofVec2f _pos, ofVec2f _vel, float _breath );
     
-    // Calculate the angle of motion so we can rotate the line.
-    void calcAngle();
-    
     void draw();
     
-    ofVec2f pos, posPrev, vel;
+    ofVec2f pos, vel;
     
     float breath, angle;
     

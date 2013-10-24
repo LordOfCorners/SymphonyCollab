@@ -11,7 +11,7 @@
 Dancer::Dancer() {
     
     // Test/default values, to be overwritten later.
-    pos = posPrev = ofGetWindowSize() / 2;
+    pos = ofGetWindowSize() / 2;
     vel = ofVec2f( -0.5, 1.0 );
     breath = angle = 0;
     
@@ -33,8 +33,8 @@ void Dancer::update( ofVec2f _pos, ofVec2f _vel, float _breath ) {
     vel = _vel;
     breath = _breath;
     
-    // Prepare for rotation.
-    calcAngle();
+    // Set the rotation angle in the direction of movement.
+    angle = atan2( vel.y, vel.x );
     
     // Add a new line every update.
     addLine();
@@ -49,18 +49,6 @@ void Dancer::update( ofVec2f _pos, ofVec2f _vel, float _breath ) {
     if ( lineList.size() > MAXLINES ) {
         lineList.erase( lineList.begin() );
     }
-    
-    // Store the current position (which will become the previous position next cycle).
-    posPrev = pos;
-}
-
-void Dancer::calcAngle() {
-    
-    float dy = pos.y - posPrev.y;
-    float dx = pos.x - posPrev.x;
-    angle = atan2( dy, dx );
-    
-    
 }
 
 void Dancer::draw() {
