@@ -23,6 +23,8 @@ Dancer::Dancer( ofVec2f _pos, ofVec2f _vel ) {
     
     // Default is white (overwritten in update).
     c = ofColor( 255 );
+    
+    changeVel = ofVec2f( 0.01, 0.01 );
 }
 
 void Dancer::addLine() {
@@ -45,8 +47,29 @@ void Dancer::update( float _breath ) {
         vel.y *= -1;
     }
     
-    vel.y += 0.01;
-    vel.x += 0.01;
+    // Change the direction change, occasionally.
+    if ( ofRandom( 1 ) < 0.1 ){
+        if ( ofRandom( 1 ) < 0.5 ) {
+            changeVel.x = ofRandom( -0.1, 0.1 );
+        }
+    }
+    if ( ofRandom( 1 ) < 0.1 ){
+        if ( ofRandom( 1 ) < 0.5 ) {
+            changeVel.y = ofRandom( -0.1, 0.1 );
+        }
+    }
+    
+    // Make the Dancer change direction.
+    vel += changeVel;
+    
+    // Limit the vel.
+    vel.limit( 5);
+    if ( vel.y < -5 ) {
+        vel.y = -5;
+    }
+    if ( vel.x < -5 ) {
+        vel.x = -5;
+    }
     
     pos += vel;
     

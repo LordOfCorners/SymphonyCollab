@@ -45,6 +45,9 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
+    dancerList[ 0 ].c = ofColor( 255, 0, 0 );
+    dancerList[ 1 ].c = ofColor( 0, 255, 0 );
+    dancerList[ 2 ].c = ofColor( 0, 0, 255 );
     for ( int i = 0; i < dancerList.size(); i++ ) {
         dancerList[ i ].draw();
     }

@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "Line.h"
 
-#define MAXLINES 500 // Limit the vector size.
+#define MAXLINES 250 // Limit the vector size.
 
 class Dancer {
 public:
@@ -25,7 +25,7 @@ public:
     
     void draw();
     
-    ofVec2f pos, vel;
+    ofVec2f pos, vel, changeVel;
     
     float breath, angle;
     
