@@ -21,6 +21,7 @@ void testApp::setup(){
     
     breath = 0;
     breathRad = 50;
+    noiseBreath = true;
     
     // Create Dancers, feed in a pos and vel, and add them to the vector.
     for ( int i = 0; i < NUMDANCERS; i++ ) {
@@ -53,7 +54,11 @@ void testApp::update(){
     
     // When we have real breathing data we won't need this, but for the time being, let's fake it.
     float waveSpeed = 1;
-    breath = sin( ofGetElapsedTimef() * waveSpeed ) * breathRad;
+    if ( !noiseBreath ) {
+        breath = sin( ofGetElapsedTimef() * waveSpeed ) * breathRad;
+    } else {
+        breath = ofNoise( sin( ofGetElapsedTimef() * waveSpeed ) ) * breathRad;
+    }
     
     // Pass in the data and update the Dancers.
     for ( int i = 0; i < dancerList.size(); i++ ) {
@@ -82,6 +87,11 @@ void testApp::keyPressed(int key){
         for ( int i = 0; i < dancerList.size(); i++ ){
             dancerList[ i ].fillIn = !dancerList[ i ].fillIn;
         }
+    }
+    
+    // Toggle "noiseBreath" mode on and off.
+    if ( key == '2' ) {
+        noiseBreath = !noiseBreath;
     }
 }
 

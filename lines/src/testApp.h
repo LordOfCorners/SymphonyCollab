@@ -28,5 +28,7 @@ public:
     float breath;
     float breathRad; // Temporarily simulate breathing.
     
+    bool noiseBreath;
+    
     vector< Dancer > dancerList;
 };

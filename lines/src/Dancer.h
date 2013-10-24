@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "Line.h"
 
-#define MAXLINES 250 // Limit the vector size.
+#define MAXLINES 100 // Limit the vector size.
 
 class Dancer {
 public:
