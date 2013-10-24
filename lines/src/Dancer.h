@@ -33,5 +33,7 @@ public:
     
     ofColor c;
     
+    bool fillIn;
+    
     vector< Line > lineList;
 };

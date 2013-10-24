@@ -24,7 +24,9 @@ Dancer::Dancer( ofVec2f _pos, ofVec2f _vel ) {
     // Default is white (overwritten in update).
     c = ofColor( 255 );
     
-    changeVel = ofVec2f( 0.01, 0.01 );
+    changeVel = ofVec2f( 0.1, 0.1 );
+    
+    fillIn = true;
 }
 
 void Dancer::addLine( ofVec2f _pos ) {
@@ -34,7 +36,7 @@ void Dancer::addLine( ofVec2f _pos ) {
     tmp.setup( _pos, breath, angle );
     lineList.push_back( tmp );
     
-    if ( lineList.size() > 1 ) {
+    if ( lineList.size() > 1 && fillIn) {
         fillInGap();
     }
 }
@@ -81,13 +83,14 @@ void Dancer::update( float _breath ) {
     // Make the Dancer change direction.
     vel += changeVel;
     
+    float velLimit = 10;
     // Limit the vel.
-    vel.limit( 5);
-    if ( vel.y < -5 ) {
-        vel.y = -5;
+    vel.limit( velLimit );
+    if ( vel.y < -velLimit ) {
+        vel.y = -velLimit;
     }
-    if ( vel.x < -5 ) {
-        vel.x = -5;
+    if ( vel.x < -velLimit ) {
+        vel.x = -velLimit;
     }
     
     pos += vel;

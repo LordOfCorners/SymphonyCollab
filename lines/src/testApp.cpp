@@ -60,6 +60,13 @@ void testApp::keyPressed(int key){
     if ( key == 'r' ) {
         setup();
     }
+    
+    // Toggle "fill in" mode on and off.
+    if ( key == '1' ) {
+        for ( int i = 0; i < dancerList.size(); i++ ){
+            dancerList[ i ].fillIn = !dancerList[ i ].fillIn;
+        }
+    }
 }
 
 //--------------------------------------------------------------
