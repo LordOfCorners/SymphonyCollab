@@ -27,12 +27,31 @@ Dancer::Dancer( ofVec2f _pos, ofVec2f _vel ) {
     changeVel = ofVec2f( 0.01, 0.01 );
 }
 
-void Dancer::addLine() {
+void Dancer::addLine( ofVec2f _pos ) {
     
     // This function creates an instance of the Line class, sets it up with current values, and adds it to the vector.
     Line tmp;
-    tmp.setup( pos, breath, angle );
+    tmp.setup( _pos, breath, angle );
     lineList.push_back( tmp );
+    
+    if ( lineList.size() > 1 ) {
+        fillInGap();
+    }
+}
+
+void Dancer::fillInGap() {
+    
+    // This function will detect if there is visible space between lines in the Dancer and fill the space with more lines, hopefully resulting in a more seamless look.
+    
+    // Calculate the difference in pos between the most recent line and the previous line.
+    int needLines = int( ofVec2f( lineList[ lineList.size() - 1 ].pos - lineList[ lineList.size() - 2 ].pos ).length() );
+    
+    // If it is greater than 1, i.e. the two lines are not touching, fill the gap with new lines.
+    if ( needLines > 1 ) {
+        for ( int i = 1; i < needLines; i++ ) {
+            addLine( ofVec2f( pos + ( vel.normalized() * i ) ) );
+        }
+    }
 }
 
 void Dancer::update( float _breath ) {
@@ -77,7 +96,7 @@ void Dancer::update( float _breath ) {
     angle = atan2( vel.y, vel.x );
     
     // Add a new line every update.
-    addLine();
+    addLine( pos );
     
     // Update the lines.
     for ( int i = 0; i < lineList.size(); i++ ) {
