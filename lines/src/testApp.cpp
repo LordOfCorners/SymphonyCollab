@@ -32,6 +32,25 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    // Set the color back to default.
+    dancerList[ 0 ].c.set( ofColor( 255, 0, 0 ) );
+    dancerList[ 1 ].c.set( ofColor( 0, 255, 0 ) );
+    dancerList[ 2 ].c.set( ofColor( 0, 0, 255 ) );
+    
+    // Change the color upon collision. This isn't working right now and it also makes the app run really slowly, so I'm turning it off.
+    /*for ( int i = 0; i < dancerList.size(); i++ ) {
+        for ( int j = 0; j < dancerList.size(); j++ ) {
+            for ( int k = 0; k < dancerList[ i ].lineList.size(); k++ ) {
+                for ( int l = 0; l < dancerList[ j ].lineList.size(); l++ ) {
+                    if ( dancerList[ i ].lineList[ k ].pos == dancerList[ j ].lineList[ l ].pos ) {
+                        dancerList[ i ].lineList[ k ].c = ofColor(255);
+                        dancerList[ j ].lineList[ l ].c = ofColor(255);
+                    }
+                }
+            }
+        }
+    }*/
+    
     // When we have real breathing data we won't need this, but for the time being, let's fake it.
     float waveSpeed = 1;
     breath = sin( ofGetElapsedTimef() * waveSpeed ) * breathRad;
@@ -45,9 +64,6 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    dancerList[ 0 ].c = ofColor( 255, 0, 0 );
-    dancerList[ 1 ].c = ofColor( 0, 255, 0 );
-    dancerList[ 2 ].c = ofColor( 0, 0, 255 );
     for ( int i = 0; i < dancerList.size(); i++ ) {
         dancerList[ i ].draw();
     }
