@@ -3,6 +3,9 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    // First of all, clear out the vector (in case of reset).
+    myDancer.lineList.clear();
+    
     // Maintenance
     ofSetVerticalSync( true );
     ofSetFrameRate( 60 );
@@ -48,7 +51,6 @@ void testApp::keyPressed(int key){
     // Reset everything with 'r' (debug).
     if ( key == 'r' ) {
         setup();
-        myDancer.lineList.clear();
     }
 }
 
