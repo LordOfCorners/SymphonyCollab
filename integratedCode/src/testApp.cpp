@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-//	setupFFT();
+    //	setupFFT();
     setupLines();
 }
 
@@ -11,39 +11,43 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-//    updateFFT();
+    //    updateFFT();
     updateLines();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-//    drawFFT();
+    //    drawFFT();
     drawLines();
 }
 
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	
-    // Reset everything with 'r' (debug).
-    if ( key == 'r' ) {
-        setup();
-    }
     
-    //-------------LINES-------------
-    
-    // Toggle "fill in" mode on and off.
-    if ( key == '1' ) {
-        for ( int i = 0; i < dancerList.size(); i++ ){
-            dancerList[ i ].fillIn = !dancerList[ i ].fillIn;
-        }
-    }
-    
-    // Toggle "noiseBreath" mode on and off.
-    if ( key == '2' ) {
-        noiseBreath = !noiseBreath;
-    }
+    switch ( key ) {
+            // Reset everything with 'r' (debug).
+        case 'r':
+        case 'R':
+            setup();
+            break;
+            
+            //-------------LINES-------------
+            
+            // Toggle "fillIn" mode on and off.
+        case '1':
+            for ( int i = 0; i < dancerList.size(); i++ ){
+                dancerList[ i ].fillIn = !dancerList[ i ].fillIn;
+            }
+            break;
+            // Toggle "noiseBreath" mode on and off.
+        case '2':
+            if ( key == '2' ) {
+                noiseBreath = !noiseBreath;
+            }
+            break;
+    } // END SWITCH
 }
 
 //--------------------------------------------------------------
