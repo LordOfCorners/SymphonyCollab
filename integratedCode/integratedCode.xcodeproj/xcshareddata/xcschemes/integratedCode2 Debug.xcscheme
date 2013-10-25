@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "integratedCode2.app"
-               BlueprintName = "integratedCode2"
-               ReferencedContainer = "container:integratedCode2.xcodeproj">
+               BuildableName = "integratedCode.app"
+               BlueprintName = "integratedCode"
+               ReferencedContainer = "container:integratedCode.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "integratedCode2.app"
-            BlueprintName = "integratedCode2"
-            ReferencedContainer = "container:integratedCode2.xcodeproj">
+            BuildableName = "integratedCode.app"
+            BlueprintName = "integratedCode"
+            ReferencedContainer = "container:integratedCode.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "integratedCode2.app"
-            BlueprintName = "integratedCode2"
-            ReferencedContainer = "container:integratedCode2.xcodeproj">
+            BuildableName = "integratedCode.app"
+            BlueprintName = "integratedCode"
+            ReferencedContainer = "container:integratedCode.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "integratedCode2.app"
-            BlueprintName = "integratedCode2"
-            ReferencedContainer = "container:integratedCode2.xcodeproj">
+            BuildableName = "integratedCode.app"
+            BlueprintName = "integratedCode"
+            ReferencedContainer = "container:integratedCode.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
