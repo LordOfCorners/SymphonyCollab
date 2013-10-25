@@ -163,6 +163,10 @@ void testApp::drawLines() {
 //--------------------------------------------------------------
 void testApp::setupOrbits() {
     
+    // Matt adds: clear the vectors on setup (allows restarting).
+    particleList.clear();
+    setOfOrbits.clear();
+    
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground( 0);
