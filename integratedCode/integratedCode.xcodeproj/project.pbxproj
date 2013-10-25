@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		CD14E1C7181B109100A2BB8C /* Dancer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD14E1C3181B109100A2BB8C /* Dancer.cpp */; };
+		CD14E1C8181B109100A2BB8C /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD14E1C5181B109100A2BB8C /* Line.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -63,6 +65,10 @@
 
 /* Begin PBXFileReference section */
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		CD14E1C3181B109100A2BB8C /* Dancer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dancer.cpp; sourceTree = "<group>"; };
+		CD14E1C4181B109100A2BB8C /* Dancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dancer.h; sourceTree = "<group>"; };
+		CD14E1C5181B109100A2BB8C /* Line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Line.cpp; sourceTree = "<group>"; };
+		CD14E1C6181B109100A2BB8C /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -190,6 +196,10 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				CD14E1C3181B109100A2BB8C /* Dancer.cpp */,
+				CD14E1C4181B109100A2BB8C /* Dancer.h */,
+				CD14E1C5181B109100A2BB8C /* Line.cpp */,
+				CD14E1C6181B109100A2BB8C /* Line.h */,
 				FD2C1FBB16FECAA2007A9AE1 /* fft.cpp */,
 				FD2C1FBC16FECAA2007A9AE1 /* fft.h */,
 				FD2C1FBD16FECAA2007A9AE1 /* fftOctaveAnalyzer.cpp */,
@@ -298,6 +308,8 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				CD14E1C7181B109100A2BB8C /* Dancer.cpp in Sources */,
+				CD14E1C8181B109100A2BB8C /* Line.cpp in Sources */,
 				FD2C1FBF16FECAA2007A9AE1 /* fft.cpp in Sources */,
 				FD2C1FC016FECAA2007A9AE1 /* fftOctaveAnalyzer.cpp in Sources */,
 			);

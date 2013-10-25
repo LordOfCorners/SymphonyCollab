@@ -4,8 +4,11 @@
 #include "ofMain.h"
 #include "fft.h"
 #include "FFTOctaveAnalyzer.h"
+#include "Line.h"
+#include "Dancer.h"
 
 #define BUFFER_SIZE 512
+#define NUMDANCERS 3
 
 class testApp : public ofBaseApp {
 	
@@ -30,6 +33,10 @@ public:
     void updateFFT();
     void drawFFT();
     
+    void setupLines();
+    void updateLines();
+    void drawLines();
+    
     //--------------------------------------------------------------
     // FFT
     
@@ -52,6 +59,19 @@ public:
     float spin[18];
     
     //--------------------------------------------------------------
+    // LINES
+    
+    // One dancer per instrument (at least right now).
+    
+    float breath;
+    float breathRad; // Temporarily simulate breathing.
+    
+    bool noiseBreath;
+    
+    vector< Dancer > dancerList;
+    
+    //--------------------------------------------------------------
+    // 
 };
 
 #endif
