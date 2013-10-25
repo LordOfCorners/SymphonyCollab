@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-    setupFFT();
-    //    setupLines();
+    //    setupFFT();
+    setupLines();
 }
 
 

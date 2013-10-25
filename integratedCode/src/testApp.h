@@ -6,6 +6,8 @@
 #include "FFTOctaveAnalyzer.h"
 #include "Line.h"
 #include "Dancer.h"
+#include "Particle.h"
+#include "Orbit.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERS 3
@@ -71,7 +73,7 @@ public:
     vector< Dancer > dancerList;
     
     //--------------------------------------------------------------
-    // 
+    //
 };
 
 #endif
