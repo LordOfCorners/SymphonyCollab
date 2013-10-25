@@ -504,6 +504,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = BreathinatorWiFlyDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -590,6 +591,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = BreathinatorWiFly;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -6,10 +6,15 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 
-    //create the socket and bind to port 11999
+    //create the socket and bind to port 11997
 	udpConnection.Create();
 	udpConnection.Bind(11997);
 	udpConnection.SetNonBlocking(true);
+    
+    //create the socket and bind to port 11998
+	udpConnection2.Create();
+	udpConnection2.Bind(11998);
+	udpConnection2.SetNonBlocking(true);
 
 	ofSetBackgroundAuto(false);
 	ofBackground(255, 255, 255);
@@ -17,38 +22,37 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+  
+    //Connection 1
 	char udpMessage[100000];
 	udpConnection.Receive(udpMessage,100000);
 	string message=udpMessage;
 	if(message!=""){
-		//stroke.clear();
-		float x;
 		vector<string> strPoints = ofSplitString(message,"[/p]");
-		//for(int i=0;i<strPoints.size();i++){
-        cout << strPoints[0] << endl;
-			vector<string> point = ofSplitString(strPoints[0],"|");
-			if( point.size() == 2 ){
-                //ACCEL
-				x=atof(point[0].c_str());
-
-                cout << "X: "<< x << endl;
-			}
+        vector<string> point = ofSplitString(strPoints[0],"|");
+        if( point.size() == 1 ){
+            x=atof(point[0].c_str());
+        }
 	}
-
+    
+    //Connection 2
+    char udpMessage2[100000];
+	udpConnection2.Receive(udpMessage2,100000);
+	string message2=udpMessage2;
+	if(message2!=""){
+		//stroke.clear();
+		vector<string> strPoints2 = ofSplitString(message2,"[/p]");
+        vector<string> point2 = ofSplitString(strPoints2[0],"|");
+        if( point2.size() == 1 ){
+            x2=atof(point2[0].c_str());
+        }
+	}
+    cout << x << " | " << x2 << endl;
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofFill();
-    ofSetHexColor(0xFFFFFF);
-    ofRect(0,0,200,30);
-	ofSetHexColor(0x101010);
-	ofDrawBitmapString("UDP Receiver Example ", 10, 20);
 
-	for(int i=1;i<stroke.size();i++){
-		ofLine(stroke[i-1].x,stroke[i-1].y,stroke[i].x,stroke[i].y);
-	}
 }
 
 //--------------------------------------------------------------
@@ -58,7 +62,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-      stroke.clear();
+
 }
 
 //--------------------------------------------------------------

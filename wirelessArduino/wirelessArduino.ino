@@ -12,8 +12,8 @@
 #include <WiFlyHQ.h>
 
 /* Change these to match your WiFi network */
-const char mySSID[] = "internetz";
-const char myPassword[] = "1nt3rn3tz";
+const char mySSID[] = "genieBox";
+const char myPassword[] = "iamhungry";
 
 WiFly wifly;
 
@@ -34,7 +34,7 @@ void setup()
         Serial.println("Failed to start wifly");
 	//terminal();
     }
-
+    
     if (wifly.getFlushTimeout() != 10) {
         //Serial.println("Restoring flush timeout to 10msecs");
         wifly.setFlushTimeout(10);
@@ -74,13 +74,13 @@ void setup()
 
     /* Setup for UDP packets, sent automatically */
     wifly.setIpProtocol(WIFLY_PROTOCOL_UDP);
-    wifly.setHost("192.168.1.9", 11997);	// Send UDP packet to this server and port
+    wifly.setHost("192.168.1.206", 11998);	// Send UDP packet to this server and port
 
 
 
     wifly.setDeviceID("Wifly-UDP");
 
-    wifly.setHost("192.168.1.9", 11997);	// Send UPD packets to this server and port
+    wifly.setHost("192.168.1.206", 11998);	// Send UPD packets to this server and port
 
     Serial.println("WiFly ready");
 }
@@ -92,7 +92,7 @@ void loop()
 {
     
     analogData = analogRead(A5);
-    Serial.println(analogData);
+//    Serial.println(analogData);
    wifly.print(analogData);
    wifly.print("[/p]");
     delay(50);                // found i need a short delay before second TX

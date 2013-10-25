@@ -22,21 +22,8 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);		
 
 		ofxUDPManager udpConnection;
-		ofTrueTypeFont  mono;
-		ofTrueTypeFont  monosm;
+        ofxUDPManager udpConnection2;
 
-		vector<ofPoint> stroke;
-    int xmin;
-    int xmax;
-    int ymin;
-    int ymax;
-    int zmin;
-    int zmax;
-    int mxmin;
-    int mxmax;
-    int mymin;
-    int mymax;
-    int mzmin;
-    int mzmax;
+    float x,x2;
 };
 
