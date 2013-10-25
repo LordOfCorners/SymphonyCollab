@@ -39,6 +39,10 @@ public:
     void updateLines();
     void drawLines();
     
+    void setupOrbits();
+    void updateOrbits();
+    void drawOrbits();
+    
     //--------------------------------------------------------------
     // FFT
     
@@ -73,7 +77,22 @@ public:
     vector< Dancer > dancerList;
     
     //--------------------------------------------------------------
-    //
+    // ORBITS
+    
+    //Use this to add random particles in different orbits
+    //        void addParticle( int i );
+    void addParticle();
+    void addOrbit();
+    
+    
+    vector < Particle > particleList;
+    vector < Orbit > setOfOrbits;
+    
+    ofVec2f pos , vel, acc;
+    float _size, rotDia;
+    
+    //--------------------------------------------------------------
+    // 
 };
 
 #endif

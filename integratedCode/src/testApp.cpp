@@ -3,23 +3,26 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-    //    setupFFT();
-    setupLines();
+//    setupFFT();
+//    setupLines();
+    setupOrbits();
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-    //    updateFFT();
-    updateLines();
+//    updateFFT();
+//    updateLines();
+    updateOrbits();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    //    drawFFT();
-    drawLines();
+//    drawFFT();
+//    drawLines();
+    drawOrbits();
 }
 
 
@@ -63,6 +66,19 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
 	
+    //-------------ORBITS-------------
+    
+    //    if ( ofRandom( 1 ) < 0.01 ) {
+    //        if ( /* music is high frequency*/ ) {
+    //            i = 12;
+    //        }
+    //        else if ( /* music is low frequency */) {
+    //            i = 2;
+    //        }
+    //        addParticle( i );
+    //    }
+    
+    addParticle();
 }
 
 //--------------------------------------------------------------
@@ -141,6 +157,74 @@ void testApp::drawLines() {
     
     for ( int i = 0; i < dancerList.size(); i++ ) {
         dancerList[ i ].draw();
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::setupOrbits() {
+    
+    ofSetVerticalSync(true);
+    ofSeedRandom();
+    ofBackground( 0);
+    
+    
+    //    acc.set(0);
+    
+    for( int i = 0; i < 18; i++){
+        
+        _size = ofRandom(2, 5);
+        pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
+        vel.set(ofRandom(0,.9));
+        rotDia = ofRandom(100,800);
+        addParticle();
+        addOrbit();
+        
+        
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::addParticle(){
+    
+    Particle p( pos, vel, acc, _size, rotDia);
+    particleList.push_back(p);
+    
+    //    rotDia = setOfOrbits[i].dia;
+}
+
+//--------------------------------------------------------------
+void testApp::addOrbit(){
+    
+    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), rotDia);
+    setOfOrbits.push_back( tmp);
+    
+    
+}
+
+//--------------------------------------------------------------
+void testApp::updateOrbits() {
+    
+    vector<Particle>::iterator it;
+    for( it = particleList.begin(); it != particleList.end(); it++){
+        
+        it->update();
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::drawOrbits() {
+    
+    vector<Particle>::iterator it;
+    for( it = particleList.begin(); it != particleList.end(); it++){
+        
+        it->draw();
+    }
+    
+    
+    vector<Orbit>::iterator p;
+    for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
+        
+        p->draw();
     }
 }
 
