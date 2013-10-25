@@ -28,14 +28,14 @@ void Dancer::setup( ofVec2f rVel){
     
     spiralCoeVel = .5;
     
-    
+    speedRoundCir = 5;
 }
 
 void Dancer::update(){
     
     
-    posCirX = sin( ofGetElapsedTimef() * 10 );
-    posCirY = cos ( ofGetElapsedTimef() * 10 );
+    posCirX = sin( ofGetElapsedTimef() * speedRoundCir );
+    posCirY = cos ( ofGetElapsedTimef() * speedRoundCir );
     
     //We want our dancer to move smoothly so we initiate Noise in respect of time
     float noise = ofNoise( pos.x * 0.005, pos.y * 0.005, ofGetElapsedTimef() * 0.1) * 15.0;
@@ -50,11 +50,21 @@ void Dancer::update(){
     pos.x = posCirX * spiralCoe;
     pos.y = posCirY * spiralCoe;
     
+    //This is the noise for the position at which the particle rotates in respect to.
     float noiseToPos = ofNoise( posTo.x * 0.0005, posTo.y * ofGetElapsedTimef() *0.1) * 10.0;
     
-    posTo += ofVec2f( cos( noiseToPos), sin( noiseToPos ));
+//    posTo += ofVec2f( cos( noiseToPos), sin( noiseToPos ));
     
-    posTo += vel;
+//    posTo += vel;
+    
+    // Only change the velocity once in a while (determined randomly).
+    if ( ofRandom( 1 ) < 0.01 ) {
+        vel.x *= -1;
+    }
+    
+    if ( ofRandom( 1 ) < 0.01 ) {
+        vel.y *= -1;
+    }
     
     spiralCoe += spiralCoeVel;
     
@@ -64,6 +74,16 @@ void Dancer::update(){
         
     }
     
+    
+    if( posTo.x < size || posTo.x > ofGetWindowWidth() - size){
+        
+        vel.x = -vel.x;
+    }
+    
+    if( posTo.y < size || posTo.y > ofGetWindowHeight() - size){
+        
+        vel.y = -vel.y;
+    }
     
     
 }

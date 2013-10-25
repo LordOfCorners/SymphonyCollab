@@ -40,6 +40,8 @@ void testApp::setup(){
         
         addDancer();
     }
+    
+    backGround.setHsb(0, 255, 255);
 
 }
 //--------------------------------------------------------------
@@ -81,6 +83,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
+    // Only refresh the background on occasion. Gives trails with only a single particle!
+    if( int(ofGetElapsedTimef()) % 10 == 0) {
+        ofBackground( 0 );
+    }
     
     
 	float avg_power = 0.0f;	
@@ -158,6 +165,8 @@ void testApp::draw(){
     
     _shape = ofMap(FFTanalyzer.averages[2], 0, 40, 0, ofGetWindowHeight()/3);
     
+    //We set our special background
+  
     
     
     
@@ -175,12 +184,20 @@ void testApp::draw(){
     
     //Use this command to figure out your
     ofSoundStream().listDevices();
+    
+//    ofSetColor(backGround,20);
+//    ofRect(0,0, ofGetWindowWidth(), ofGetWindowHeight());
 		 
 }
 
 
 //--------------------------------------------------------------
-void testApp::keyPressed  (int key){ 
+void testApp::keyPressed  (int key){
+    
+    if ( key == 'r' ) {
+        newDancer.clear();
+        setup();
+    }
 	
 }
 

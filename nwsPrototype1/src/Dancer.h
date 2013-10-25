@@ -26,6 +26,7 @@ public:
     float posCirX, posCirY;
     
     float spiralCoe, spiralCoeVel;
+    float speedRoundCir;
     
     ofVec2f posTo;
     

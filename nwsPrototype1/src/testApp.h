@@ -68,6 +68,9 @@ class testApp : public ofBaseApp {
     vector < Dancer > newDancer;
     
     
+    ofColor backGround;
+    
+    
 };
 
 #endif	
