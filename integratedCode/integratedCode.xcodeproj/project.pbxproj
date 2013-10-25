@@ -468,6 +468,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = integratedCodeDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -554,6 +555,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = integratedCode;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

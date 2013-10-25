@@ -22,14 +22,16 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 //Use this to add random particles in different orbits
 //        void addParticle( int i );
-    void addParticle();
-        void addOrbit();
+        void addParticle(float dia);
+        void addOrbit(float dia);
     
     
     vector < Particle > particleList;
     vector < Orbit > setOfOrbits;
+    vector < float > diameterList;
     
     ofVec2f pos , vel, acc;
     float _size, rotDia;
+    float diamCoe;
 		
 };

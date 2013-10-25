@@ -36,8 +36,8 @@ void Particle::update(){
     pos.y = posCiry * rotDia;
     
 
-    pos += vel;
-    vel += acc;
+//    pos += vel;
+//    vel += acc;
     
 //    acc.set(0);
     
@@ -46,16 +46,6 @@ void Particle::update(){
 }
 
 void Particle::draw(){
-    
-    
-//    vector<Orbit>::iterator it;
-//    for( it = setOfOrbits.begin(); it != setOfOrbits.end(); it++){
-//        
-//        (*it).draw();
-//        
-//        ofSetColor(255);
-//        ofDrawBitmapString(ofToString(setOfOrbits.size()), 100, 100);
-//    }
     
     
     ofPushMatrix();{

@@ -5,39 +5,47 @@ void testApp::setup(){
     
     ofSetVerticalSync(true);
     ofSeedRandom();
-    ofBackground( 0);
+  
     
-    
-    //    acc.set(0);
-    
-    for( int i = 0; i < 18; i++){
+    for( int i = 0; i < 17; i++){
         
-        _size = ofRandom(2, 5);
-        pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
-        vel.set(ofRandom(0,.9));
-        rotDia = ofRandom(100,800);
-        addParticle();
-        addOrbit();
         
+         float coe = 1.02 * powf(1.15, i);
+        float _orbit;
+        _orbit = (rotDia + 40);
+        diameterList.push_back( _orbit * coe );
         
     }
     
-    
-    
+    for( int i = 0; i < 17; i++){
+        
+        _size = ofRandom(2, 5);
+        pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
+        vel.set(ofRandom(0,.9));    
+       
+        
+        
+        addOrbit(diameterList[i] );
+        addParticle(diameterList[i] );
+    }
     
 }
 
-void testApp::addParticle(){
+void testApp::addParticle(float dia){
     
-    Particle p( pos, vel, acc, _size, rotDia);
+    
+    Particle p( pos, vel, acc, _size, dia);
+    
+    
+//    if( ofRandom(1) < )
     particleList.push_back(p);
     
-//    rotDia = setOfOrbits[i].dia;
+
 }
 
-void testApp::addOrbit(){
+void testApp::addOrbit(float dia){
     
-    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), rotDia);
+    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), dia);
     setOfOrbits.push_back( tmp);
     
     
@@ -50,25 +58,30 @@ void testApp::update(){
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         it->update();
-    }
-    
-    
-    
+    }  
     
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    
+    ofEnableAlphaBlending();
+    ofBackgroundGradient(50,0);
+    
+    
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
+        ofEnableAlphaBlending();
+        ofBackgroundGradient(50,0);
         it->draw();
     }
     
     
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
+        
         
         p->draw();
     }
@@ -107,7 +120,7 @@ void testApp::mousePressed(int x, int y, int button){
 //        addParticle( i );
 //    }
     
-    addParticle();
+    addParticle(diameterList[6]);
     
 }
 

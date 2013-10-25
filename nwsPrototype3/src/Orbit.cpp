@@ -12,6 +12,7 @@ Orbit::Orbit( ofVec2f _pos, float _dia){
 
     dia = _dia;
     pos = _pos;
+
     
 }
 
@@ -25,6 +26,8 @@ void Orbit::draw(){
     ofNoFill();
     ofSetColor(255);
     ofSetCircleResolution(100);
+    
     ofCircle( pos, dia);
     
+   
 }
