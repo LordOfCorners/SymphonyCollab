@@ -8,7 +8,6 @@
 #include "Dancer.h"
 #include "Particle.h"
 #include "Orbit.h"
-#include "ofxNetwork.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERS 3
@@ -43,10 +42,6 @@ public:
     void setupOrbits();
     void updateOrbits();
     void drawOrbits();
-    
-    void setupWiFly();
-    void updateWiFly();
-    void drawWiFly();
     
     //--------------------------------------------------------------
     // FFT
@@ -97,15 +92,7 @@ public:
     float _size, rotDia;
     
     //--------------------------------------------------------------
-    // WIFLY
-    
-    ofxUDPManager udpConnection;
-    ofxUDPManager udpConnection2;
-    
-    float x,x2;
-    
-    //--------------------------------------------------------------
-    //
+    // 
 };
 
 #endif
