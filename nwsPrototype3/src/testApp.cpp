@@ -10,7 +10,7 @@ void testApp::setup(){
     for( int i = 0; i < 17; i++){
         
         
-         float coe = 1.02 * powf(1.15, i);
+         float coe = 1.02 * powf(1.19, i);
         float _orbit;
         _orbit = (rotDia + 40);
         diameterList.push_back( _orbit * coe );
@@ -21,7 +21,7 @@ void testApp::setup(){
         
         _size = ofRandom(2, 5);
         pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
-        vel.set(ofRandom(0,.9));    
+        vel.set(ofRandom(0,.9));
        
         
         
