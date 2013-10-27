@@ -12,7 +12,7 @@ void testApp::setup(){
         
          float coe = 1.02 * powf(1.19, i);
         float _orbit;
-        _orbit = (rotDia + 40);
+        _orbit = (40);
         diameterList.push_back( _orbit * coe );
         
     }
@@ -72,9 +72,7 @@ void testApp::draw(){
     
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
-        
-        ofEnableAlphaBlending();
-        ofBackgroundGradient(50,0);
+       
         it->draw();
     }
     

@@ -81,7 +81,7 @@ void testApp::mousePressed(int x, int y, int button){
     //        addParticle( i );
     //    }
     
-    addParticle();
+    addParticle(diameterList[4]);
 }
 
 //--------------------------------------------------------------
@@ -174,35 +174,42 @@ void testApp::setupOrbits() {
     ofSeedRandom();
     ofBackground( 0);
     
+    for( int i = 0 ; i < 17; i++){
+        
+        float coe = 1.02 * powf( 1.19, i);
+        float _orbit = 40;
+        diameterList.push_back( _orbit * coe);
+        
+    }
     
     //    acc.set(0);
     
-    for( int i = 0; i < 18; i++){
+    for( int i = 0; i < 17; i++){
         
         _size = ofRandom(2, 5);
         pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
         vel.set(ofRandom(0,.9));
-        rotDia = ofRandom(100,800);
-        addParticle();
-        addOrbit();
+        
+        addParticle(diameterList[i]);
+        addOrbit(diameterList[i]);
         
         
     }
 }
 
 //--------------------------------------------------------------
-void testApp::addParticle(){
+void testApp::addParticle(float dia){
     
-    Particle p( pos, vel, acc, _size, rotDia);
+    Particle p( pos, vel, acc, _size, dia);
     particleList.push_back(p);
     
     //    rotDia = setOfOrbits[i].dia;
 }
 
 //--------------------------------------------------------------
-void testApp::addOrbit(){
+void testApp::addOrbit(float dia){
     
-    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), rotDia);
+    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), dia);
     setOfOrbits.push_back( tmp);
     
     
@@ -220,6 +227,8 @@ void testApp::updateOrbits() {
 
 //--------------------------------------------------------------
 void testApp::drawOrbits() {
+    
+    
     
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){

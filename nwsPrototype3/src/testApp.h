@@ -31,7 +31,7 @@ class testApp : public ofBaseApp{
     vector < float > diameterList;
     
     ofVec2f pos , vel, acc;
-    float _size, rotDia;
+    float _size;
     float diamCoe;
 		
 };
