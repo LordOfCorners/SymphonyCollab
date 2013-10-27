@@ -15,8 +15,9 @@ Orbit::Orbit( ofVec2f _pos, float _dia){
     
 }
 
-void Orbit::update(){
+void Orbit::update(float _breathing){
     
+    dia += _breathing ;
     
 }
 

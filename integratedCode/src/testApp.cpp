@@ -5,7 +5,7 @@ void testApp::setup(){
 	
     //    setupFFT();
     //    setupLines();
-        setupOrbits();
+        setupOrbitsAndParticles();
 //    setupWiFly();
 }
 
@@ -15,8 +15,11 @@ void testApp::update(){
     
     //    updateFFT();
     //    updateLines();
-        updateOrbits();
+        updateOrbitsAndParticles();
 //    updateWiFly();
+    
+   
+    
 }
 
 //--------------------------------------------------------------
@@ -24,7 +27,7 @@ void testApp::draw(){
     
     //    drawFFT();
     //    drawLines();
-        drawOrbits();
+        drawOrbitsAndParticles();
 //    drawWiFly();
 }
 
@@ -164,7 +167,7 @@ void testApp::drawLines() {
 }
 
 //--------------------------------------------------------------
-void testApp::setupOrbits() {
+void testApp::setupOrbitsAndParticles() {
     
     // Matt adds: clear the vectors on setup (allows restarting).
     particleList.clear();
@@ -216,29 +219,54 @@ void testApp::addOrbit(float dia){
 }
 
 //--------------------------------------------------------------
-void testApp::updateOrbits() {
+void testApp::updateOrbitsAndParticles() {
     
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
-        it->update();
+        //This is the value that we need from the sensor
+        float breathingNum = 1.05;
+        float orbitsOsc = sin(ofGetElapsedTimef()) * breathingNum;
+        
+        
+        it->update(orbitsOsc);
     }
+    
+    vector<Orbit>::iterator o;
+    for( o = setOfOrbits.begin(); o != setOfOrbits.end(); o++){
+        
+        float breathingNum = 1.05;
+        float orbitsOsc = sin(ofGetElapsedTimef()) * breathingNum;
+        
+        o->update(orbitsOsc);
+    }
+    
+   
+    
+ 
 }
 
 //--------------------------------------------------------------
-void testApp::drawOrbits() {
+void testApp::drawOrbitsAndParticles(){
     
     
     
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
+        
+//        float sinOfTime = sin( ofGetElapsedTimef() * 3);
+//        it->rotDia = ofMap( sinOfTime, -1, 1, 1, 200);
         it->draw();
     }
     
     
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
+        
+//        float sinOfTime = sin( ofGetElapsedTimef() * 3);
+//        p->dia = ofMap( sinOfTime, -1, 1, 1, 200);
+        
         
         p->draw();
     }

@@ -40,9 +40,9 @@ public:
     void updateLines();
     void drawLines();
     
-    void setupOrbits();
-    void updateOrbits();
-    void drawOrbits();
+    void setupOrbitsAndParticles();
+    void updateOrbitsAndParticles();
+    void drawOrbitsAndParticles();
     
     void setupWiFly();
     void updateWiFly();
@@ -89,13 +89,12 @@ public:
     void addParticle(float dia);
     void addOrbit(float dia);
     
-    
     vector < Particle > particleList;
     vector < Orbit > setOfOrbits;
     vector < float > diameterList;
     
     ofVec2f pos , vel, acc;
-    float _size, rotDia, diaCoe;
+    float _size, rotDia, diaCoe, sinOfTime;
     
     //--------------------------------------------------------------
     // WIFLY

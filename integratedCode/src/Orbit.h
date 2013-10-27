@@ -16,12 +16,12 @@ public:
     
     Orbit( ofVec2f _pos, float _dia);
     
-    void update();
+    void update(float _breathing);
     
     void draw();
     
     ofVec2f pos;
     
-    float dia;
+    float dia, osc;
     
 };

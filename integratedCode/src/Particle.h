@@ -18,7 +18,7 @@ public:
     
     Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float _rotDia);
     
-    void update();
+    void update(float _breathing = 0);
     void draw();
 
     

@@ -25,12 +25,14 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
 
 
 
-void Particle::update(){
+void Particle::update(float _breathing){
     
     float posCirx, posCiry;
     
     posCirx = sin( ofGetElapsedTimef() * rotSpeed);
     posCiry = cos( ofGetElapsedTimef() * rotSpeed);
+    
+    rotDia += _breathing;
     
     pos.x = posCirx * rotDia;
     pos.y = posCiry * rotDia;
