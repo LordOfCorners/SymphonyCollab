@@ -22,6 +22,6 @@ public:
     
     ofVec2f pos;
     
-    float dia, osc;
+    float dia, osc, offset;
     
 };

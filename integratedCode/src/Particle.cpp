@@ -32,6 +32,7 @@ void Particle::update(float _breathing){
     posCirx = sin( ofGetElapsedTimef() * rotSpeed);
     posCiry = cos( ofGetElapsedTimef() * rotSpeed);
     
+    
     rotDia += _breathing;
     
     pos.x = posCirx * rotDia;

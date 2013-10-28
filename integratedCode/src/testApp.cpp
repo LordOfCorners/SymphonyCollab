@@ -6,7 +6,7 @@ void testApp::setup(){
     //    setupFFT();
     //    setupLines();
         setupOrbitsAndParticles();
-//    setupWiFly();
+    setupWiFly();
 }
 
 
@@ -16,7 +16,7 @@ void testApp::update(){
     //    updateFFT();
     //    updateLines();
         updateOrbitsAndParticles();
-//    updateWiFly();
+    updateWiFly();
     
    
     
@@ -231,19 +231,20 @@ void testApp::updateOrbitsAndParticles() {
         
         //This is the value that we need from the sensor
         float breathingNum = 1.05;
-        float orbitsOsc = sin(ofGetElapsedTimef()) * breathingNum;
+        float x2Mapped = ofMap(x2,793,749,200,800);
+        float orbitsOsc = x2Mapped * breathingNum;
         
         
-        it->update(orbitsOsc);
+        it->update(x2Mapped);
     }
     
     vector<Orbit>::iterator o;
     for( o = setOfOrbits.begin(); o != setOfOrbits.end(); o++){
         
         float breathingNum = 1.05;
-        float orbitsOsc = sin(ofGetElapsedTimef()) * breathingNum;
-        
-        o->update(orbitsOsc);
+        float x2Mapped = ofMap(x2,793,749,200,800);
+        float orbitsOsc = x2Mapped * breathingNum;
+        o->update(x2Mapped);
     }
     
    
@@ -274,15 +275,15 @@ void testApp::drawOrbitsAndParticles(){
         
         
         p->draw();
+        
+   
     }
+    
+    ofDrawBitmapStringHighlight(ofToString(setOfOrbits[0].dia), 20,20);
 }
 
 //--------------------------------------------------------------
 void testApp::setupWiFly() {
-    
-    //we run at 60 fps!
-    ofSetVerticalSync(true);
-    ofSetFrameRate(60);
     
     //create the socket and bind to port 11997
     udpConnection.Create();
@@ -293,10 +294,7 @@ void testApp::setupWiFly() {
     udpConnection2.Create();
     udpConnection2.Bind(11998);
     udpConnection2.SetNonBlocking(true);
-    
-    ofSetBackgroundAuto(false);
-    ofBackground(255, 255, 255);
-}
+    }
 
 //--------------------------------------------------------------
 void testApp::updateWiFly() {
@@ -325,7 +323,7 @@ void testApp::updateWiFly() {
             x2=atof(point2[0].c_str());
         }
 	}
-    cout << x << " | " << x2 << endl;
+    //cout << x << " | " << x2 << endl;
 }
 
 //--------------------------------------------------------------

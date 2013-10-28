@@ -10,15 +10,14 @@
 
 Orbit::Orbit( ofVec2f _pos, float _dia){
 
-    dia = _dia;
+    offset = _dia;
     pos = _pos;
     
 }
 
 void Orbit::update(float _breathing){
     
-    dia += _breathing ;
-    
+    dia = _breathing + offset ;
 }
 
 void Orbit::draw(){
@@ -27,5 +26,7 @@ void Orbit::draw(){
     ofSetColor(255);
     ofSetCircleResolution(100);
     ofCircle( pos, dia);
+    
+    
     
 }
