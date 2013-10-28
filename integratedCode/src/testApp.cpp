@@ -74,15 +74,20 @@ void testApp::mousePressed(int x, int y, int button){
 	
     //-------------ORBITS-------------
     
-    //    if ( ofRandom( 1 ) < 0.01 ) {
-    //        if ( /* music is high frequency*/ ) {
-    //            i = 12;
-    //        }
-    //        else if ( /* music is low frequency */) {
-    //            i = 2;
-    //        }
-    //        addParticle( i );
-    //    }
+//    for( int i = 0; i < diameterList.size() ; i++){
+//        
+//        if ( ofRandom( 1 ) < 0.01 ) {
+//            
+//            if ( /* music is high frequency*/ ) {
+//                i = 12;
+//            }
+//            else if ( /* music is low frequency */) {
+//                i = 2;
+//            }
+//            
+//            addParticle( i );
+//        }
+//    }
     
     addParticle(diameterList[4]);
 }
