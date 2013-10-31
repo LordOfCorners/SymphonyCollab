@@ -323,13 +323,51 @@ void testApp::updateWiFly() {
             x2=atof(point2[0].c_str());
         }
 	}
-    //cout << x << " | " << x2 << endl;
+    
+    calibrateWiFly();
+
 }
 
 //--------------------------------------------------------------
 void testApp::drawWiFly() {
     
     //
+}
+
+//--------------------------------------------------------------
+void testApp::calibrateWiFly() {
+    
+    //Calibration
+    //Calibrate for first 5 seconds
+    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
+        
+        //Sensor 1
+        //record the maximum sensor value
+        if( x > sensorMax){
+            sensorMax = x;
+        }
+        
+        //record the minium sensor value
+        if( x < sensorMin) {
+            sensorMin  = x;
+        }
+        
+        //Sensor 2
+        //record the maximum sensor value
+        if( x2 > sensorMax2){
+            sensorMax2 = x2;
+        }
+        
+        //record the minium sensor value
+        if( x2 < sensorMin2) {
+            sensorMin2  = x2;
+        }
+    }
+    
+    xMapped = ofMap(x, sensorMin, sensorMax, 0, 255);
+    //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 0, 255);
+    
+    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
 }
 
 //--------------------------------------------------------------

@@ -47,6 +47,7 @@ public:
     void setupWiFly();
     void updateWiFly();
     void drawWiFly();
+    void calibrateWiFly();
     
     //--------------------------------------------------------------
     // FFT
@@ -102,7 +103,11 @@ public:
     ofxUDPManager udpConnection;
     ofxUDPManager udpConnection2;
     
-    float x,x2;
+    float x,x2,xMapped, xMapped2;
+    float sensorMin = 1023;
+    float sensorMin2 = 1023;;
+    float sensorMax = 0;
+    float sensorMax2 = 0;
     
     //--------------------------------------------------------------
     //
