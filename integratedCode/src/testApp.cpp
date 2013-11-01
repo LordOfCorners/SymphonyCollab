@@ -325,8 +325,12 @@ void testApp::updateWiFly() {
             x2=atof(point2[0].c_str());
         }
 	}
+    float pct = 0.1f;
+    float oldXMapped = xMapped-1;
+    xMapped = ofMap(x, sensorMin, sensorMax, 155, -100);
+    xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
+
     
-    xMapped = ofMap(x, sensorMin, sensorMax, 255, 0);
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
     
     cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
