@@ -25,7 +25,7 @@ public:
     ofVec2f pos, vel, acc;
     
     float size;
-    float rotSpeed, rotDia;
+    float rotSpeed, rotDia, offset;
     
     
     

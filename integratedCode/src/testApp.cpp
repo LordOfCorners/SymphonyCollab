@@ -56,6 +56,10 @@ void testApp::keyPressed(int key){
                 noiseBreath = !noiseBreath;
             }
             break;
+        case 'c':
+        case 'C':
+            calibrateWiFly();
+            break;
     } // END SWITCH
 }
 
@@ -230,21 +234,19 @@ void testApp::updateOrbitsAndParticles() {
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         //This is the value that we need from the sensor
-        float breathingNum = 1.05;
-        float x2Mapped = ofMap(x2,793,749,200,800);
-        float orbitsOsc = x2Mapped * breathingNum;
+//        float breathingNum = 1.05;
+//        float orbitsOsc = xMapped * breathingNum;
         
         
-        it->update(x2Mapped);
+        it->update(xMapped);
     }
     
     vector<Orbit>::iterator o;
     for( o = setOfOrbits.begin(); o != setOfOrbits.end(); o++){
         
-        float breathingNum = 1.05;
-        float x2Mapped = ofMap(x2,793,749,200,800);
-        float orbitsOsc = x2Mapped * breathingNum;
-        o->update(x2Mapped);
+//        float breathingNum = 1.05;
+//        float orbitsOsc = xMapped * breathingNum;
+        o->update(xMapped);
     }
     
    
@@ -324,7 +326,11 @@ void testApp::updateWiFly() {
         }
 	}
     
-    calibrateWiFly();
+    xMapped = ofMap(x, sensorMin, sensorMax, 255, 0);
+    //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
+    
+    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
+//    calibrateWiFly();
 
 }
 
@@ -339,8 +345,8 @@ void testApp::calibrateWiFly() {
     
     //Calibration
     //Calibrate for first 5 seconds
-    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
-        
+//    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
+    
         //Sensor 1
         //record the maximum sensor value
         if( x > sensorMax){
@@ -362,12 +368,7 @@ void testApp::calibrateWiFly() {
         if( x2 < sensorMin2) {
             sensorMin2  = x2;
         }
-    }
-    
-    xMapped = ofMap(x, sensorMin, sensorMax, 0, 255);
-    //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 0, 255);
-    
-    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
+//    }
 }
 
 //--------------------------------------------------------------
