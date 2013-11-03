@@ -51,12 +51,7 @@ void Particle::draw(){
 
     
     //Mauricio: I was trying to get trail effect. But if I draw this in the testApp.cpp it does not work. Only if it is here for some reason.
-    ofColor _black = 0;
-    ofSetColor(_black,10);
-    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
-    
-    
-    ofPushMatrix();{
+        ofPushMatrix();{
         
         ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight());
         ofFill();

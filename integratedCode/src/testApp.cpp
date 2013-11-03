@@ -23,7 +23,7 @@ void testApp::update(){
     //    updateFFT();
     //    updateLines();
         updateOrbitsAndParticles();
-    updateWiFly();
+        updateWiFly();
     
    
     
@@ -32,7 +32,9 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    
+    ofColor _black = 0;
+    ofSetColor(_black,10);
+    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
     //    drawFFT();
     //    drawLines();

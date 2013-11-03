@@ -74,13 +74,13 @@ void setup()
 
     /* Setup for UDP packets, sent automatically */
     wifly.setIpProtocol(WIFLY_PROTOCOL_UDP);
-    wifly.setHost("192.168.2.4", 11998);	// Send UDP packet to this server and port
+    wifly.setHost("192.168.2.4", 11997);	// Send UDP packet to this server and port
 
 
 
     wifly.setDeviceID("Wifly-UDP");
 
-    wifly.setHost("192.168.2.4", 11998);	// Send UPD packets to this server and port
+    wifly.setHost("192.168.2.4", 11997);	// Send UPD packets to this server and port
 
     Serial.println("WiFly ready");
 }
