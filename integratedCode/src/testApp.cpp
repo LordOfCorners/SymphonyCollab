@@ -246,12 +246,22 @@ void testApp::updateOrbitsAndParticles() {
         o->update(xMapped);
     }
     
-   
-    vector<Particle>::iterator it;
-    for( it = particleList.begin(); it != particleList.end(); it++){
-     
-        it->update(xMapped);
+    for (int i = 0; i < FFTanalyzer.nAverages; i++){
+        
+        
+//        speed[i] *= 0.8;
+        vel[i] *= speed[i];
+        
+        particleList[i].update(xMapped);
+        
     }
+    
+   
+//    vector<Particle>::iterator it;
+//    for( it = particleList.begin(); it != particleList.end(); it++){
+//     
+//        it->update(xMapped);
+//    }
    
     
  
@@ -299,11 +309,14 @@ void testApp::drawOrbitsAndParticles(){
 //		theta[i] += spin[i];
 //		theta[i] = fmod(theta[i], 360);
         
-        speed[i] += ofMap( FFTanalyzer.averages[i] * 0.005, 0, 0.2, -1.5, 1.5);
+        speed[i] = ofMap( FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 200);
         
-        speed[i] *= 0.8;
         
-        ofDrawBitmapString( ofToString(FFTanalyzer.averages[i]), ofPoint(i*80, 200));
+//        vel += speed[i];
+        
+//        ofDrawBitmapString( ofToString(FFTanalyzer.averages[i]), ofPoint(i*80, 200));
+        
+        ofDrawBitmapString(ofToString(vel[i]), 200, i*40);
         
         particleList[i].draw();
         
