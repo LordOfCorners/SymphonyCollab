@@ -8,8 +8,7 @@
 
 #pragma once
 #include "ofMain.h"
-//#include "Orbit.h"
-//#define NUMBER_OF_ORBITS 20
+
 
 class Particle{
     
@@ -30,7 +29,7 @@ public:
     
     
     
-//    vector <Orbit> setOfOrbits;
+
     
 };
 

@@ -2,10 +2,17 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    
+    //Let's start some global settings here.
+    ofSetVerticalSync(true);
+    ofSeedRandom();
+    ofBackground(0);
+    ofSetBackgroundAuto(false);
+    
 	
     //    setupFFT();
     //    setupLines();
-        setupOrbitsAndParticles();
+    setupOrbitsAndParticles();
     setupWiFly();
 }
 
@@ -25,10 +32,12 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    
+    
     //    drawFFT();
     //    drawLines();
         drawOrbitsAndParticles();
-//    drawWiFly();
+    //    drawWiFly();
 }
 
 
@@ -113,12 +122,13 @@ void testApp::setupLines() {
     dancerList.clear();
     
     // Maintenance
-    ofSetVerticalSync( true );
-    ofSetFrameRate( 60 );
-    ofSetCircleResolution( 100 );
+    //Mauricio: The first two need to be added in the main setup.
+//    ofSetVerticalSync( true );
+//    ofSetFrameRate(60);
+    ofSetCircleResolution(100);
     
     // May want to change this to a gradient or something else.
-    ofBackground( 0 );
+//    ofBackground( 0 );
     
     breath = 0;
     breathRad = 50;
@@ -182,10 +192,6 @@ void testApp::setupOrbitsAndParticles() {
     particleList.clear();
     setOfOrbits.clear();
     
-    ofSetVerticalSync(true);
-    ofSeedRandom();
-    ofBackground( 0);
-    
     for( int i = 0 ; i < 17; i++){
         
         float coe = 1.02 * powf( 1.19, i);
@@ -202,8 +208,9 @@ void testApp::setupOrbitsAndParticles() {
         pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
         vel.set(ofRandom(0,.9));
         
-        addParticle(diameterList[i]);
+        
         addOrbit(diameterList[i]);
+        addParticle(diameterList[i]);
         
         
     }
@@ -230,25 +237,17 @@ void testApp::addOrbit(float dia){
 //--------------------------------------------------------------
 void testApp::updateOrbitsAndParticles() {
     
-    vector<Particle>::iterator it;
-    for( it = particleList.begin(); it != particleList.end(); it++){
-        
-        //This is the value that we need from the sensor
-//        float breathingNum = 1.05;
-//        float orbitsOsc = xMapped * breathingNum;
-        
-        
-        it->update(xMapped);
-    }
-    
     vector<Orbit>::iterator o;
     for( o = setOfOrbits.begin(); o != setOfOrbits.end(); o++){
         
-//        float breathingNum = 1.05;
-//        float orbitsOsc = xMapped * breathingNum;
         o->update(xMapped);
     }
     
+    vector<Particle>::iterator it;
+    for( it = particleList.begin(); it != particleList.end(); it++){
+     
+        it->update(xMapped);
+    }
    
     
  
@@ -258,30 +257,20 @@ void testApp::updateOrbitsAndParticles() {
 void testApp::drawOrbitsAndParticles(){
     
     
-    
-    vector<Particle>::iterator it;
-    for( it = particleList.begin(); it != particleList.end(); it++){
-        
-        
-//        float sinOfTime = sin( ofGetElapsedTimef() * 3);
-//        it->rotDia = ofMap( sinOfTime, -1, 1, 1, 200);
-        it->draw();
-    }
-    
-    
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
-        
-//        float sinOfTime = sin( ofGetElapsedTimef() * 3);
-//        p->dia = ofMap( sinOfTime, -1, 1, 1, 200);
-        
         
         p->draw();
         
    
     }
     
-    ofDrawBitmapStringHighlight(ofToString(setOfOrbits[0].dia), 20,20);
+    vector<Particle>::iterator it;
+    for( it = particleList.begin(); it != particleList.end(); it++){
+        
+        it->draw();
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -326,8 +315,9 @@ void testApp::updateWiFly() {
         }
 	}
     float pct = 0.1f;
-    float oldXMapped = xMapped-1;
-    xMapped = ofMap(x, sensorMin, sensorMax, 155, -100);
+    float oldXMapped = xMapped - 1;
+    //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
+    xMapped = ofMap(x, sensorMin, sensorMax, 100, 0);
     xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
 
     
@@ -398,7 +388,7 @@ void testApp::setupFFT() {
 	//left = new float[BUFFER_SIZE];
 	//right = new float[BUFFER_SIZE];
     
-	ofSetHexColor(0x666666);
+//	ofSetHexColor(0x666666);
 	
 	
 	FFTanalyzer.setup(44100, BUFFER_SIZE/2, 2);
@@ -408,14 +398,14 @@ void testApp::setupFFT() {
 	FFTanalyzer.linearEQIntercept = 0.9f; // reduced gain at lowest frequency
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
 	
-	ofSetVerticalSync(true);
+	
 	ofSetRectMode(OF_RECTMODE_CENTER);
 }
 
 //--------------------------------------------------------------
 void testApp::updateFFT() {
     
-    ofBackground(0);
+//    ofBackground(0);
 }
 
 //--------------------------------------------------------------
@@ -434,7 +424,7 @@ void testApp::drawFFT() {
 	
 	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
 	
-	ofSetHexColor(0xffffff);
+//	ofSetHexColor(0xffffff);
 	//for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
 	//ofRect(200+(i*4),600,4,-freq[i]*10.0f);
 	//}
