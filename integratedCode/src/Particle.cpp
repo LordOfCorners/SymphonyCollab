@@ -8,16 +8,16 @@
 
 #include "Particle.h"
 
-Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float _rotDia){
+Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float _rotDia, ofColor _c){
     
     offset = _rotDia;
     size = _size;
     pos = _pos;
     vel = _vel;
     acc = _acc;
+    c = _c;
     
     rotSpeed = ofRandom(0,3.0f);
-        
     
 }
 
@@ -40,9 +40,7 @@ void Particle::update(float _breathing){
 
     pos += vel;
     vel += acc;
-    
 //    acc.set(0);
-    
     
     
 }
@@ -50,12 +48,12 @@ void Particle::update(float _breathing){
 void Particle::draw(){
 
     
-    //Mauricio: I was trying to get trail effect. But if I draw this in the testApp.cpp it does not work. Only if it is here for some reason.
-        ofPushMatrix();{
+    
+    ofPushMatrix();{
         
         ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight());
         ofFill();
-        ofSetColor(255);
+        ofSetColor( c );
         ofCircle(pos, size);
         
         

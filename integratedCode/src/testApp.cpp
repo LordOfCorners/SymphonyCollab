@@ -7,13 +7,14 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
-    ofSetBackgroundAuto(false);
+//    ofSetBackgroundAuto(false);
     
 	
-    //    setupFFT();
+        setupFFT();
+    setupWiFly();
     //    setupLines();
     setupOrbitsAndParticles();
-    setupWiFly();
+    
 }
 
 
@@ -32,14 +33,14 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    ofColor _black = 0;
-    ofSetColor(_black,10);
-    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
+//    ofColor _black = 0;
+//    ofSetColor(_black,10);
+//    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
     //    drawFFT();
     //    drawLines();
-        drawOrbitsAndParticles();
     //    drawWiFly();
+     drawOrbitsAndParticles();
 }
 
 
@@ -209,7 +210,7 @@ void testApp::setupOrbitsAndParticles() {
         _size = ofRandom(2, 5);
         pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
         vel.set(ofRandom(0,.9));
-        
+        particleColor.setHsb(ofRandom(255), 255, 255);
         
         addOrbit(diameterList[i]);
         addParticle(diameterList[i]);
@@ -221,7 +222,7 @@ void testApp::setupOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::addParticle(float dia){
     
-    Particle p( pos, vel, acc, _size, dia);
+    Particle p( pos, vel, acc, _size, dia, particleColor);
     particleList.push_back(p);
     
     //    rotDia = setOfOrbits[i].dia;
@@ -245,6 +246,7 @@ void testApp::updateOrbitsAndParticles() {
         o->update(xMapped);
     }
     
+   
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
      
@@ -258,15 +260,56 @@ void testApp::updateOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
     
+//    Mauricio: I moved some of the functions in the fftdraw in order to have some variables move to the sound
+    
+    float avg_power = 0.0f;
+    
+	/* do the FFT	*/
+	myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase[0],&power[0],&avg_power);
+    
+	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
+		freq[i] = magnitude[i];
+	}
+	
+	FFTanalyzer.calculate(freq);
+	
+	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
+    
+    
+    
     
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
         
         p->draw();
-        
    
     }
     
+    for (int i = 0; i < FFTanalyzer.nAverages; i++){
+        
+        // Add some amount of spin based on the volume, but decrease it over
+		// time by scaling it down 15%
+		// make sure it doesn't go below 0
+//		spin[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 8);
+//		spin[i] *= 0.8;
+//		spin[i] = fmax(spin[i], 0);
+//		
+//		// increase our current angle by the amount of spin
+//		// wrap around 360 so our angle var doesn't get huge
+//		theta[i] += spin[i];
+//		theta[i] = fmod(theta[i], 360);
+        
+        speed[i] += ofMap( FFTanalyzer.averages[i] * 0.005, 0, 0.2, -1.5, 1.5);
+        
+        speed[i] *= 0.8;
+        
+        ofDrawBitmapString( ofToString(FFTanalyzer.averages[i]), ofPoint(i*80, 200));
+        
+        particleList[i].draw();
+        
+    }
+
+//This is the old method of drawing our particles without using the fft data
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
@@ -401,7 +444,7 @@ void testApp::setupFFT() {
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
 	
 	
-	ofSetRectMode(OF_RECTMODE_CENTER);
+//	ofSetRectMode(OF_RECTMODE_CENTER);
 }
 
 //--------------------------------------------------------------

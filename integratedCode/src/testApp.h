@@ -69,6 +69,8 @@ public:
     
     float theta[18];
     float spin[18];
+    //Mauricio, I created this variable to store the sound coming from the fft and affect the speed in the particles
+    float speed[18];
     
     //--------------------------------------------------------------
     // LINES
@@ -96,6 +98,7 @@ public:
     
     ofVec2f pos , vel, acc;
     float _size, rotDia, diaCoe, sinOfTime;
+    ofColor particleColor;
     
     //--------------------------------------------------------------
     // WIFLY
