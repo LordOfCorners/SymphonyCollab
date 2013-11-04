@@ -97,6 +97,7 @@ public:
     vector < float > diameterList;
     
     ofVec2f pos , vel, acc;
+    float rotSpeed[18];
     float _size, rotDia, diaCoe, sinOfTime;
     ofColor particleColor;
     

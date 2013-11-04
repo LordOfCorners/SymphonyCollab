@@ -7,10 +7,10 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
-//    ofSetBackgroundAuto(false);
+    //    ofSetBackgroundAuto(false);
     
 	
-        setupFFT();
+    setupFFT();
     setupWiFly();
     //    setupLines();
     setupOrbitsAndParticles();
@@ -23,24 +23,24 @@ void testApp::update(){
     
     //    updateFFT();
     //    updateLines();
-        updateOrbitsAndParticles();
-        updateWiFly();
+    updateOrbitsAndParticles();
+    updateWiFly();
     
-   
+    
     
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-//    ofColor _black = 0;
-//    ofSetColor(_black,10);
-//    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
+    //    ofColor _black = 0;
+    //    ofSetColor(_black,10);
+    //    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
     //    drawFFT();
     //    drawLines();
     //    drawWiFly();
-     drawOrbitsAndParticles();
+    drawOrbitsAndParticles();
 }
 
 
@@ -90,20 +90,20 @@ void testApp::mousePressed(int x, int y, int button){
 	
     //-------------ORBITS-------------
     
-//    for( int i = 0; i < diameterList.size() ; i++){
-//        
-//        if ( ofRandom( 1 ) < 0.01 ) {
-//            
-//            if ( /* music is high frequency*/ ) {
-//                i = 12;
-//            }
-//            else if ( /* music is low frequency */) {
-//                i = 2;
-//            }
-//            
-//            addParticle( i );
-//        }
-//    }
+    //    for( int i = 0; i < diameterList.size() ; i++){
+    //
+    //        if ( ofRandom( 1 ) < 0.01 ) {
+    //
+    //            if ( /* music is high frequency*/ ) {
+    //                i = 12;
+    //            }
+    //            else if ( /* music is low frequency */) {
+    //                i = 2;
+    //            }
+    //
+    //            addParticle( i );
+    //        }
+    //    }
     
     addParticle(diameterList[4]);
 }
@@ -126,12 +126,12 @@ void testApp::setupLines() {
     
     // Maintenance
     //Mauricio: The first two need to be added in the main setup.
-//    ofSetVerticalSync( true );
-//    ofSetFrameRate(60);
+    //    ofSetVerticalSync( true );
+    //    ofSetFrameRate(60);
     ofSetCircleResolution(100);
     
     // May want to change this to a gradient or something else.
-//    ofBackground( 0 );
+    //    ofBackground( 0 );
     
     breath = 0;
     breathRad = 50;
@@ -209,7 +209,7 @@ void testApp::setupOrbitsAndParticles() {
         
         _size = ofRandom(2, 5);
         pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
-        vel.set(ofRandom(0,.9));
+        vel.set(ofRandom(.9));
         particleColor.setHsb(ofRandom(255), 255, 255);
         
         addOrbit(diameterList[i]);
@@ -246,31 +246,50 @@ void testApp::updateOrbitsAndParticles() {
         o->update(xMapped);
     }
     
+    
+    //----------------------------------FFT STUFF----------------------------------//
+    
+    //    Mauricio: I moved some of the functions in the fftdraw in order to have some variables move to the sound
+    
+    
     for (int i = 0; i < FFTanalyzer.nAverages; i++){
         
+        speed[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0.5, 1.2);
         
-//        speed[i] *= 0.8;
-        vel[i] *= speed[i];
+        speed[i] *= 0.8;
         
-        particleList[i].update(xMapped);
+        rotSpeed[i] += speed[i];
+        rotSpeed[i] *= 0.8;
+        
+        particleList[i].update(xMapped, rotSpeed[i]);
+        
         
     }
     
-   
-//    vector<Particle>::iterator it;
-//    for( it = particleList.begin(); it != particleList.end(); it++){
-//     
-//        it->update(xMapped);
-//    }
-   
     
- 
+    //    vector<Particle>::iterator it;
+    //    for( it = particleList.begin(); it != particleList.end(); it++){
+    //
+    //        it->update(xMapped);
+    //    }
+    
+    
+    
 }
 
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
     
-//    Mauricio: I moved some of the functions in the fftdraw in order to have some variables move to the sound
+    
+    vector<Orbit>::iterator p;
+    for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
+        
+        p->draw();
+        
+    }
+    
+    
+    //----------------------------------FFT STUFF----------------------------------//
     
     float avg_power = 0.0f;
     
@@ -285,50 +304,18 @@ void testApp::drawOrbitsAndParticles(){
 	
 	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
     
-    
-    
-    
-    vector<Orbit>::iterator p;
-    for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
-        
-        p->draw();
-   
-    }
-    
-    for (int i = 0; i < FFTanalyzer.nAverages; i++){
-        
-        // Add some amount of spin based on the volume, but decrease it over
-		// time by scaling it down 15%
-		// make sure it doesn't go below 0
-//		spin[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 8);
-//		spin[i] *= 0.8;
-//		spin[i] = fmax(spin[i], 0);
-//		
-//		// increase our current angle by the amount of spin
-//		// wrap around 360 so our angle var doesn't get huge
-//		theta[i] += spin[i];
-//		theta[i] = fmod(theta[i], 360);
-        
-        speed[i] = ofMap( FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 200);
-        
-        
-//        vel += speed[i];
-        
-//        ofDrawBitmapString( ofToString(FFTanalyzer.averages[i]), ofPoint(i*80, 200));
-        
-        ofDrawBitmapString(ofToString(vel[i]), 200, i*40);
-        
-        particleList[i].draw();
-        
-    }
-
-//This is the old method of drawing our particles without using the fft data
+    //This is the old method of drawing our particles without using the fft data
     vector<Particle>::iterator it;
+    int i = 0;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         it->draw();
+        
+        ofDrawBitmapString(ofToString(rotSpeed[i]), 20, i * 20);
+        
+        i++;
     }
-
+    
 }
 
 //--------------------------------------------------------------
@@ -343,7 +330,7 @@ void testApp::setupWiFly() {
     udpConnection2.Create();
     udpConnection2.Bind(11998);
     udpConnection2.SetNonBlocking(true);
-    }
+}
 
 //--------------------------------------------------------------
 void testApp::updateWiFly() {
@@ -377,13 +364,13 @@ void testApp::updateWiFly() {
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
     xMapped = ofMap(x, sensorMin, sensorMax, 100, 0);
     xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
-
+    
     
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
     
     cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
-//    calibrateWiFly();
-
+    //    calibrateWiFly();
+    
 }
 
 //--------------------------------------------------------------
@@ -397,30 +384,30 @@ void testApp::calibrateWiFly() {
     
     //Calibration
     //Calibrate for first 5 seconds
-//    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
+    //    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
     
-        //Sensor 1
-        //record the maximum sensor value
-        if( x > sensorMax){
-            sensorMax = x;
-        }
-        
-        //record the minium sensor value
-        if( x < sensorMin) {
-            sensorMin  = x;
-        }
-        
-        //Sensor 2
-        //record the maximum sensor value
-        if( x2 > sensorMax2){
-            sensorMax2 = x2;
-        }
-        
-        //record the minium sensor value
-        if( x2 < sensorMin2) {
-            sensorMin2  = x2;
-        }
-//    }
+    //Sensor 1
+    //record the maximum sensor value
+    if( x > sensorMax){
+        sensorMax = x;
+    }
+    
+    //record the minium sensor value
+    if( x < sensorMin) {
+        sensorMin  = x;
+    }
+    
+    //Sensor 2
+    //record the maximum sensor value
+    if( x2 > sensorMax2){
+        sensorMax2 = x2;
+    }
+    
+    //record the minium sensor value
+    if( x2 < sensorMin2) {
+        sensorMin2  = x2;
+    }
+    //    }
 }
 
 //--------------------------------------------------------------
@@ -446,7 +433,7 @@ void testApp::setupFFT() {
 	//left = new float[BUFFER_SIZE];
 	//right = new float[BUFFER_SIZE];
     
-//	ofSetHexColor(0x666666);
+    //	ofSetHexColor(0x666666);
 	
 	
 	FFTanalyzer.setup(44100, BUFFER_SIZE/2, 2);
@@ -457,13 +444,13 @@ void testApp::setupFFT() {
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
 	
 	
-//	ofSetRectMode(OF_RECTMODE_CENTER);
+    //	ofSetRectMode(OF_RECTMODE_CENTER);
 }
 
 //--------------------------------------------------------------
 void testApp::updateFFT() {
     
-//    ofBackground(0);
+    //    ofBackground(0);
 }
 
 //--------------------------------------------------------------
@@ -482,7 +469,7 @@ void testApp::drawFFT() {
 	
 	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
 	
-//	ofSetHexColor(0xffffff);
+    //	ofSetHexColor(0xffffff);
 	//for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
 	//ofRect(200+(i*4),600,4,-freq[i]*10.0f);
 	//}

@@ -17,19 +17,21 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
     acc = _acc;
     c = _c;
     
-    rotSpeed = ofRandom(0,3.0f);
+    rotSpeed = 0;
     
 }
 
 
 
 
-void Particle::update(float _breathing){
+void Particle::update(float _breathing, float _rotSpeed){
+    
+    rotSpeed = _rotSpeed;
     
     float posCirx, posCiry;
     
-    posCirx = sin( ofGetElapsedTimef() * rotSpeed);
-    posCiry = cos( ofGetElapsedTimef() * rotSpeed);
+    posCirx = sin( ofGetElapsedTimef() * rotSpeed );
+    posCiry = cos( ofGetElapsedTimef() * rotSpeed );
     
     
     float finalDia = offset + _breathing;
@@ -40,7 +42,7 @@ void Particle::update(float _breathing){
 
     pos += vel;
     vel += acc;
-//    acc.set(0);
+    acc.set(0);
     
     
 }
