@@ -7,7 +7,7 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
-    //    ofSetBackgroundAuto(false);
+        ofSetBackgroundAuto(false);
     
 	
     setupFFT();
@@ -33,9 +33,9 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    //    ofColor _black = 0;
-    //    ofSetColor(_black,10);
-    //    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
+    ofColor _black = 0;
+    ofSetColor(_black, 10);
+    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
     //    drawFFT();
     //    drawLines();
@@ -254,8 +254,7 @@ void testApp::updateOrbitsAndParticles() {
     
     for (int i = 0; i < FFTanalyzer.nAverages; i++){
         
-        speed[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0.5, 1.2);
-        
+        speed[i] = ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 1, 1.2);
         speed[i] *= 0.8;
         
         rotSpeed[i] += speed[i];
