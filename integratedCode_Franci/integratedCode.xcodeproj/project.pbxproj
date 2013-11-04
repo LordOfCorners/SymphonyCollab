@@ -242,21 +242,21 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				CD14E1D3181B383E00A2BB8C /* Dancer.cpp */,
-				CD14E1D4181B383E00A2BB8C /* Dancer.h */,
 				CD14E1D5181B383E00A2BB8C /* fft.cpp */,
 				CD14E1D6181B383E00A2BB8C /* fft.h */,
 				CD14E1D7181B383E00A2BB8C /* fftOctaveAnalyzer.cpp */,
 				CD14E1D8181B383E00A2BB8C /* fftOctaveAnalyzer.h */,
+				CD14E1E0181B383E00A2BB8C /* testApp.cpp */,
+				CD14E1E1181B383E00A2BB8C /* testApp.h */,
 				CD14E1D9181B383E00A2BB8C /* Line.cpp */,
 				CD14E1DA181B383E00A2BB8C /* Line.h */,
+				CD14E1D3181B383E00A2BB8C /* Dancer.cpp */,
+				CD14E1D4181B383E00A2BB8C /* Dancer.h */,
 				CD14E1DB181B383E00A2BB8C /* main.cpp */,
 				CD14E1DC181B383E00A2BB8C /* Orbit.cpp */,
 				CD14E1DD181B383E00A2BB8C /* Orbit.h */,
 				CD14E1DE181B383E00A2BB8C /* Particle.cpp */,
 				CD14E1DF181B383E00A2BB8C /* Particle.h */,
-				CD14E1E0181B383E00A2BB8C /* testApp.cpp */,
-				CD14E1E1181B383E00A2BB8C /* testApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

@@ -96,6 +96,8 @@ public:
     
     ofVec2f pos , vel, acc;
     float _size, rotDia, diaCoe, sinOfTime;
+    ofColor particleColor;
+
     
     //--------------------------------------------------------------
     // WIFLY

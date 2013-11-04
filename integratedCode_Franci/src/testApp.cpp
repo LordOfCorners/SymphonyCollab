@@ -3,25 +3,18 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-<<<<<<< HEAD
-    ofSetBackgroundAuto(false);
+    
 
 	
     //    setupFFT();
         setupLines();
 //        setupOrbitsAndParticles();
-=======
     //Let's start some global settings here.
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
     ofSetBackgroundAuto(false);
     
-	
-    //    setupFFT();
-    //    setupLines();
-    setupOrbitsAndParticles();
->>>>>>> 06798e2b7e712ce72ef97f2ba2dad1841c947d70
     setupWiFly();
 }
 
@@ -30,16 +23,9 @@ void testApp::setup(){
 void testApp::update(){
     
     //    updateFFT();
-<<<<<<< HEAD
         updateLines();
 //        updateOrbitsAndParticles();
     updateWiFly();
-=======
-    //    updateLines();
-        updateOrbitsAndParticles();
-        updateWiFly();
->>>>>>> 06798e2b7e712ce72ef97f2ba2dad1841c947d70
-    
    
     
 }
@@ -47,21 +33,14 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    ofColor _black = 0;
-    ofSetColor(_black,10);
-    ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
+    ofSetColor(0,0,0, 2);
+    ofRect( 0,0, ofGetWindowWidth(), ofGetWindowHeight() );
     
     //    drawFFT();
-<<<<<<< HEAD
         drawLines();
 //        drawOrbitsAndParticles();
-//    drawWiFly();
-=======
-    //    drawLines();
-        drawOrbitsAndParticles();
-    //    drawWiFly();
->>>>>>> 06798e2b7e712ce72ef97f2ba2dad1841c947d70
-}
+//      drawWiFly();
+  }
 
 
 //--------------------------------------------------------------
@@ -205,8 +184,8 @@ void testApp::updateLines() {
 //--------------------------------------------------------------
 void testApp::drawLines() {
     
-    ofSetColor(0,0,0, 255*0.03);
-    ofRect( ofGetWindowRect() );
+//    ofSetColor(0,0,0, 255*0.03);
+//    ofRect( ofGetWindowRect() );
     
     for ( int i = 0; i < dancerList.size(); i++ ) {
         dancerList[ i ].draw();
@@ -247,7 +226,7 @@ void testApp::setupOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::addParticle(float dia){
     
-    Particle p( pos, vel, acc, _size, dia);
+    Particle p( pos, vel, acc, _size, dia, particleColor);
     particleList.push_back(p);
     
     //    rotDia = setOfOrbits[i].dia;
