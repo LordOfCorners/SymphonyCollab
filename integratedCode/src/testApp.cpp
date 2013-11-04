@@ -310,7 +310,7 @@ void testApp::drawOrbitsAndParticles(){
         
         it->draw();
         
-        ofDrawBitmapString(ofToString(rotSpeed[i]), 20, i * 20);
+//        ofDrawBitmapString(ofToString(rotSpeed[i]), 20, i * 20);
         
         i++;
     }
@@ -361,7 +361,7 @@ void testApp::updateWiFly() {
     float pct = 0.1f;
     float oldXMapped = xMapped - 1;
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
-    xMapped = ofMap(x, sensorMin, sensorMax, 100, 0);
+    xMapped = ofMap(x, sensorMin, sensorMax, 150, -150);
     xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
     
     
