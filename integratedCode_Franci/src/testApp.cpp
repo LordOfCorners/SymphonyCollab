@@ -2,10 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
-    
-
-	
+  	
     //    setupFFT();
         setupLines();
 //        setupOrbitsAndParticles();
