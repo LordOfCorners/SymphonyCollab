@@ -39,10 +39,11 @@ void Line::update() {
 
 void Line::draw() {
     
-    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ),255 * (pos.x / ofGetWidth() ) );
+    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ),255 * (pos.x / ofGetWidth() ), 10 );
     ofPushMatrix();{
         ofTranslate( pos );
-        ofRotate( ofRadToDeg( angle )* TWO_PI );
-        ofLine( 0, -length, 0, length );
+        ofRotate( ofRadToDeg( angle ) * TWO_PI );
+        ofSetLineWidth(60);
+        ofLine( 0, -length , 0, length);
     }ofPopMatrix();
 }

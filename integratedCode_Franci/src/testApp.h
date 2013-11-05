@@ -11,7 +11,7 @@
 #include "ofxNetwork.h"
 
 #define BUFFER_SIZE 512
-#define NUMDANCERS 10
+#define NUMDANCERS 3
 
 class testApp : public ofBaseApp {
 	

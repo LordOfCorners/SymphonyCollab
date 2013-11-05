@@ -1,4 +1,4 @@
-#include "testApp.h"
+ #include "testApp.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -13,7 +13,7 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
-    ofSetBackgroundAuto(false);
+    ofSetBackgroundAuto(true);
     
     setupWiFly();
 }
