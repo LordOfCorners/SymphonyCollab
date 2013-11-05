@@ -26,4 +26,6 @@ class testApp : public ofBaseApp{
     float radius;
     
     ofEasyCam cam;
+    
+    ofFbo mFbo;
 };

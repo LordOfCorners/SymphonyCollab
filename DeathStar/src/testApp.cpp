@@ -9,12 +9,11 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    mFbo.allocate( ofGetWindowWidth(), ofGetWindowHeight() );
+    
     ofSetBackgroundAuto(false);
     ofEnableAlphaBlending();
     ofBackground(0);
-    
-
-    
 
 }
 
@@ -26,12 +25,14 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    cam.begin();
+//    cam.begin();
+    mFbo.begin();
+
     
     float angle = ofGetElapsedTimef() * 0.2;
     float radius = 75;
     
-    float x = radius * sin(angle * 2) * TWO_PI;
+    float x = radius * sin( angle * 2) * TWO_PI;
     float y = radius * cos( angle * 2) * TWO_PI;
     float z = radius * cos( angle * 2) * TWO_PI;
 
@@ -64,7 +65,14 @@ void testApp::draw(){
         }ofPopMatrix();
     }
     
-    cam.end();
+    mFbo.end();
+    
+    mFbo.draw(0,0);
+    mFbo.draw(0,20);
+//    mFbo.draw(20,20);
+//    mFbo.draw(20,0);
+    
+//    cam.end();
 
 }
 
