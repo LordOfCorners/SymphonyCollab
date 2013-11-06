@@ -5,11 +5,11 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
+    mFbo.allocate( ofGetWindowWidth(), ofGetWindowHeight() );
+    
     pos = ofGetWindowSize()/2;
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
-    
-    mFbo.allocate( ofGetWindowWidth(), ofGetWindowHeight() );
     
     ofSetBackgroundAuto(false);
     ofEnableAlphaBlending();
@@ -26,7 +26,7 @@ void testApp::update(){
 void testApp::draw(){
     
 //    cam.begin();
-    mFbo.begin();
+//    mFbo.begin();
 
     
     float angle = ofGetElapsedTimef() * 0.2;
@@ -57,19 +57,15 @@ void testApp::draw(){
         
             ofNoFill();
             ofSetColor(255 ,255, 255, 20 );
-            ofSetLineWidth(1
-                           );
+            ofSetLineWidth(1);
             ofLine(x, y, x-30, y+30);
             //ofCircle(x,y,100);
             
         }ofPopMatrix();
     }
     
-    mFbo.end();
-    
-    mFbo.draw(0,0);
-    mFbo.draw(0,20);
-//    mFbo.draw(20,20);
+//    mFbo.end();
+//    
 //    mFbo.draw(20,0);
     
 //    cam.end();
