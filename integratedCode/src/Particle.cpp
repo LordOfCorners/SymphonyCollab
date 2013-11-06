@@ -29,11 +29,12 @@ void Particle::update(float _breathing, float _rotSpeed){
     rotSpeed = _rotSpeed;
     
     float posCirx, posCiry;
-    
+
+//       rotSpeed *= 0.97;
     posCirx = sin( ofGetElapsedTimef() * rotSpeed );
     posCiry = cos( ofGetElapsedTimef() * rotSpeed );
     
-    rotSpeed *= 0.97;
+
     
     
     float finalDia = offset + _breathing;
