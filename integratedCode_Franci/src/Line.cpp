@@ -16,6 +16,7 @@ Line::Line() {
 
 void Line::setup( ofVec2f _pos, float _length, float _angle ) {
     
+    ofSetFrameRate(30);
     pos = _pos;
     length = _length;
     angle = _angle;
@@ -39,11 +40,11 @@ void Line::update() {
 
 void Line::draw() {
     
-    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ),255 * (pos.x / ofGetWidth() ), 10 );
+    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ), 255 * (pos.x / ofGetWidth() ), 10 );
     ofPushMatrix();{
         ofTranslate( pos );
         ofRotate( ofRadToDeg( angle ) * TWO_PI );
-        ofSetLineWidth(60);
-        ofLine( 0, -length , 0, length);
+        ofSetLineWidth(40);
+        ofLine( 0, ofRandom(-length, -length-100) , 0, ofRandom(length, length+100));
     }ofPopMatrix();
 }

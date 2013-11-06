@@ -35,26 +35,10 @@ void Dancer::addLine( ofVec2f _pos ) {
     Line tmp;
     tmp.setup( _pos, breath, angle );
     lineList.push_back( tmp );
-    
-//    if ( lineList.size() > 1 && fillIn) {
-//        fillInGap();
-//    }
+
 }
 
-//void Dancer::fillInGap() {
-//    
-//    // This function will detect if there is visible space between lines in the Dancer and fill the space with more lines, hopefully resulting in a more seamless look.
-//    
-//    // Calculate the difference in pos between the most recent line and the previous line.
-//    int needLines = int( ofVec2f( lineList[ lineList.size() - 1 ].pos - lineList[ lineList.size() - 2 ].pos ).length() );
-//    
-//    // If it is greater than 1, i.e. the two lines are not touching, fill the gap with new lines.
-//    if ( needLines > 1 ) {
-//        for ( int i = 1; i < needLines; i++ ) {
-//            addLine( ofVec2f( pos + ( vel.normalized() * i ) ) );
-//        }
-//    }
-//}
+
 
 void Dancer::update( float _breath ) {
     
@@ -70,12 +54,12 @@ void Dancer::update( float _breath ) {
     
     // Change the direction change, occasionally.
     if ( ofRandom( 1 ) < 0.1 ){
-        if ( ofRandom( 1 ) < 0.5 ) {
-            changeVel.x = ofRandom( -0.2, 0.2 );
+        if ( ofRandom( 1 ) < 0.2 ) {
+            changeVel.x = ofRandom( -0.1, 0.1 );
         }
     }
-    if ( ofRandom( 1 ) < 0.3 ){
-        if ( ofRandom( 1 ) < 0.5 ) {
+    if ( ofRandom( 1 ) < 0.1 ){
+        if ( ofRandom( 1 ) < 0.2 ) {
             changeVel.y = ofRandom( -0.1, 0.1 );
         }
     }
