@@ -5,7 +5,9 @@ Dancer::Dancer() {
     // Default constructor with no arguments.
 }
 
-Dancer::Dancer( ofVec2f _pos, ofVec2f _vel) {
+Dancer::Dancer( ofVec2f _pos, ofVec2f _vel, int _number) {
+    
+    dancerNumber = _number;
     
     // Test/default values, to be overwritten later.
     /*pos = ofGetWindowSize() / 2;
@@ -26,14 +28,22 @@ void Dancer::addLine( ofVec2f _pos ) {
     
     // This function creates an instance of the Line class, sets it up with current values, and adds it to the vector.
     Line tmp;
-    tmp.setup( _pos, breath, angle );
+    //tmp.setup( _pos, breath, angle );
+    tmp.setup( _pos, thisBreath, angle );
     lineList.push_back( tmp );
 
 }
 
-void Dancer::update( float _breath ) {
+void Dancer::update( float _breath, float _amplitude ) {
     
-    breath = _breath;
+    thisBreath = _breath;
+    
+    //breath = _breath;
+    amplitude = _amplitude;
+    
+    //cout<< "breath: "<<thisBreath<<endl;
+    
+    //breath = breath/10000.f; // .07 - .08
     
     // Bounce off the walls, for testing purposes.
     if ( pos.x < -200 || pos.x > ofGetWidth()+200 ) {
@@ -46,7 +56,7 @@ void Dancer::update( float _breath ) {
     // Change the direction change, occasionally.
     if ( ofRandom( 1 ) < 0.1 ){
         if ( ofRandom( 1 ) < 0.2 ) {
-            changeVel.x = ofRandom( -0.1, 0.1 );
+            changeVel.x = ofRandom( -0.1, 0.1);
         }
     }
     if ( ofRandom( 1 ) < 0.1 ){
@@ -58,7 +68,11 @@ void Dancer::update( float _breath ) {
     // Make the Dancer change direction.
     vel += changeVel;
     
-    float velLimit = 5;
+    float velLimit = 1 * (ofGetElapsedTimef()/36);
+    
+    if(velLimit > 5) velLimit = 5;
+    
+    
     // Limit the vel.
     vel.limit( velLimit );
     if ( vel.y < -velLimit ) {
@@ -71,6 +85,7 @@ void Dancer::update( float _breath ) {
     pos += (vel * 0.9);
     
     // Set the rotation angle in the direction of movement.
+//    cout<<"vel.x: "<< vel.x <<endl;
     angle = atan2( vel.y, vel.x );
     
     // Add a new line every update.
@@ -83,6 +98,9 @@ void Dancer::update( float _breath ) {
     }
     
     // Limit the size of the vector.
+    
+        //cout << "linelist: "<< lineList.size() << endl;
+
     if ( lineList.size() > MAXLINES ) {
         lineList.erase( lineList.begin() );
     }
@@ -92,7 +110,6 @@ void Dancer::draw() {
     
     // Draw the lines.
     for ( int i = 0; i < lineList.size(); i++ ) {
-        
-        lineList[i].draw();
+        lineList[i].draw(amplitude, dancerNumber);
     }
 }

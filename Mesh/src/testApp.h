@@ -5,6 +5,8 @@
 #include "Line.h"
 #include "Dancer.h"
 #include "ofxNetwork.h"
+#include "ofxOsc.h"
+#include "ofxSyphon.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERSONE 10
@@ -43,10 +45,11 @@ public:
     //--------------------------------------------------------------
     // LINES
     
-    float breath;
-    float breathRad; // Temporarily simulate breathing.
-    
-    bool noiseBreath;
+    float breath[3];
+    float mappedBreath[3];
+    bool fakeBreath;
+//    float breathRad; // Temporarily simulate breathing.
+//    bool noiseBreath;
     
     vector< Dancer > dancerListOne;
     vector< Dancer > dancerListTwo;
@@ -59,14 +62,27 @@ public:
     ofxUDPManager udpConnection2;
     ofxUDPManager udpConnection3;
 
-    float x,x2,xMapped, xMapped2;
-    float sensorMin = 1023;
-    float sensorMin2 = 1023;;
-    float sensorMax = 0;
-    float sensorMax2 = 0;
+//    float x,x2,xMapped, xMapped2;
+    float x[3];
+    float sensorMin[3];// = 1023;
+//    float sensorMin2 = 1023;;
+    float sensorMax[3];// = 0;
+    
+    bool calibrating;
+//    float sensorMax2 = 0;
     
     //--------------------------------------------------------------
-    //
+    // OSC
+    
+    ofxOscReceiver mReceiver;
+    
+    float pitch[3];
+    float amplitude[3];
+    float attack[3];
+    float FFTavg[3][17];
+    
+    ofxSyphonServer syphon;
+    
 };
 
 #endif
