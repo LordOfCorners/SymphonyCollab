@@ -65,7 +65,7 @@ public:
     float * leftAub;
     float * rightAub;
 	
-    aubioAnalyzer AA;
+    aubioAnalyzer horn, trumpet, trombone;
 	
     ofTrueTypeFont dinFont;
     

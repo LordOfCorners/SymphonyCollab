@@ -410,7 +410,9 @@ void testApp::audioReceived 	(float * input, int bufferSize, int nChannels){
 		right[i] = input[i*2+1];
 	}
     
-	AA.processAudio(left, bufferSize);
+	horn.processAudio(left, bufferSize);
+    trumpet.processAudio(left, bufferSize);
+    trombone.processAudio(left, bufferSize);
 
 }
 
@@ -455,7 +457,9 @@ void testApp::setupAubio() {
 	// 256 samples per buffer
 	// 4 num buffers (latency)
 	
-    AA.setup();
+    horn.setup();
+    trumpet.setup();
+    trombone.setup();
     
 	//setup of sound input
 //	ofSoundStreamSetup(0, 2, this, 44100, 256, 4);
@@ -552,7 +556,7 @@ void testApp::drawAubio() {
 	
 	ofSetHexColor(0x000000);
 	
-	dinFont.drawString( "pitch is : " + ofToString((int)AA.pitch), 50,300);
-    dinFont.drawString( "amplitude is : " + ofToString(AA.amplitude,3), 50,375);
-	dinFont.drawString( "confidence is : " + ofToString(AA.confidence), 50,450);
+	dinFont.drawString( "pitch is : " + ofToString((int)horn.pitch), 50,300);
+    dinFont.drawString( "amplitude is : " + ofToString(horn.amplitude,3), 50,375);
+	dinFont.drawString( "confidence is : " + ofToString(horn.confidence), 50,450);
 }
