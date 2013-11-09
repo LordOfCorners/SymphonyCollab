@@ -13,8 +13,7 @@ void testApp::setup(){
     setupWiFly();
     mReceiver.setup(12345);
     
-    syphon.setName("Breath");
-    
+        
     fakeBreath = false;
     for(int i=0; i<3; i++){
         sensorMin[i] = 690;
