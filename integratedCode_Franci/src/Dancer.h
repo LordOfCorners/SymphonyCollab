@@ -25,7 +25,7 @@ public:
     // Breath data gets passed in through the update to the addLine method to control the length of the line.
     void update( float _breath );
     
-    void draw();
+    void draw( float _freq );
     
     ofVec2f pos, vel, changeVel;
     
