@@ -65,7 +65,10 @@ public:
     float * leftAub;
     float * rightAub;
 	
-    aubioAnalyzer AA;
+    aubioAnalyzer horn, trumpet, trombone;
+    
+    // These get updated in the updateLines function.
+    float pitchMappedHorn, pitchMappedTrumpet, pitchMappedTrombone;
 	
     ofTrueTypeFont dinFont;
     
