@@ -9,6 +9,7 @@
 #include "Particle.h"
 #include "Orbit.h"
 #include "ofxNetwork.h"
+#include "aubioAnalyzer.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERS 30
@@ -32,9 +33,14 @@ public:
     
     //--------------------------------------------------------------
     // CONTROL THE PARTS OF OUR APP
+    
+    // We started with one audio manipulation example (FFT) but then I introduced another (Aubio). -Matt
     void setupFFT();
+    void setupAubio();
     void updateFFT();
+    void updateAubio();
     void drawFFT();
+    void drawAubio();
     
     void setupLines();
     void updateLines();
@@ -54,6 +60,17 @@ public:
     
     void audioReceived 	(float * input, int bufferSize, int nChannels);
 	
+    // Subset: Aubio:
+    
+    float * leftAub;
+    float * rightAub;
+	
+    aubioAnalyzer AA;
+	
+    ofTrueTypeFont dinFont;
+    
+    // Subset: not Aubio:
+    
     FFTOctaveAnalyzer FFTanalyzer;
     
     float left[BUFFER_SIZE];
