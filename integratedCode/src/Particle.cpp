@@ -18,7 +18,7 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
     c = _c;
     
     rotSpeed = ofRandom(0.5, 1.0);
-    
+    angle = 0;
 }
 
 
@@ -26,24 +26,25 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
 
 void Particle::update(float _breathing, float _rotSpeed){
     
-    rotSpeed=  _rotSpeed;
+    angle += 0.9;
+    angle +=  _rotSpeed;
     
-    float posCirx, posCiry;
+//    float posCirx, posCiry;
     
     
 
 //    rotSpeed *= 0.97;
-    posCirx = sin(ofGetElapsedTimef() * rotSpeed  )  ;
-    posCiry = cos (ofGetElapsedTimef() * rotSpeed  )  ;
+//    posCirx = sin(ofGetElapsedTimef() * rotSpeed  )  ;
+//    posCiry = cos (ofGetElapsedTimef() * rotSpeed  )  ;
     
-    cout <<posCirx << endl;
+//    cout <<posCirx << endl;
 
     
     
-    float finalDia = offset + _breathing;
+    finalDia = offset + _breathing;
     
-    pos.x = posCirx * finalDia;
-    pos.y = posCiry * finalDia;
+//    pos.x = posCirx * finalDia;
+//    pos.y = posCiry * finalDia;
     
 
     pos += vel;
@@ -54,18 +55,21 @@ void Particle::update(float _breathing, float _rotSpeed){
 }
 
 void Particle::draw(){
-
     
-    
+    ofPushMatrix();
+    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
     ofPushMatrix();{
         
-        ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
+        
+        ofRotate(angle);
+        ofTranslate(finalDia, 0);
         ofFill();
         ofSetColor( c );
-        ofCircle(pos, size);
+        ofCircle(0,0, size);
         
         
     }ofPopMatrix();
+    ofPopMatrix();
     
     
     
