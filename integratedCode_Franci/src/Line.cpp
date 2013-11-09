@@ -38,12 +38,16 @@ void Line::update() {
     
 }
 
-void Line::draw() {
+void Line::draw( float _freq ) {
+    
+    // Pass in the pitch data and map it to an angle for rotation.
+    float freq = ofMap( _freq, 0, 240, 0, TWO_PI );
     
     ofSetColor( 255, 255 * (pos.y / ofGetHeight() ), 255 * (pos.x / ofGetWidth() ), 30 );
     ofPushMatrix();{
         ofTranslate( pos );
-        ofRotate( ofRadToDeg( angle ) * TWO_PI );
+//        ofRotate( ofRadToDeg( angle ) * TWO_PI );
+        ofRotate( ofRadToDeg( angle ) * freq );
         ofSetLineWidth(1);
         ofLine( 0, ofRandom(-length, -length-100) , 0, ofRandom(length, length+100));
     }ofPopMatrix();

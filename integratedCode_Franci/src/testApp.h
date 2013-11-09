@@ -82,6 +82,10 @@ public:
     
     vector< Dancer > dancerList;
     
+    // For debug purposes only:
+    float test;
+    float testVel;
+    
     //--------------------------------------------------------------
     // ORBITS
     

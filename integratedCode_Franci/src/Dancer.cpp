@@ -97,11 +97,11 @@ void Dancer::update( float _breath ) {
     }
 }
 
-void Dancer::draw() {
+void Dancer::draw( float _freq ) {
     
     // Draw the lines.
     for ( int i = 0; i < lineList.size(); i++ ) {
         
-        lineList[i].draw();
+        lineList[i].draw( _freq );
     }
 }

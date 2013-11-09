@@ -1,11 +1,11 @@
- #include "testApp.h"
+#include "testApp.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
   	
-    //    setupFFT();
-        setupLines();
-//        setupOrbitsAndParticles();
+    setupFFT();
+    setupLines();
+    //        setupOrbitsAndParticles();
     //Let's start some global settings here.
     ofSetVerticalSync(true);
     ofSeedRandom();
@@ -19,11 +19,11 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    //    updateFFT();
-        updateLines();
-//        updateOrbitsAndParticles();
+    updateFFT();
+    updateLines();
+    //        updateOrbitsAndParticles();
     updateWiFly();
-   
+    
     
 }
 
@@ -34,10 +34,10 @@ void testApp::draw(){
     ofRect( 0,0, ofGetWindowWidth(), ofGetWindowHeight() );
     
     //    drawFFT();
-        drawLines();
-//        drawOrbitsAndParticles();
-//      drawWiFly();
-  }
+    drawLines();
+    //        drawOrbitsAndParticles();
+    //      drawWiFly();
+}
 
 
 //--------------------------------------------------------------
@@ -86,22 +86,22 @@ void testApp::mousePressed(int x, int y, int button){
 	
     //-------------ORBITS-------------
     
-//    for( int i = 0; i < diameterList.size() ; i++){
-//        
-//        if ( ofRandom( 1 ) < 0.01 ) {
-//            
-//            if ( /* music is high frequency*/ ) {
-//                i = 12;
-//            }
-//            else if ( /* music is low frequency */) {
-//                i = 2;
-//            }
-//            
-//            addParticle( i );
-//        }
-//    }
+    //    for( int i = 0; i < diameterList.size() ; i++){
+    //
+    //        if ( ofRandom( 1 ) < 0.01 ) {
+    //
+    //            if ( /* music is high frequency*/ ) {
+    //                i = 12;
+    //            }
+    //            else if ( /* music is low frequency */) {
+    //                i = 2;
+    //            }
+    //
+    //            addParticle( i );
+    //        }
+    //    }
     
-    addParticle(diameterList[4]);
+    //    addParticle(diameterList[4]);
 }
 
 //--------------------------------------------------------------
@@ -122,12 +122,12 @@ void testApp::setupLines() {
     
     // Maintenance
     //Mauricio: The first two need to be added in the main setup.
-//    ofSetVerticalSync( true );
-//    ofSetFrameRate(60);
+    //    ofSetVerticalSync( true );
+    //    ofSetFrameRate(60);
     ofSetCircleResolution(100);
     
     // May want to change this to a gradient or something else.
-//    ofBackground( 0 );
+    //    ofBackground( 0 );
     
     breath = 0;
     breathRad = 50;
@@ -138,15 +138,19 @@ void testApp::setupLines() {
         Dancer instrument( ofVec2f( ofRandomWidth(), ofRandomHeight()),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ) );
         dancerList.push_back( instrument );
     }
+    
+    // Debug.
+    test = 0;
+    testVel = 1;
 }
 
 //--------------------------------------------------------------
 void testApp::updateLines() {
     
     // Set the color back to default.
-//    dancerList[ 0 ].c.set( ofColor( 255, 0, 0 ) );
-//    dancerList[ 1 ].c.set( ofColor( 0, 255, 0 ) );
-//    dancerList[ 2 ].c.set( ofColor( 0, 0, 255 ) );
+    //    dancerList[ 0 ].c.set( ofColor( 255, 0, 0 ) );
+    //    dancerList[ 1 ].c.set( ofColor( 0, 255, 0 ) );
+    //    dancerList[ 2 ].c.set( ofColor( 0, 0, 255 ) );
     
     
     
@@ -176,16 +180,38 @@ void testApp::updateLines() {
     for ( int i = 0; i < dancerList.size(); i++ ) {
         dancerList[ i ].update( breath );
     }
+    
+    // Debug hotness.
+    {
+        test += testVel;
+        
+        if (test <= 0 || test >= 240 ) testVel *= -1;
+        
+        //    cout<<test<<endl;
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::drawLines() {
     
-//    ofSetColor(0,0,0, 255*0.03);
-//    ofRect( ofGetWindowRect() );
+    //    ofSetColor(0,0,0, 255*0.03);
+    //    ofRect( ofGetWindowRect() );
     
+    //    float temp = 0;
     for ( int i = 0; i < dancerList.size(); i++ ) {
-        dancerList[ i ].draw();
+        //        for (int i = 0; i < FFTanalyzer.nAverages; i++){
+        //            temp += FFTanalyzer.averages[i];
+        //        }
+        //        temp = temp / FFTanalyzer.nAverages;
+        
+        // The idea is to pass in the frequency data, but I really can't parse it, having major trouble. It's also necessary to go into the line.cpp file and turn off the line that uses TWO_PI and turn on the line that uses the passed in value.
+        
+        
+        //        dancerList[ i ].draw( FFTanalyzer.averages[i] );
+        dancerList[ i ].draw( test );
+        //        dancerList[ i ].draw( freq[0] );
+        //        cout<<FFTanalyzer.averages[5]<<endl;
+        //        cout<<temp<<endl;
     }
 }
 
@@ -249,12 +275,12 @@ void testApp::updateOrbitsAndParticles() {
     
     vector<Particle>::iterator it;
     for( it = particleList.begin(); it != particleList.end(); it++){
-     
+        
         it->update(xMapped);
     }
-   
     
- 
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -266,7 +292,7 @@ void testApp::drawOrbitsAndParticles(){
         
         p->draw();
         
-   
+        
     }
     
     vector<Particle>::iterator it;
@@ -274,7 +300,7 @@ void testApp::drawOrbitsAndParticles(){
         
         it->draw();
     }
-
+    
 }
 
 //--------------------------------------------------------------
@@ -289,7 +315,7 @@ void testApp::setupWiFly() {
     udpConnection2.Create();
     udpConnection2.Bind(11998);
     udpConnection2.SetNonBlocking(true);
-    }
+}
 
 //--------------------------------------------------------------
 void testApp::updateWiFly() {
@@ -323,13 +349,13 @@ void testApp::updateWiFly() {
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
     xMapped = ofMap(x, sensorMin, sensorMax, 100, 0);
     xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
-
+    
     
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
     
-    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
-//    calibrateWiFly();
-
+    //    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
+    //    calibrateWiFly();
+    
 }
 
 //--------------------------------------------------------------
@@ -343,30 +369,30 @@ void testApp::calibrateWiFly() {
     
     //Calibration
     //Calibrate for first 5 seconds
-//    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
+    //    if (ofGetElapsedTimef() >1 && ofGetElapsedTimef() < 12){
     
-        //Sensor 1
-        //record the maximum sensor value
-        if( x > sensorMax){
-            sensorMax = x;
-        }
-        
-        //record the minium sensor value
-        if( x < sensorMin) {
-            sensorMin  = x;
-        }
-        
-        //Sensor 2
-        //record the maximum sensor value
-        if( x2 > sensorMax2){
-            sensorMax2 = x2;
-        }
-        
-        //record the minium sensor value
-        if( x2 < sensorMin2) {
-            sensorMin2  = x2;
-        }
-//    }
+    //Sensor 1
+    //record the maximum sensor value
+    if( x > sensorMax){
+        sensorMax = x;
+    }
+    
+    //record the minium sensor value
+    if( x < sensorMin) {
+        sensorMin  = x;
+    }
+    
+    //Sensor 2
+    //record the maximum sensor value
+    if( x2 > sensorMax2){
+        sensorMax2 = x2;
+    }
+    
+    //record the minium sensor value
+    if( x2 < sensorMin2) {
+        sensorMin2  = x2;
+    }
+    //    }
 }
 
 //--------------------------------------------------------------
@@ -392,7 +418,7 @@ void testApp::setupFFT() {
 	//left = new float[BUFFER_SIZE];
 	//right = new float[BUFFER_SIZE];
     
-//	ofSetHexColor(0x666666);
+    //	ofSetHexColor(0x666666);
 	
 	
 	FFTanalyzer.setup(44100, BUFFER_SIZE/2, 2);
@@ -409,7 +435,7 @@ void testApp::setupFFT() {
 //--------------------------------------------------------------
 void testApp::updateFFT() {
     
-//    ofBackground(0);
+    //    ofBackground(0);
 }
 
 //--------------------------------------------------------------
@@ -428,7 +454,7 @@ void testApp::drawFFT() {
 	
 	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
 	
-//	ofSetHexColor(0xffffff);
+    //	ofSetHexColor(0xffffff);
 	//for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
 	//ofRect(200+(i*4),600,4,-freq[i]*10.0f);
 	//}
