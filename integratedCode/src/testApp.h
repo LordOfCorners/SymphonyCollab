@@ -86,7 +86,7 @@ public:
     vector< Dancer > dancerList;
     
     //--------------------------------------------------------------
-    // ORBITS
+    // ORBITS & PARTICLES
     
     //Use this to add random particles in different orbits
     //        void addParticle( int i );
@@ -102,6 +102,8 @@ public:
     float rotSpeed[18];
     float _size, rotDia, diaCoe, sinOfTime;
     ofColor particleColor;
+    
+    ofFbo mFbo, mFbo2, mFbo3;
     
     //--------------------------------------------------------------
     // WIFLY

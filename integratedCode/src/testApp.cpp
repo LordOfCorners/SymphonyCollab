@@ -6,7 +6,7 @@ void testApp::setup(){
     //Let's start some global settings here.
     ofSetVerticalSync(true);
     ofSeedRandom();
-    ofBackground(0);
+//    ofBackground(0);
 //    ofSetBackgroundAuto(false);
     
 	
@@ -200,7 +200,7 @@ void testApp::setupOrbitsAndParticles() {
     for( int i = 0 ; i < 17; i++){
         
         highestNum[i]  = 0;
-        float coe = 1.015 * powf( 1.16, i);
+        float coe = 1.01 * powf( 1.15, i);
         float _orbit = 30;
         diameterList.push_back( _orbit * coe);
         
@@ -220,6 +220,11 @@ void testApp::setupOrbitsAndParticles() {
         
         
     }
+    
+    mFbo.allocate(ofGetWindowWidth(), ofGetWindowHeight());
+    
+    ofBackground(0);
+    ofEnableAlphaBlending();
 }
 
 //--------------------------------------------------------------
@@ -310,6 +315,12 @@ void testApp::updateOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
     
+    mFbo.begin();
+    
+//    ofClear(255, 255, 255, 0);
+    //
+    ofSetColor(0, 0, 0, 20);
+    ofRect(0,0,ofGetWindowWidth(), ofGetWindowHeight());
     
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
@@ -350,6 +361,16 @@ void testApp::drawOrbitsAndParticles(){
         //This index goes at the end so that when it loops for the first time it takes 0 as a value and not one
         i++;
     }
+    mFbo.end();
+    
+ 
+    mFbo.draw(0,0);
+    mFbo.draw(-ofGetWindowWidth()/3, 0);
+    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
+
+    
+    
+
     
 }
 
