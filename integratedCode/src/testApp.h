@@ -2,16 +2,17 @@
 #define _TEST_APP
 
 #include "ofMain.h"
-#include "fft.h"
-#include "FFTOctaveAnalyzer.h"
 #include "Line.h"
 #include "Dancer.h"
 #include "Particle.h"
 #include "Orbit.h"
 #include "ofxNetwork.h"
+#include "ofxOsc.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERS 3
+#define PORT 12345
+#define NUMOFSTRINGS 20
 
 class testApp : public ofBaseApp {
 	
@@ -49,29 +50,6 @@ public:
     void drawWiFly();
     void calibrateWiFly();
     
-    //--------------------------------------------------------------
-    // FFT
-    
-    void audioReceived 	(float * input, int bufferSize, int nChannels);
-	
-    FFTOctaveAnalyzer FFTanalyzer;
-    
-    float left[BUFFER_SIZE];
-    float right[BUFFER_SIZE];
-    
-    fft		myfft;
-    
-    float magnitude[BUFFER_SIZE];
-    float phase[BUFFER_SIZE];
-    float power[BUFFER_SIZE];
-    float freq[BUFFER_SIZE/2];
-    
-    
-    float theta[18];
-    float spin[18];
-    //Mauricio, I created this variable to store the sound coming from the fft and affect the speed in the particles
-    float speed[18];
-    float highestNum[18];
     
     //--------------------------------------------------------------
     // LINES
@@ -122,6 +100,15 @@ public:
     
     //--------------------------------------------------------------
     //
+    
+    //---------------------------------------------------------------
+    //OCS
+    
+    ofxOscReceiver mReceiver;
+    int current_msg_string;
+    string msg_strings[NUMOFSTRINGS];
+    float timers[NUMOFSTRINGS];
+    float amplitude[3], pitch[3], FFTavg[3][17], attack[3];
 };
 
 #endif

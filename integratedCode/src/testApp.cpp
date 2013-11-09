@@ -10,21 +10,78 @@ void testApp::setup(){
 //    ofSetBackgroundAuto(false);
     
 	
-    setupFFT();
+   
     setupWiFly();
     //    setupLines();
     setupOrbitsAndParticles();
     
+    
+    mReceiver.setup(PORT);
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-    //    updateFFT();
     //    updateLines();
     updateOrbitsAndParticles();
     updateWiFly();
+    
+    
+    //OCS
+    
+    //Hide old messages
+    for (int i =0; i < NUMOFSTRINGS; i++){
+        if( timers[i] < ofGetElapsedTimef()){
+            msg_strings[i] = "";
+        }
+    }
+    
+    while( mReceiver.hasWaitingMessages()){
+        
+        ofxOscMessage m;
+        mReceiver.getNextMessage(&m);
+        
+        if(m.getAddress() == "/Channel01/AudioAnalysis"){
+            amplitude[0] = m.getArgAsFloat(0);
+            pitch[0] = m.getArgAsFloat(1);
+            attack[0] = m.getArgAsFloat(2);
+        }
+        
+        if(m.getAddress() == "/Channel02/AudioAnalysis"){
+            amplitude[1] = m.getArgAsFloat(0);
+            pitch[1] = m.getArgAsFloat(1);
+            attack[1] = m.getArgAsFloat(2);
+        }
+        
+        if(m.getAddress() == "/Channel03/AudioAnalysis"){
+            amplitude[2] = m.getArgAsFloat(0);
+            pitch[2] = m.getArgAsFloat(1);
+            attack[2] = m.getArgAsFloat(2);
+        }
+        
+        if(m.getAddress() == "/Channel01/FFT"){
+            for (int i=0; i<17; i++){
+                FFTavg[0][i] = m.getArgAsFloat(i);
+            }
+        }
+        
+        if(m.getAddress() == "/Channel02/FFT"){
+            for (int i=0; i<17; i++){
+                FFTavg[1][i] = m.getArgAsFloat(i);
+            }
+        }
+        
+        if(m.getAddress() == "/Channel03/FFT"){
+            for (int i=0; i<17; i++){
+                FFTavg[2][i] = m.getArgAsFloat(i);
+                cout<< i << ": "<< FFTavg[2][i] << endl;
+            }
+            
+            
+        }
+        
+    }
     
     
     
@@ -37,7 +94,6 @@ void testApp::draw(){
     ofSetColor(_black, 10);
     ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
-    //    drawFFT();
     //    drawLines();
     //    drawWiFly();
     drawOrbitsAndParticles();
@@ -199,7 +255,7 @@ void testApp::setupOrbitsAndParticles() {
     
     for( int i = 0 ; i < 17; i++){
         
-        highestNum[i]  = 0;
+        
         float coe = 1.01 * powf( 1.15, i);
         float _orbit = 30;
         diameterList.push_back( _orbit * coe);
@@ -260,26 +316,12 @@ void testApp::updateOrbitsAndParticles() {
     //    Mauricio: I moved some of the functions in the fftdraw in order to have some variables move to the sound
     
     
-    for (int i = 0; i < FFTanalyzer.nAverages; i++){
+    for (int i = 0; i < 17; i++){
         
-        speed[i] = ofMap(FFTanalyzer.averages[i], 0, 50, 0, 2, true);
-       
-//
-        speed[i] *= 0.8;
-        speed[i] = fmax(speed[i], 0);
 
-        cout << speed[i] << endl;
         
         
-        
-        
-        if( highestNum[i] < FFTanalyzer.averages[i]){
-            
-            highestNum[i] = FFTanalyzer.averages[i];
-        }
-        
-        
-        rotSpeed[i] = speed[i];
+//        rotSpeed[i] = /*something*/;
         rotSpeed[i] *= 0.8;
         rotSpeed[i] = fmod(rotSpeed[i], 360);
         
@@ -330,33 +372,13 @@ void testApp::drawOrbitsAndParticles(){
     }
     
     
-    //----------------------------------FFT STUFF----------------------------------//
-    
-    float avg_power = 0.0f;
-    
-	/* do the FFT	*/
-	myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase[0],&power[0],&avg_power);
-    
-	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
-		freq[i] = magnitude[i];
-	}
-	
-	FFTanalyzer.calculate(freq);
-	
-	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
-    
-    //This is the old method of drawing our particles without using the fft data
     vector<Particle>::iterator it;
     int i = 0;
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         it->draw();
-        
-        ofDrawBitmapString(ofToString(highestNum[i]), 20, i * 20);
-        
-        ofDrawBitmapString(ofToString(FFTanalyzer.averages[i]), 100, i * 20);
-        
-        ofDrawBitmapString(ofToString(speed[i]), 180, i * 20);
+
+//        ofDrawBitmapString(ofToString(speed[i]), 180, i * 20);
         
         //This index goes at the end so that when it loops for the first time it takes 0 as a value and not one
         i++;
@@ -484,106 +506,4 @@ void testApp::calibrateWiFly() {
         sensorMin2  = x2;
     }
     //    }
-}
-
-//--------------------------------------------------------------
-void testApp::audioReceived 	(float * input, int bufferSize, int nChannels){
-	// samples are "interleaved"
-	for (int i = 0; i < bufferSize; i++){
-		left[i] = input[i*2];
-		right[i] = input[i*2+1];
-	}
-}
-
-//--------------------------------------------------------------
-void testApp::setupFFT() {
-    
-    // 0 output channels,
-	// 2 input channels
-	// 44100 samples per second
-	// BUFFER_SIZE samples per buffer
-	// 4 num buffers (latency)
-	
-	ofSoundStreamSetup(0,2,this, 44100, BUFFER_SIZE, 4);
-	
-	//left = new float[BUFFER_SIZE];
-	//right = new float[BUFFER_SIZE];
-    
-    //	ofSetHexColor(0x666666);
-	
-	
-	FFTanalyzer.setup(44100, BUFFER_SIZE/2, 2);
-	
-	FFTanalyzer.peakHoldTime = 15; // hold longer
-	FFTanalyzer.peakDecayRate = 0.95f; // decay slower
-	FFTanalyzer.linearEQIntercept = 0.9f; // reduced gain at lowest frequency
-	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
-	
-	
-    //	ofSetRectMode(OF_RECTMODE_CENTER);
-}
-
-//--------------------------------------------------------------
-void testApp::updateFFT() {
-    
-    //    ofBackground(0);
-}
-
-//--------------------------------------------------------------
-void testApp::drawFFT() {
-    
-    float avg_power = 0.0f;
-    
-	/* do the FFT	*/
-	myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase[0],&power[0],&avg_power);
-    
-	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
-		freq[i] = magnitude[i];
-	}
-	
-	FFTanalyzer.calculate(freq);
-	
-	bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
-	
-    //	ofSetHexColor(0xffffff);
-	//for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
-	//ofRect(200+(i*4),600,4,-freq[i]*10.0f);
-	//}
-    
-	for (int i = 0; i < FFTanalyzer.nAverages; i++){
-		
-		// Add some amount of spin based on the volume, but decrease it over
-		// time by scaling it down 15%
-		// make sure it doesn't go below 0
-		spin[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 8);
-		spin[i] *= 0.8;
-		spin[i] = fmax(spin[i], 0);
-		
-		// increase our current angle by the amount of spin
-		// wrap around 360 so our angle var doesn't get huge
-		theta[i] += spin[i];
-		theta[i] = fmod(theta[i], 360);
-        
-		ofPushMatrix();
-		ofTranslate(bandWidth * i, ofGetHeight() / 2);
-		ofRotateZ(theta[i]);
-        //		ofRect(bandWidth * i, 600, bandWidth, -FFTanalyzer.averages[i] * 6);
-		ofRect(0, 0, bandWidth * 2, FFTanalyzer.averages[i]);
-		
-        //		for (int j = 0; j < 4; j ++) {
-        //			ofPushMatrix();
-        //			ofTranslate(sin(ofGetElapsedTimef() * (j+1))*50, cos(ofGetElapsedTimef() * (j+1))*50);
-        //			ofRotateX(ofGetElapsedTimef()*2);
-        //			ofRect(0, 0, 5, 3);
-        //			ofPopMatrix();
-        //		}
-		
-		ofPopMatrix();
-        
-	}
-	
-	ofSetHexColor(0xff0000);
-	for (int i = 0; i < FFTanalyzer.nAverages; i++){
-		//ofRect(bandWidth * i,600-FFTanalyzer.peaks[i] * 6, bandWidth,-4);
-	}
 }
