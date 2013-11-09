@@ -11,7 +11,7 @@
 #include "ofxNetwork.h"
 #include "aubioAnalyzer.h"
 
-#define BUFFER_SIZE 512
+#define BUFFER_SIZE 512/2
 #define NUMDANCERS 30
 
 class testApp : public ofBaseApp {

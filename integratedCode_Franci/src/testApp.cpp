@@ -2,29 +2,27 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-  	
-//    setupFFT();
-    setupAubio();
-//    setupLines();
-    //        setupOrbitsAndParticles();
+    
     //Let's start some global settings here.
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
     ofSetBackgroundAuto(true);
     
-//    setupWiFly();
+    setupFFT(); // This runs setupAubio() as well.
+    setupLines();
+    //        setupOrbitsAndParticles();
+    
+    setupWiFly();
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-//    updateFFT();
-    updateAubio();
-//    updateLines();
+    updateLines();
     //        updateOrbitsAndParticles();
-//    updateWiFly();
+    updateWiFly();
     
     
 }
@@ -441,7 +439,9 @@ void testApp::setupFFT() {
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
 	
 	
-	ofSetRectMode(OF_RECTMODE_CENTER);
+//	ofSetRectMode(OF_RECTMODE_CENTER);
+    
+    setupAubio();
 }
 
 //--------------------------------------------------------------
@@ -458,9 +458,9 @@ void testApp::setupAubio() {
     AA.setup();
     
 	//setup of sound input
-	ofSoundStreamSetup(0, 2, this, 44100, 256, 4);
-	leftAub = new float[256];
-	rightAub = new float[256];
+//	ofSoundStreamSetup(0, 2, this, 44100, 256, 4);
+	leftAub = new float[BUFFER_SIZE];
+	rightAub = new float[BUFFER_SIZE];
 	
 	
 	
