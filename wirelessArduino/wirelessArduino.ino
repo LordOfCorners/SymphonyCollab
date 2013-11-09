@@ -80,7 +80,7 @@ void setup()
 
     wifly.setDeviceID("Wifly-UDP");
 
-    wifly.setHost("10.0.1.13", 11997);	// Send UPD packets to this server and port
+    wifly.setHost("10.0.1.13", 11999);	// Send UPD packets to this server and port
 
     Serial.println("WiFly ready");
 }

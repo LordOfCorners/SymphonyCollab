@@ -252,10 +252,7 @@ void testApp::setupOrbitsAndParticles() {
     particleList.clear();
     setOfOrbits.clear();
     
-    
-    
     for( int i = 0 ; i < 17; i++){
-        
         
         float coe = 1.01 * powf( 1.15, i);
         float _orbit = 30;
@@ -313,7 +310,8 @@ void testApp::updateOrbitsAndParticles() {
     }
     
     
-    //----------------------------------FFT STUFF----------------------------------//
+    
+    for( int i = 0; i < 17;)
     
     for (int i = 0; i < 17; i++){
         

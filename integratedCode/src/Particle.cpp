@@ -28,28 +28,13 @@ void Particle::update(float _breathing, float _rotSpeed){
     
     angle += 0.9;
     angle +=  _rotSpeed;
-    
-//    float posCirx, posCiry;
-    
-    
-
-//    rotSpeed *= 0.97;
-//    posCirx = sin(ofGetElapsedTimef() * rotSpeed  )  ;
-//    posCiry = cos (ofGetElapsedTimef() * rotSpeed  )  ;
-    
-//    cout <<posCirx << endl;
-
-    
-    
     finalDia = offset + _breathing;
     
-//    pos.x = posCirx * finalDia;
-//    pos.y = posCiry * finalDia;
-    
-
     pos += vel;
     vel += acc; 
     acc.set(0);
+    
+    
     
     
 }
@@ -57,18 +42,14 @@ void Particle::update(float _breathing, float _rotSpeed){
 void Particle::draw(){
     
     ofPushMatrix();
-    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
-    ofPushMatrix();{
-        
-        
-        ofRotate(angle);
-        ofTranslate(finalDia, 0);
-        ofFill();
-        ofSetColor( c );
-        ofCircle(0,0, size);
-        
-        
-    }ofPopMatrix();
+        ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
+        ofPushMatrix();{
+            ofRotate(angle);
+            ofTranslate(finalDia, 0);
+            ofFill();
+            ofSetColor( c );
+            ofCircle(0,0, size);
+        }ofPopMatrix();
     ofPopMatrix();
     
     

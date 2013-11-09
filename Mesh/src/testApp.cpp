@@ -312,6 +312,7 @@ void testApp::updateWiFly() {
         vector<string> point = ofSplitString(strPoints[0],"|");
         if( point.size() == 1 ){
             x[0]=atof(point[0].c_str());
+            cout<<"RECEIVED WIFLY #1: "<<x[0] <<endl;
             breath[0] = x[0];
         }
 	}
@@ -326,6 +327,7 @@ void testApp::updateWiFly() {
         vector<string> point2 = ofSplitString(strPoints2[0],"|");
         if( point2.size() == 1 ){
             x[1]=atof(point2[0].c_str());
+            cout<<"RECEIVED WIFLY #2: "<<x[1] <<endl;
             breath[1] = x[1];
         }
 	}
@@ -340,13 +342,14 @@ void testApp::updateWiFly() {
         vector<string> point3 = ofSplitString(strPoints3[0],"|");
         if( point3.size() == 1 ){
             x[2]=atof(point3[0].c_str());
+            cout<<"RECEIVED WIFLY #3: "<<x[2] <<endl;
             breath[2] = x[2];
         }
 	}
     
     //Connection 1 mapped values
-//    float pct = 0.1f;
-//    float oldXMapped = xMapped - 1;
+    //float pct = 0.1f;
+//float oldXMapped = xMapped - 1;
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
     
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
