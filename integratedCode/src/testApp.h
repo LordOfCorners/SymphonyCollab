@@ -77,10 +77,11 @@ public:
     
     ofVec2f pos , vel, acc;
     float bandWidth;
-    float rotSpeed[18];
+    float rotSpeed[17], speed[17];
     float _size, rotDia, diaCoe, sinOfTime;
     ofColor particleColor;
     
+    //Draw each different sets of orbits and particles on a different FBO
     ofFbo mFbo, mFbo2, mFbo3;
     
     //--------------------------------------------------------------

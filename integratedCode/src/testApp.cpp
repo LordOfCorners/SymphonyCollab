@@ -60,6 +60,7 @@ void testApp::update(){
             attack[2] = m.getArgAsFloat(2);
         }
         
+        //FFT values
         if(m.getAddress() == "/Channel01/FFT"){
             for (int i=0; i<17; i++){
                 FFTavg[0][i] = m.getArgAsFloat(i);
@@ -295,7 +296,7 @@ void testApp::addParticle(float dia){
 //--------------------------------------------------------------
 void testApp::addOrbit(float dia){
     
-    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight()  / 2), dia);
+    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight()/ 2), dia);
     setOfOrbits.push_back( tmp);
     
     
@@ -313,11 +314,9 @@ void testApp::updateOrbitsAndParticles() {
     
     //----------------------------------FFT STUFF----------------------------------//
     
-    //    Mauricio: I moved some of the functions in the fftdraw in order to have some variables move to the sound
-    
-    
-    for (int i = 0; i < 17; i++){
+    for (int i = 0; i < 18; i++){
         
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
 =======
@@ -328,9 +327,13 @@ void testApp::updateOrbitsAndParticles() {
             highestNum[i] = FFTanalyzer.averages[i];
         }
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         
         
-//        rotSpeed[i] = /*something*/;
+        speed[i] = ofMap(FFTavg[0][i],0, 24, 0, 2, true);
+        
+        rotSpeed[i] = speed[i];
         rotSpeed[i] *= 0.8;
         rotSpeed[i] = fmod(rotSpeed[i], 360);
         
@@ -368,10 +371,10 @@ void testApp::drawOrbitsAndParticles(){
     
     mFbo.begin();
     
-//    ofClear(255, 255, 255, 0);
+    ofClear(255, 255, 255, 0);
     //
-    ofSetColor(0, 0, 0, 20);
-    ofRect(0,0,ofGetWindowWidth(), ofGetWindowHeight());
+//    ofSetColor(0, 0, 0, 20);
+//    ofRect(0,0,ofGetWindowWidth(), ofGetWindowHeight());
     
     vector<Orbit>::iterator p;
     for( p = setOfOrbits.begin(); p != setOfOrbits.end(); p++){
@@ -386,8 +389,7 @@ void testApp::drawOrbitsAndParticles(){
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         it->draw();
-
-//        ofDrawBitmapString(ofToString(speed[i]), 180, i * 20);
+        ofDrawBitmapString(ofToString(speed[i]), 180, i * 20);
         
         //This index goes at the end so that when it loops for the first time it takes 0 as a value and not one
         i++;
@@ -396,8 +398,8 @@ void testApp::drawOrbitsAndParticles(){
     
  
     mFbo.draw(0,0);
-    mFbo.draw(-ofGetWindowWidth()/3, 0);
-    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
+//    mFbo.draw(-ofGetWindowWidth()/3, 0);
+//    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
 
     
     
