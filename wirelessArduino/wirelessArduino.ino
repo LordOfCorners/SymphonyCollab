@@ -12,8 +12,8 @@
 #include <WiFlyHQ.h>
 
 /* Change these to match your WiFi network */
-const char mySSID[] = "belkin.548"/*"genieBox"*/;
-const char myPassword[] ="6efa862f" /*"iamhungry"*/;
+const char mySSID[] = "internetz"/*"genieBox"*/;
+const char myPassword[] ="1nt3rn3tz" /*"iamhungry"*/;
 
 WiFly wifly;
 
@@ -74,13 +74,13 @@ void setup()
 
     /* Setup for UDP packets, sent automatically */
     wifly.setIpProtocol(WIFLY_PROTOCOL_UDP);
-    wifly.setHost("192.168.2.4", 11997);	// Send UDP packet to this server and port
+    wifly.setHost("10.0.1.2", 11997);	// Send UDP packet to this server and port
 
 
 
     wifly.setDeviceID("Wifly-UDP");
 
-    wifly.setHost("192.168.2.4", 11997);	// Send UPD packets to this server and port
+    wifly.setHost("10.0.1.2", 11997);	// Send UPD packets to this server and port
 
     Serial.println("WiFly ready");
 }

@@ -26,14 +26,17 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
 
 void Particle::update(float _breathing, float _rotSpeed){
     
-    rotSpeed = _rotSpeed;
+    rotSpeed=  _rotSpeed;
     
     float posCirx, posCiry;
-
-//       rotSpeed *= 0.97;
-    posCirx = sin( ofGetElapsedTimef() * rotSpeed );
-    posCiry = cos( ofGetElapsedTimef() * rotSpeed );
     
+    
+
+//    rotSpeed *= 0.97;
+    posCirx = sin(ofGetElapsedTimef() * rotSpeed  )  ;
+    posCiry = cos (ofGetElapsedTimef() * rotSpeed  )  ;
+    
+    cout <<posCirx << endl;
 
     
     
@@ -56,7 +59,7 @@ void Particle::draw(){
     
     ofPushMatrix();{
         
-        ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight());
+        ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
         ofFill();
         ofSetColor( c );
         ofCircle(pos, size);

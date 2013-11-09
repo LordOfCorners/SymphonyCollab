@@ -71,6 +71,7 @@ public:
     float spin[18];
     //Mauricio, I created this variable to store the sound coming from the fft and affect the speed in the particles
     float speed[18];
+    float highestNum[18];
     
     //--------------------------------------------------------------
     // LINES
@@ -97,6 +98,7 @@ public:
     vector < float > diameterList;
     
     ofVec2f pos , vel, acc;
+    float bandWidth;
     float rotSpeed[18];
     float _size, rotDia, diaCoe, sinOfTime;
     ofColor particleColor;
@@ -106,12 +108,15 @@ public:
     
     ofxUDPManager udpConnection;
     ofxUDPManager udpConnection2;
+    ofxUDPManager udpConnection3;
     
-    float x,x2,xMapped, xMapped2;
+    float x,x2, x3,xMapped, xMapped2, xMapped3;
     float sensorMin = 1023;
-    float sensorMin2 = 1023;;
+    float sensorMin2 = 1023;
+    float sensorMin3 = 1023;
     float sensorMax = 0;
     float sensorMax2 = 0;
+    float sensorMax3 = 0;
     
     //--------------------------------------------------------------
     //

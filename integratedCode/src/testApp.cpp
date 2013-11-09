@@ -7,7 +7,7 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSeedRandom();
     ofBackground(0);
-        ofSetBackgroundAuto(false);
+//    ofSetBackgroundAuto(false);
     
 	
     setupFFT();
@@ -195,10 +195,13 @@ void testApp::setupOrbitsAndParticles() {
     particleList.clear();
     setOfOrbits.clear();
     
+    
+    
     for( int i = 0 ; i < 17; i++){
         
-        float coe = 1.02 * powf( 1.19, i);
-        float _orbit = 40;
+        highestNum[i]  = 0;
+        float coe = 1.015 * powf( 1.16, i);
+        float _orbit = 30;
         diameterList.push_back( _orbit * coe);
         
     }
@@ -208,7 +211,7 @@ void testApp::setupOrbitsAndParticles() {
     for( int i = 0; i < 17; i++){
         
         _size = ofRandom(2, 5);
-        pos.set(ofRandom(ofGetWindowWidth()), ofRandom(ofGetWindowHeight()));
+        pos.set(ofRandom(ofGetWindowWidth() / 2), ofRandom(ofGetWindowHeight()));
         vel.set(ofRandom(.9));
         particleColor.setHsb(ofRandom(255), 255, 255);
         
@@ -231,7 +234,7 @@ void testApp::addParticle(float dia){
 //--------------------------------------------------------------
 void testApp::addOrbit(float dia){
     
-    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight ()), dia);
+    Orbit tmp( ofPoint( ofGetWindowWidth()/2, ofGetWindowHeight()  / 2), dia);
     setOfOrbits.push_back( tmp);
     
     
@@ -254,13 +257,41 @@ void testApp::updateOrbitsAndParticles() {
     
     for (int i = 0; i < FFTanalyzer.nAverages; i++){
         
-        speed[i] = ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 1, 1.2);
+        speed[i] = ofMap(FFTanalyzer.averages[i], 0, 50, 0, 2, true);
+       
+//
         speed[i] *= 0.8;
+        speed[i] = fmax(speed[i], 0);
+
+        cout << speed[i] << endl;
         
-        rotSpeed[i] += speed[i];
+        
+        
+        
+        if( highestNum[i] < FFTanalyzer.averages[i]){
+            
+            highestNum[i] = FFTanalyzer.averages[i];
+        }
+        
+        
+        rotSpeed[i] = speed[i];
         rotSpeed[i] *= 0.8;
+        rotSpeed[i] = fmod(rotSpeed[i], 360);
         
         particleList[i].update(xMapped, rotSpeed[i]);
+        
+//        cout << FFTanalyzer.averages[i] << endl;
+        
+//        spin[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 8);
+//		spin[i] *= 0.8;
+//		spin[i] = fmax(spin[i], 0);
+//		
+//		// increase our current angle by the amount of spin
+//		// wrap around 360 so our angle var doesn't get huge
+//		theta[i] += spin[i];
+//		theta[i] = fmod(theta[i], 360);
+        
+        
         
         
     }
@@ -310,8 +341,13 @@ void testApp::drawOrbitsAndParticles(){
         
         it->draw();
         
-//        ofDrawBitmapString(ofToString(rotSpeed[i]), 20, i * 20);
+        ofDrawBitmapString(ofToString(highestNum[i]), 20, i * 20);
         
+        ofDrawBitmapString(ofToString(FFTanalyzer.averages[i]), 100, i * 20);
+        
+        ofDrawBitmapString(ofToString(speed[i]), 180, i * 20);
+        
+        //This index goes at the end so that when it loops for the first time it takes 0 as a value and not one
         i++;
     }
     
@@ -329,6 +365,11 @@ void testApp::setupWiFly() {
     udpConnection2.Create();
     udpConnection2.Bind(11998);
     udpConnection2.SetNonBlocking(true);
+    
+    //create the socket and bind to port 11999
+    udpConnection3.Create();
+    udpConnection3.Bind(11999);
+    udpConnection3.SetNonBlocking(true);
 }
 
 //--------------------------------------------------------------
@@ -358,6 +399,21 @@ void testApp::updateWiFly() {
             x2=atof(point2[0].c_str());
         }
 	}
+    
+    //Connection 3
+    char udpMessage3[100000];
+	udpConnection3.Receive(udpMessage3,100000);
+	string message3=udpMessage3;
+	if(message3!=""){
+		//stroke.clear();
+		vector<string> strPoints3 = ofSplitString(message3,"[/p]");
+        vector<string> point3 = ofSplitString(strPoints3[0],"|");
+        if( point3.size() == 1 ){
+            x2=atof(point3[0].c_str());
+        }
+	}
+    
+    //Connection 1 mapped values
     float pct = 0.1f;
     float oldXMapped = xMapped - 1;
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
@@ -367,7 +423,7 @@ void testApp::updateWiFly() {
     
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
     
-    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
+//    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
     //    calibrateWiFly();
     
 }
@@ -466,7 +522,7 @@ void testApp::drawFFT() {
 	
 	FFTanalyzer.calculate(freq);
 	
-	float bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
+	bandWidth = ofGetWidth() / FFTanalyzer.nAverages;
 	
     //	ofSetHexColor(0xffffff);
 	//for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
