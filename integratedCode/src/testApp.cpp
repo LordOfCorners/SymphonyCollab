@@ -275,7 +275,7 @@ void testApp::setupOrbitsAndParticles() {
         
     }
     
-    mFbo.allocate(ofGetWindowWidth(), ofGetWindowHeight());
+    //mFbo.allocate(ofGetWindowWidth(), ofGetWindowHeight());
     
     ofBackground(0);
     ofEnableAlphaBlending();
@@ -356,7 +356,7 @@ void testApp::updateOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
     
-    mFbo.begin();
+    //mFbo.begin();
     
     ofClear(255, 255, 255, 0);
     //
@@ -382,10 +382,10 @@ void testApp::drawOrbitsAndParticles(){
         i++;
     
     }
-    mFbo.end();
-    
- 
-    mFbo.draw(0,0);
+//    mFbo.end();
+//    
+// 
+//    mFbo.draw(0,0);
 //    mFbo.draw(-ofGetWindowWidth()/3, 0);
 //    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
 
