@@ -13,7 +13,7 @@ void Line::setup( ofVec2f _pos, float _length, float _angle ) {
     ofSetFrameRate(30);
     //pos = _pos;
     pos = _pos;
-    cout << "pos: "<<pos<<endl;
+//    cout << "pos: "<<pos<<endl;
     length = _length;
     //angle = _angle;
     angle = _angle * 0.005 * ofGetElapsedTimef();
