@@ -316,19 +316,7 @@ void testApp::updateOrbitsAndParticles() {
     
     for (int i = 0; i < 18; i++){
         
-<<<<<<< Updated upstream
 
-<<<<<<< Updated upstream
-=======
-        cout << speed[i] << endl;       
-        
-        if( highestNum[i] < FFTanalyzer.averages[i]){
-            
-            highestNum[i] = FFTanalyzer.averages[i];
-        }
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         
         
         speed[i] = ofMap(FFTavg[0][i],0, 24, 0, 2, true);
