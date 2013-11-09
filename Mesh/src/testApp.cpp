@@ -184,6 +184,11 @@ void testApp::setupWiFly() {
     udpConnection2.Create();
     udpConnection2.Bind(11998);
     udpConnection2.SetNonBlocking(true);
+    
+    //create the socket and bind to port 11999
+    udpConnection3.Create();
+    udpConnection3.Bind(11999);
+    udpConnection3.SetNonBlocking(true);
 }
 
 //--------------------------------------------------------------
@@ -213,16 +218,31 @@ void testApp::updateWiFly() {
             x2=atof(point2[0].c_str());
         }
 	}
+    
+    //Connection 3
+    char udpMessage3[100000];
+	udpConnection3.Receive(udpMessage3,100000);
+	string message3=udpMessage3;
+	if(message3!=""){
+		//stroke.clear();
+		vector<string> strPoints3 = ofSplitString(message3,"[/p]");
+        vector<string> point3 = ofSplitString(strPoints3[0],"|");
+        if( point3.size() == 1 ){
+            x2=atof(point3[0].c_str());
+        }
+	}
+    
+    //Connection 1 mapped values
     float pct = 0.1f;
     float oldXMapped = xMapped - 1;
     //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
-    xMapped = ofMap(x, sensorMin, sensorMax, 100, 0);
+    xMapped = ofMap(x, sensorMin, sensorMax, 150, -150);
     xMapped = (1-pct) * oldXMapped + (pct) * xMapped; //thanks charlie!
     
     
     //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
     
-    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
+    //    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
     //    calibrateWiFly();
     
 }

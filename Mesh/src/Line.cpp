@@ -34,7 +34,7 @@ void Line::update() {
 
 void Line::draw() {
     
-//    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ), 255 * (pos.x / ofGetWidth() ), 30 );
+    ofSetColor( 255, 255 * (pos.y / ofGetHeight() ), 255 * (pos.x / ofGetWidth() ), 30 );
     ofPushMatrix();{
         ofTranslate( pos );
         ofRotate( ofRadToDeg( angle ) * TWO_PI );

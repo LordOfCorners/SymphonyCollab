@@ -57,7 +57,8 @@ public:
     
     ofxUDPManager udpConnection;
     ofxUDPManager udpConnection2;
-    
+    ofxUDPManager udpConnection3;
+
     float x,x2,xMapped, xMapped2;
     float sensorMin = 1023;
     float sensorMin2 = 1023;;

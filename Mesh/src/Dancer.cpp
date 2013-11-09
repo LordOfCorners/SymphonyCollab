@@ -5,7 +5,7 @@ Dancer::Dancer() {
     // Default constructor with no arguments.
 }
 
-Dancer::Dancer( ofVec2f _pos, ofVec2f _vel, ofColor _c ) {
+Dancer::Dancer( ofVec2f _pos, ofVec2f _vel) {
     
     // Test/default values, to be overwritten later.
     /*pos = ofGetWindowSize() / 2;
