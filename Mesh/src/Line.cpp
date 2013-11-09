@@ -39,25 +39,25 @@ void Line::update() {
 void Line::draw(float _amp, int number) {
     width = _amp;
     
-    int whiteness = 200- ofGetElapsedTimef()*10;
+    int whiteness = 200 - ofGetElapsedTimef()*10;
     if (whiteness < -1) whiteness = 0;
     //int whiteness = 200;
     if(number == 1){
-        ofSetColor(200 + whiteness,
-                   100 * (pos.y / ofGetHeight() +whiteness),
-                   255 * (pos.x / ofGetWidth() /1.1 + whiteness),
+        ofSetColor(255 + whiteness,
+                   255 * (pos.y / ofGetHeight() + whiteness),
+                   255 * (pos.x / ofGetWidth()/1.1 + whiteness),
                    width*40); //30);
     }
     if(number == 2){
-       ofSetColor(255 * (pos.y / ofGetHeight() +whiteness),
-                  200+whiteness,
-                  255 * (pos.x / ofGetWidth()/1.1 +whiteness),
+       ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
+                  200 + whiteness,
+                  255 * (pos.x / ofGetWidth()/1.1 + whiteness),
                   width*40); //30);
     }
     if(number == 3){
-        ofSetColor(255 * (pos.y / ofGetHeight() +whiteness),
-                   255 * (pos.x / ofGetWidth()/1.1 +whiteness),
-                   75+whiteness,
+        ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
+                   255 * (pos.x / ofGetWidth()/1.1 + whiteness),
+                   255 + whiteness,
                    width*40); //30 );
     }
     
