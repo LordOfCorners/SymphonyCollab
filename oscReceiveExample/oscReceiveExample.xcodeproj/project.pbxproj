@@ -9,29 +9,14 @@
 		<string>46</string>
 		<key>objects</key>
 		<dict>
-			<key>C6937888E126BADC8777423B</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscTypes.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>879A251454401BC0B6E4F238</key>
+			<key>879a251454401bc0b6e4f238</key>
 			<dict>
 				<key>fileRef</key>
-				<string>D9BFFBBF4CC43DEE890B3C3E</string>
+				<string>d9bffbbf4cc43dee890b3c3e</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>D9BFFBBF4CC43DEE890B3C3E</key>
+			<key>d9bffbbf4cc43dee890b3c3e</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -46,44 +31,7 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>20F35AFADAF0068B067E713F</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscReceivedElements.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>0546D1A38E13BD319CC9755B</key>
-			<dict>
-				<key>fileRef</key>
-				<string>9BF3AA0D4FAA89D0F8A0E545</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>9BF3AA0D4FAA89D0F8A0E545</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscReceivedElements.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>4E95FB446A9C9C6F0DE12D75</key>
+			<key>4e95fb446a9c9c6f0de12d75</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -98,29 +46,7 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>C4782ECC372420ACE0615B74</key>
-			<dict>
-				<key>fileRef</key>
-				<string>BC8881B3C8C0A1C45F042E7A</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>BC8881B3C8C0A1C45F042E7A</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscPrintReceivedElements.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>6B65E6930994CC4B2D2B8B33</key>
+			<key>c6937888e126badc8777423b</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -129,50 +55,13 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>OscPacketListener.h</string>
+				<string>OscTypes.h</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>029684CF678F70F6D3537A29</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscOutboundPacketStream.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>62545D179C94265CA1389D4A</key>
-			<dict>
-				<key>fileRef</key>
-				<string>63A47AC60FFAFC3BF093EC0F</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>63A47AC60FFAFC3BF093EC0F</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>OscOutboundPacketStream.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>A2AAA8CA403479E6FCDF920E</key>
+			<key>a2aaa8ca403479e6fcdf920e</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -187,46 +76,51 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>F4F5B6B8BA2BD52C646ED908</key>
+			<key>c4782ecc372420ace0615b74</key>
+			<dict>
+				<key>fileRef</key>
+				<string>bc8881b3c8c0a1c45f042e7a</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>bc8881b3c8c0a1c45f042e7a</key>
 			<dict>
 				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
+				<string>sourcecode.cpp.cpp</string>
 				<key>fileEncoding</key>
 				<string>30</string>
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>OscException.h</string>
+				<string>OscPrintReceivedElements.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscException.h</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>30CB364908817057B430D528</key>
+			<key>62545d179c94265ca1389d4a</key>
 			<dict>
-				<key>children</key>
-				<array>
-					<string>AE335EB4709BFD4671EEAC84</string>
-					<string>F4F5B6B8BA2BD52C646ED908</string>
-					<string>A2AAA8CA403479E6FCDF920E</string>
-					<string>63A47AC60FFAFC3BF093EC0F</string>
-					<string>029684CF678F70F6D3537A29</string>
-					<string>6B65E6930994CC4B2D2B8B33</string>
-					<string>BC8881B3C8C0A1C45F042E7A</string>
-					<string>4E95FB446A9C9C6F0DE12D75</string>
-					<string>9BF3AA0D4FAA89D0F8A0E545</string>
-					<string>20F35AFADAF0068B067E713F</string>
-					<string>D9BFFBBF4CC43DEE890B3C3E</string>
-					<string>C6937888E126BADC8777423B</string>
-				</array>
+				<key>fileRef</key>
+				<string>63a47ac60ffafc3bf093ec0f</string>
 				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>osc</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
+				<string>PBXBuildFile</string>
 			</dict>
-			<key>AE335EB4709BFD4671EEAC84</key>
+			<key>63a47ac60ffafc3bf093ec0f</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>OscOutboundPacketStream.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>ae335eb4709bfd4671eeac84</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -241,14 +135,29 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>28090DEB5109115003E8F1C5</key>
+			<key>029684cf678f70f6d3537a29</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>OscOutboundPacketStream.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>0546d1a38e13bd319cc9755b</key>
 			<dict>
 				<key>fileRef</key>
-				<string>5928AA323F5C2690B06C837D</string>
+				<string>9bf3aa0d4faa89d0f8a0e545</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>5928AA323F5C2690B06C837D</key>
+			<key>9bf3aa0d4faa89d0f8a0e545</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -257,249 +166,89 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>UdpSocketWin.cpp</string>
+				<string>OscReceivedElements.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>BA6760AC87647DD61A92BD41</key>
+			<key>6b65e6930994cc4b2d2b8b33</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>OscPacketListener.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>20f35afadaf0068b067e713f</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>OscReceivedElements.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>30cb364908817057b430d528</key>
 			<dict>
 				<key>children</key>
 				<array>
-					<string>2A5B1FAD3F30C8065C396ACB</string>
-					<string>5928AA323F5C2690B06C837D</string>
+					<string>f4f5b6b8ba2bd52c646ed908</string>
+					<string>20f35afadaf0068b067e713f</string>
+					<string>6b65e6930994cc4b2d2b8b33</string>
+					<string>9bf3aa0d4faa89d0f8a0e545</string>
+					<string>029684cf678f70f6d3537a29</string>
+					<string>ae335eb4709bfd4671eeac84</string>
+					<string>63a47ac60ffafc3bf093ec0f</string>
+					<string>bc8881b3c8c0a1c45f042e7a</string>
+					<string>a2aaa8ca403479e6fcdf920e</string>
+					<string>c6937888e126badc8777423b</string>
+					<string>4e95fb446a9c9c6f0de12d75</string>
+					<string>d9bffbbf4cc43dee890b3c3e</string>
 				</array>
 				<key>isa</key>
 				<string>PBXGroup</string>
 				<key>name</key>
-				<string>win32</string>
+				<string>osc</string>
 				<key>sourceTree</key>
 				<string>&lt;group&gt;</string>
 			</dict>
-			<key>A29D8C96AE042ECEAA1BD4F3</key>
+			<key>f4f5b6b8ba2bd52c646ed908</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>OscException.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/osc/OscException.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>ade367465d2a8ebad4c7a8d9</key>
 			<dict>
 				<key>fileRef</key>
-				<string>2A5B1FAD3F30C8065C396ACB</string>
+				<string>add194746185e2da11468377</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>2A5B1FAD3F30C8065C396ACB</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>NetworkingUtilsWin.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32/NetworkingUtilsWin.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>2FD4B0329909D3527F003494</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>UdpSocket.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>444657A12E59D0ED86981498</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>TimerListener.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>510CAFE035E576A4E1502D52</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E6DEF695B88BA5FAACEAA937</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E6DEF695B88BA5FAACEAA937</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>UdpSocket.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/posix/UdpSocket.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>641362CA659FAFEE4E81001B</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>3B361208CD4107E479F04E7B</string>
-					<string>E6DEF695B88BA5FAACEAA937</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>posix</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>67FE4C7B15C2F0478C8126C2</key>
-			<dict>
-				<key>fileRef</key>
-				<string>3B361208CD4107E479F04E7B</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>3B361208CD4107E479F04E7B</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>NetworkingUtils.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>23640F57DF6C4BB6BFC5DA4C</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>PacketListener.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>F7FBC56859535E597B24BB91</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>NetworkingUtils.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>48974F980F51769171D0B2F5</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>IpEndpointName.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>FF8CDF57858E9B94E3237115</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>ADD194746185E2DA11468377</string>
-					<string>48974F980F51769171D0B2F5</string>
-					<string>F7FBC56859535E597B24BB91</string>
-					<string>23640F57DF6C4BB6BFC5DA4C</string>
-					<string>641362CA659FAFEE4E81001B</string>
-					<string>444657A12E59D0ED86981498</string>
-					<string>2FD4B0329909D3527F003494</string>
-					<string>BA6760AC87647DD61A92BD41</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>ip</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>D27B2221A225CA523C019676</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>FF8CDF57858E9B94E3237115</string>
-					<string>30CB364908817057B430D528</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>src</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>86D2677079A3AF4A5A88E29A</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>D27B2221A225CA523C019676</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>oscpack</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>38871A5825686AE018EC2BF0</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>86D2677079A3AF4A5A88E29A</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>libs</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>ADE367465D2A8EBAD4C7A8D9</key>
-			<dict>
-				<key>fileRef</key>
-				<string>ADD194746185E2DA11468377</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>ADD194746185E2DA11468377</key>
+			<key>add194746185e2da11468377</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -514,29 +263,14 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>9F7986DC4EB05E75FCE2C777</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxOscSender.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscSender.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>8F5205AEF8861EF234F0651A</key>
+			<key>67fe4c7b15c2f0478c8126c2</key>
 			<dict>
 				<key>fileRef</key>
-				<string>81967292BFC87A0144BD32C6</string>
+				<string>3b361208cd4107e479f04e7b</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>81967292BFC87A0144BD32C6</key>
+			<key>3b361208cd4107e479f04e7b</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -545,35 +279,34 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>ofxOscSender.cpp</string>
+				<string>NetworkingUtils.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscSender.cpp</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>8C75AFC8774A62495DD53464</key>
+			<key>641362ca659fafee4e81001b</key>
 			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
+				<key>children</key>
+				<array>
+					<string>e6def695b88ba5faaceaa937</string>
+					<string>3b361208cd4107e479f04e7b</string>
+				</array>
 				<key>isa</key>
-				<string>PBXFileReference</string>
+				<string>PBXGroup</string>
 				<key>name</key>
-				<string>ofxOscReceiver.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscReceiver.h</string>
+				<string>posix</string>
 				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
+				<string>&lt;group&gt;</string>
 			</dict>
-			<key>640279EE111671BD026CB013</key>
+			<key>510cafe035e576a4e1502d52</key>
 			<dict>
 				<key>fileRef</key>
-				<string>C2FAC65C491D4231379F3298</string>
+				<string>e6def695b88ba5faaceaa937</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>C2FAC65C491D4231379F3298</key>
+			<key>e6def695b88ba5faaceaa937</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -582,13 +315,13 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>ofxOscReceiver.cpp</string>
+				<string>UdpSocket.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscReceiver.cpp</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/posix/UdpSocket.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>B31C608870ECEB2490A93736</key>
+			<key>23640f57df6c4bb6bfc5da4c</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -597,20 +330,198 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>ofxOscParameterSync.h</string>
+				<string>PacketListener.h</string>
 				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscParameterSync.h</string>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>4ADB88E2FB52E76A471065DE</key>
+			<key>48974f980f51769171d0b2f5</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>IpEndpointName.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>28090deb5109115003e8f1c5</key>
 			<dict>
 				<key>fileRef</key>
-				<string>0AED834CE4DEC5260AF302A2</string>
+				<string>5928aa323f5c2690b06c837d</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>0AED834CE4DEC5260AF302A2</key>
+			<key>5928aa323f5c2690b06c837d</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>UdpSocketWin.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>ba6760ac87647dd61a92bd41</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>2a5b1fad3f30c8065c396acb</string>
+					<string>5928aa323f5c2690b06c837d</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>win32</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>a29d8c96ae042eceaa1bd4f3</key>
+			<dict>
+				<key>fileRef</key>
+				<string>2a5b1fad3f30c8065c396acb</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>2a5b1fad3f30c8065c396acb</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>NetworkingUtilsWin.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32/NetworkingUtilsWin.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>2fd4b0329909d3527f003494</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>UdpSocket.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>444657a12e59d0ed86981498</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>TimerListener.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>ff8cdf57858e9b94e3237115</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>f7fbc56859535e597b24bb91</string>
+					<string>444657a12e59d0ed86981498</string>
+					<string>2fd4b0329909d3527f003494</string>
+					<string>ba6760ac87647dd61a92bd41</string>
+					<string>48974f980f51769171d0b2f5</string>
+					<string>23640f57df6c4bb6bfc5da4c</string>
+					<string>641362ca659fafee4e81001b</string>
+					<string>add194746185e2da11468377</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>ip</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>d27b2221a225ca523c019676</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>ff8cdf57858e9b94e3237115</string>
+					<string>30cb364908817057b430d528</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>src</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>86d2677079a3af4a5a88e29a</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>d27b2221a225ca523c019676</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>oscpack</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>38871a5825686ae018ec2bf0</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>86d2677079a3af4a5a88e29a</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>libs</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>f7fbc56859535e597b24bb91</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>NetworkingUtils.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>4adb88e2fb52e76a471065de</key>
+			<dict>
+				<key>fileRef</key>
+				<string>0aed834ce4dec5260af302a2</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>0aed834ce4dec5260af302a2</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -625,81 +536,7 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>C58862C6D212C8E8A83810F4</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxOscMessage.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscMessage.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>5864AD82E20F15536D054EA3</key>
-			<dict>
-				<key>fileRef</key>
-				<string>DF49D76C45D5DB505A234880</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>DF49D76C45D5DB505A234880</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxOscMessage.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscMessage.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>8B30E93FD3D3475EED522A0E</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxOscBundle.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscBundle.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>72A929D3561B8232A182ABFC</key>
-			<dict>
-				<key>fileRef</key>
-				<string>65EEFA3DA3526E9CDD9C21F9</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>65EEFA3DA3526E9CDD9C21F9</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxOscBundle.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxOsc/src/ofxOscBundle.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>7689F8A0F3D0B7635A8C3104</key>
+			<key>7689f8a0f3d0b7635a8c3104</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -714,45 +551,29 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>BD2F1A9F8D0C05EDB29122D0</key>
+			<key>5864ad82e20f15536d054ea3</key>
 			<dict>
-				<key>children</key>
-				<array>
-					<string>00D6D32B84B099226431108C</string>
-					<string>7689F8A0F3D0B7635A8C3104</string>
-					<string>65EEFA3DA3526E9CDD9C21F9</string>
-					<string>8B30E93FD3D3475EED522A0E</string>
-					<string>DF49D76C45D5DB505A234880</string>
-					<string>C58862C6D212C8E8A83810F4</string>
-					<string>0AED834CE4DEC5260AF302A2</string>
-					<string>B31C608870ECEB2490A93736</string>
-					<string>C2FAC65C491D4231379F3298</string>
-					<string>8C75AFC8774A62495DD53464</string>
-					<string>81967292BFC87A0144BD32C6</string>
-					<string>9F7986DC4EB05E75FCE2C777</string>
-				</array>
+				<key>fileRef</key>
+				<string>df49d76c45d5db505a234880</string>
 				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>src</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
+				<string>PBXBuildFile</string>
 			</dict>
-			<key>E6053AB7FEC63D5F83825B88</key>
+			<key>df49d76c45d5db505a234880</key>
 			<dict>
-				<key>children</key>
-				<array>
-					<string>BD2F1A9F8D0C05EDB29122D0</string>
-					<string>38871A5825686AE018EC2BF0</string>
-				</array>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
 				<key>isa</key>
-				<string>PBXGroup</string>
+				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>ofxOsc</string>
+				<string>ofxOscMessage.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscMessage.cpp</string>
 				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
+				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>00D6D32B84B099226431108C</key>
+			<key>00d6d32b84b099226431108c</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -767,7 +588,7 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>721F0401AD0B6DC50A6068A7</key>
+			<key>8c75afc8774a62495dd53464</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -776,35 +597,13 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>Line.h</string>
+				<string>ofxOscReceiver.h</string>
 				<key>path</key>
-				<string>src/Line.h</string>
+				<string>../../../addons/ofxOsc/src/ofxOscReceiver.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>143B47270404C981E9C3EB64</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E26359B3F76DB6C94AF4C692</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E26359B3F76DB6C94AF4C692</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>Line.cpp</string>
-				<key>path</key>
-				<string>src/Line.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>99516BD7957A4E25C4A8A7A3</key>
+			<key>b31c608870eceb2490a93736</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -813,20 +612,20 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>Dancer.h</string>
+				<string>ofxOscParameterSync.h</string>
 				<key>path</key>
-				<string>src/Dancer.h</string>
+				<string>../../../addons/ofxOsc/src/ofxOscParameterSync.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>80E33A55B29B1DC5A188C02D</key>
+			<key>640279ee111671bd026cb013</key>
 			<dict>
 				<key>fileRef</key>
-				<string>6982E5C0FDE613E5C0E36A74</string>
+				<string>c2fac65c491d4231379f3298</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>6982E5C0FDE613E5C0E36A74</key>
+			<key>c2fac65c491d4231379f3298</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -835,9 +634,136 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>name</key>
-				<string>Dancer.cpp</string>
+				<string>ofxOscReceiver.cpp</string>
 				<key>path</key>
-				<string>src/Dancer.cpp</string>
+				<string>../../../addons/ofxOsc/src/ofxOscReceiver.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>8b30e93fd3d3475eed522a0e</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxOscBundle.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscBundle.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>c58862c6d212c8e8a83810f4</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxOscMessage.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscMessage.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>72a929d3561b8232a182abfc</key>
+			<dict>
+				<key>fileRef</key>
+				<string>65eefa3da3526e9cdd9c21f9</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>65eefa3da3526e9cdd9c21f9</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxOscBundle.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscBundle.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>9f7986dc4eb05e75fce2c777</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxOscSender.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscSender.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>bd2f1a9f8d0c05edb29122d0</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>81967292bfc87a0144bd32c6</string>
+					<string>9f7986dc4eb05e75fce2c777</string>
+					<string>65eefa3da3526e9cdd9c21f9</string>
+					<string>c58862c6d212c8e8a83810f4</string>
+					<string>8b30e93fd3d3475eed522a0e</string>
+					<string>c2fac65c491d4231379f3298</string>
+					<string>b31c608870eceb2490a93736</string>
+					<string>8c75afc8774a62495dd53464</string>
+					<string>00d6d32b84b099226431108c</string>
+					<string>df49d76c45d5db505a234880</string>
+					<string>7689f8a0f3d0b7635a8c3104</string>
+					<string>0aed834ce4dec5260af302a2</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>src</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>e6053ab7fec63d5f83825b88</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>bd2f1a9f8d0c05edb29122d0</string>
+					<string>38871a5825686ae018ec2bf0</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>ofxOsc</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>8f5205aef8861ef234f0651a</key>
+			<dict>
+				<key>fileRef</key>
+				<string>81967292bfc87a0144bd32c6</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>81967292bfc87a0144bd32c6</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ofxOscSender.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxOsc/src/ofxOscSender.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
@@ -845,7 +771,7 @@
 			<dict>
 				<key>children</key>
 				<array>
-					<string>E6053AB7FEC63D5F83825B88</string>
+					<string>e6053ab7fec63d5f83825b88</string>
 				</array>
 				<key>isa</key>
 				<string>PBXGroup</string>
@@ -1253,7 +1179,6 @@
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
-						<string>src</string>
 						<string>../../../addons/ofxOsc/libs</string>
 						<string>../../../addons/ofxOsc/libs/oscpack</string>
 						<string>../../../addons/ofxOsc/libs/oscpack/src</string>
@@ -1262,6 +1187,7 @@
 						<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32</string>
 						<string>../../../addons/ofxOsc/libs/oscpack/src/osc</string>
 						<string>../../../addons/ofxOsc/src</string>
+						<string>src</string>
 					</array>
 					<key>ARCHS</key>
 					<string>$(NATIVE_ARCH)</string>
@@ -1320,7 +1246,6 @@
 					<key>HEADER_SEARCH_PATHS</key>
 					<array>
 						<string>$(OF_CORE_HEADERS)</string>
-						<string>src</string>
 						<string>../../../addons/ofxOsc/libs</string>
 						<string>../../../addons/ofxOsc/libs/oscpack</string>
 						<string>../../../addons/ofxOsc/libs/oscpack/src</string>
@@ -1329,6 +1254,7 @@
 						<string>../../../addons/ofxOsc/libs/oscpack/src/ip/win32</string>
 						<string>../../../addons/ofxOsc/libs/oscpack/src/osc</string>
 						<string>../../../addons/ofxOsc/src</string>
+						<string>src</string>
 					</array>
 					<key>ARCHS</key>
 					<string>$(NATIVE_ARCH)</string>
@@ -1388,22 +1314,20 @@
 				<array>
 					<string>E4B69E200A3A1BDC003C02F2</string>
 					<string>E4B69E210A3A1BDC003C02F2</string>
-					<string>80E33A55B29B1DC5A188C02D</string>
-					<string>143B47270404C981E9C3EB64</string>
-					<string>72A929D3561B8232A182ABFC</string>
-					<string>5864AD82E20F15536D054EA3</string>
-					<string>4ADB88E2FB52E76A471065DE</string>
-					<string>640279EE111671BD026CB013</string>
-					<string>8F5205AEF8861EF234F0651A</string>
-					<string>ADE367465D2A8EBAD4C7A8D9</string>
-					<string>67FE4C7B15C2F0478C8126C2</string>
-					<string>510CAFE035E576A4E1502D52</string>
-					<string>A29D8C96AE042ECEAA1BD4F3</string>
-					<string>28090DEB5109115003E8F1C5</string>
-					<string>62545D179C94265CA1389D4A</string>
-					<string>C4782ECC372420ACE0615B74</string>
-					<string>0546D1A38E13BD319CC9755B</string>
-					<string>879A251454401BC0B6E4F238</string>
+					<string>8f5205aef8861ef234f0651a</string>
+					<string>72a929d3561b8232a182abfc</string>
+					<string>640279ee111671bd026cb013</string>
+					<string>5864ad82e20f15536d054ea3</string>
+					<string>4adb88e2fb52e76a471065de</string>
+					<string>a29d8c96ae042eceaa1bd4f3</string>
+					<string>28090deb5109115003e8f1c5</string>
+					<string>510cafe035e576a4e1502d52</string>
+					<string>67fe4c7b15c2f0478c8126c2</string>
+					<string>ade367465d2a8ebad4c7a8d9</string>
+					<string>0546d1a38e13bd319cc9755b</string>
+					<string>62545d179c94265ca1389d4a</string>
+					<string>c4782ecc372420ace0615b74</string>
+					<string>879a251454401bc0b6e4f238</string>
 				</array>
 				<key>isa</key>
 				<string>PBXSourcesBuildPhase</string>
@@ -1459,7 +1383,7 @@
 				<key>isa</key>
 				<string>PBXNativeTarget</string>
 				<key>name</key>
-				<string>Lines</string>
+				<string>oscReceiveExample</string>
 				<key>productName</key>
 				<string>myOFApp</string>
 				<key>productReference</key>
@@ -1476,7 +1400,7 @@
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>path</key>
-				<string>LinesDebug.app</string>
+				<string>oscReceiveExampleDebug.app</string>
 				<key>sourceTree</key>
 				<string>BUILT_PRODUCTS_DIR</string>
 			</dict>
@@ -1707,10 +1631,6 @@
 					<string>E4B69E1D0A3A1BDC003C02F2</string>
 					<string>E4B69E1E0A3A1BDC003C02F2</string>
 					<string>E4B69E1F0A3A1BDC003C02F2</string>
-					<string>6982E5C0FDE613E5C0E36A74</string>
-					<string>99516BD7957A4E25C4A8A7A3</string>
-					<string>E26359B3F76DB6C94AF4C692</string>
-					<string>721F0401AD0B6DC50A6068A7</string>
 				</array>
 				<key>isa</key>
 				<string>PBXGroup</string>
