@@ -47,7 +47,7 @@ void Particle::update(float _breathing, float _rotSpeed){
     
 
     pos += vel;
-    vel += acc;
+    vel += acc; 
     acc.set(0);
     
     

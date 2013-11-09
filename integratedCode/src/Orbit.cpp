@@ -23,6 +23,7 @@ void Orbit::update(float _breathing){
 void Orbit::draw(){
     
     ofNoFill();
+    ofSetLineWidth(10);
     ofSetColor(50);
     ofSetCircleResolution(100);
     ofCircle( pos, dia);

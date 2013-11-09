@@ -319,6 +319,15 @@ void testApp::updateOrbitsAndParticles() {
     for (int i = 0; i < 17; i++){
         
 
+<<<<<<< Updated upstream
+=======
+        cout << speed[i] << endl;       
+        
+        if( highestNum[i] < FFTanalyzer.averages[i]){
+            
+            highestNum[i] = FFTanalyzer.averages[i];
+        }
+>>>>>>> Stashed changes
         
         
 //        rotSpeed[i] = /*something*/;
