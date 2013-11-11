@@ -34,8 +34,8 @@ void testApp::draw(){
     ofRect( 0,0, ofGetWindowWidth(), ofGetWindowHeight() );
     
     //    drawFFT();
-    drawAubio();
-//    drawLines();
+//    drawAubio();
+    drawLines();
     //        drawOrbitsAndParticles();
     //      drawWiFly();
 }
@@ -190,6 +190,11 @@ void testApp::updateLines() {
         
         //    cout<<test<<endl;
     }
+    
+    // OK, time to map the pitch data from Aubio. It works like this. We rotate each instrument's lines based on its pitch. Because each instrument covers a different range of notes, we map the pitch data differently for all three instruments (taking into account the highest and lowest notes each hits in the score) then pass the individualized data to each set of lines.
+    pitchMappedHorn = ofMap( horn.pitch, 123.47, 698.46, 0, TWO_PI );
+    pitchMappedTrumpet = ofMap( trumpet.pitch, 164.81, 987.77, 0, TWO_PI );
+    pitchMappedTrombone = ofMap( trombone.pitch, 73.42, 392.00, 0, TWO_PI );
 }
 
 //--------------------------------------------------------------
@@ -209,6 +214,7 @@ void testApp::drawLines() {
         
         
         //        dancerList[ i ].draw( FFTanalyzer.averages[i] );
+        // Can pass the test value (constantly changing linearly) or the individualized mapped values for each instrument.
         dancerList[ i ].draw( test );
         //        dancerList[ i ].draw( freq[0] );
         //        cout<<FFTanalyzer.averages[5]<<endl;
@@ -410,7 +416,9 @@ void testApp::audioReceived 	(float * input, int bufferSize, int nChannels){
 		right[i] = input[i*2+1];
 	}
     
-	AA.processAudio(left, bufferSize);
+	horn.processAudio(left, bufferSize);
+    trumpet.processAudio(left, bufferSize);
+    trombone.processAudio(left, bufferSize);
 
 }
 
@@ -447,7 +455,7 @@ void testApp::setupFFT() {
 //--------------------------------------------------------------
 void testApp::setupAubio() {
     
-    ofBackground(255,255,255);
+//    ofBackground(255,255,255);
 	
 	// 0 output channels,
 	// 2 input channels
@@ -455,7 +463,9 @@ void testApp::setupAubio() {
 	// 256 samples per buffer
 	// 4 num buffers (latency)
 	
-    AA.setup();
+    horn.setup();
+    trumpet.setup();
+    trombone.setup();
     
 	//setup of sound input
 //	ofSoundStreamSetup(0, 2, this, 44100, 256, 4);
@@ -552,7 +562,7 @@ void testApp::drawAubio() {
 	
 	ofSetHexColor(0x000000);
 	
-	dinFont.drawString( "pitch is : " + ofToString((int)AA.pitch), 50,300);
-    dinFont.drawString( "amplitude is : " + ofToString(AA.amplitude,3), 50,375);
-	dinFont.drawString( "confidence is : " + ofToString(AA.confidence), 50,450);
+	dinFont.drawString( "pitch is : " + ofToString((int)horn.pitch), 50,300);
+    dinFont.drawString( "amplitude is : " + ofToString(horn.amplitude,3), 50,375);
+	dinFont.drawString( "confidence is : " + ofToString(horn.confidence), 50,450);
 }

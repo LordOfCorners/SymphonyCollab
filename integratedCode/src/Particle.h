@@ -19,7 +19,6 @@ public:
     
     void update(float _breathing , float _rotSpeed );
     void draw();
-
     
     ofVec2f pos, vel, acc;
     
@@ -28,6 +27,7 @@ public:
     
     ofColor c;
     
+<<<<<<< HEAD
     float age, lifespan;
     bool bIsDead;
     
@@ -36,5 +36,9 @@ public:
     
 
     
+=======
+    int age, lifespan;
+    bool bIsDead;
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
 };
 

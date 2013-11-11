@@ -198,10 +198,7 @@ void testApp::setupOrbitsAndParticles() {
     particleList.clear();
     setOfOrbits.clear();
     
-    
-    
     for( int i = 0 ; i < 17; i++){
-        
         
         float coe = 1.01 * powf( 1.15, i);
         float _orbit = 30;
@@ -224,7 +221,7 @@ void testApp::setupOrbitsAndParticles() {
         
     }
     
-    mFbo.allocate(ofGetWindowWidth(), ofGetWindowHeight());
+    //mFbo.allocate(ofGetWindowWidth(), ofGetWindowHeight());
     
     ofBackground(0);
     ofEnableAlphaBlending();
@@ -259,7 +256,15 @@ void testApp::updateOrbitsAndParticles() {
     }
     
     
+<<<<<<< HEAD
     //----------------------------------FFT STUFF----------------------------------//
+=======
+    
+    for( int i = 0; i < 17;)
+    
+    for (int i = 0; i < 17; i++){
+        
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
 
     
     //This creates more particles according to the volume on each frequency
@@ -339,7 +344,7 @@ void testApp::updateOrbitsAndParticles() {
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
     
-    mFbo.begin();
+    //mFbo.begin();
     
     ofClear(255, 255, 255, 0);
     //
@@ -365,12 +370,21 @@ void testApp::drawOrbitsAndParticles(){
         i++;
     
     }
+<<<<<<< HEAD
     mFbo.end();
     
  
     mFbo.draw(0,0);
     mFbo.draw(-ofGetWindowWidth()/3, 0);
     mFbo.draw(ofGetWindowWidth()/ 3 , 0);
+=======
+//    mFbo.end();
+//    
+// 
+//    mFbo.draw(0,0);
+//    mFbo.draw(-ofGetWindowWidth()/3, 0);
+//    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
 
     
     

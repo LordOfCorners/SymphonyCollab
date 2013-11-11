@@ -35,6 +35,7 @@ void Line::draw(float _amplitude, int number) {
 //    cout << "whiteness" << whiteness ;
     
     if(number == 1){
+<<<<<<< HEAD
         ofSetColor(255,
                    255 * (pos.y / ofGetHeight()) + whiteness,
                    255 * (pos.x / ofGetWidth()) + whiteness,
@@ -46,8 +47,22 @@ void Line::draw(float _amplitude, int number) {
                   255,
                   width*20); //30);
         //cout<<pos.x / ofGetWidth() +whiteness<<endl;
+=======
+        ofSetColor(255 + whiteness,
+                   255 * (pos.y / ofGetHeight() + whiteness),
+                   255 * (pos.x / ofGetWidth() /1.1 + whiteness),
+                   30); //width * 40); //30);
     }
+    if(number == 2){
+       ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
+                  100 + whiteness,
+                  255 * (pos.x / ofGetWidth()/1.1 +whiteness),
+                  30);// width*40); //30);
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
+    }
+
     if(number == 3){
+<<<<<<< HEAD
         ofSetColor(100 * (pos.x / ofGetWidth()) + whiteness,
                    255 * (pos.y / ofGetHeight()) + whiteness,
                    //50+pos.x / ofGetWidth() + whiteness,
@@ -55,9 +70,13 @@ void Line::draw(float _amplitude, int number) {
                    255,
                    width*20); //30 );
         //cout<<pos.y / ofGetWidth() +whiteness<<endl;
+=======
+        ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
+                   255 * (pos.x / ofGetWidth()/1.1 + whiteness),
+                   255 + whiteness,
+                   30); //width*40); //30 );
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
     }
-    
-    //ofSetColor(255, 255 * (pos.y / ofGetHeight()), 255 * (pos.y / ofGetWidth()), 30);
     
     //cout << "angle: "<<angle <<endl;
     

@@ -83,7 +83,7 @@ public:
     ofColor particleColor;
     
     //Draw each different sets of orbits and particles on a different FBO
-    ofFbo mFbo, mFbo2, mFbo3;
+//    ofFbo mFbo, mFbo2, mFbo3;
     
     //--------------------------------------------------------------
     // WIFLY

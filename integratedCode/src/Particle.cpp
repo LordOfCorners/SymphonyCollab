@@ -32,6 +32,7 @@ void Particle::update(float _breathing, float _rotSpeed){
     
     angle += 0.9;
     angle +=  _rotSpeed;
+<<<<<<< HEAD
     
     
     
@@ -47,12 +48,10 @@ void Particle::update(float _breathing, float _rotSpeed){
 
     
     
+=======
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
     finalDia = offset + _breathing;
     
-//    pos.x = posCirx * finalDia;
-//    pos.y = posCiry * finalDia;
-    
-
     pos += vel;
     vel += acc; 
     acc.set(0);
@@ -66,23 +65,21 @@ void Particle::update(float _breathing, float _rotSpeed){
     size = agePct * 3.0;
     
     
+    
+    
 }
 
 void Particle::draw(){
     
     ofPushMatrix();
-    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
-    ofPushMatrix();{
-        
-        
-        ofRotate(angle);
-        ofTranslate(finalDia, 0);
-        ofFill();
-        ofSetColor( c );
-        ofCircle(0,0, size);
-        
-        
-    }ofPopMatrix();
+        ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight() / 2);
+        ofPushMatrix();{
+            ofRotate(angle);
+            ofTranslate(finalDia, 0);
+            ofFill();
+            ofSetColor( c );
+            ofCircle(0,0, size);
+        }ofPopMatrix();
     ofPopMatrix();
     
     
