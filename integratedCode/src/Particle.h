@@ -28,6 +28,9 @@ public:
     
     ofColor c;
     
+    float age, lifespan;
+    bool bIsDead;
+    
     
     
     

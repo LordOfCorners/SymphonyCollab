@@ -13,7 +13,7 @@ void Line::setup( ofVec2f _pos, float _length, float _angle ) {
     ofSetFrameRate(30);
     //pos = _pos;
     pos = _pos;
-//    cout << "pos: "<<pos<<endl;
+    //cout << "pos: "<<pos<<endl;
     length = _length;
     //angle = _angle;
     angle = _angle * 0.005 * ofGetElapsedTimef();
@@ -21,44 +21,40 @@ void Line::setup( ofVec2f _pos, float _length, float _angle ) {
 }
 
 void Line::update() {
-    
-//    c = _c;
-    
-//    float pct = 0.1f;
-//    float oldXMapped = xMapped-1;
-//    xMapped = ofMap(x, sensorMin, sensorMax, 155, -100);
-//    xMapped = (1-pct) * oldXMapped + (pct) * xMapped;
 
-//    float pct = 0.0000001f;
-//    ofVec2f oldpos = pos = - ofVec2f(1,1);
-//    pos.x = (1-pct) * oldpos.x + (pct) * oldpos.x;
-//    pos.y = (1-pct) * oldpos.y + (pct) * oldpos.y;
     
 }
 
-void Line::draw(float _amp, int number) {
-    width = _amp;
+void Line::draw(float _amplitude, int number) {
+    width = _amplitude;
     
-    int whiteness = 200 - ofGetElapsedTimef()*10;
-    if (whiteness < -1) whiteness = 0;
+    int whiteness = 200 - ofGetElapsedTimef() * 4;
+    if (whiteness < 1) whiteness = 0;
     //int whiteness = 200;
+    
+//    cout << "whiteness" << whiteness ;
+    
     if(number == 1){
-        ofSetColor(255 + whiteness,
-                   255 * (pos.y / ofGetHeight() + whiteness),
-                   255 * (pos.x / ofGetWidth()/1.1 + whiteness),
-                   width*40); //30);
+        ofSetColor(255,
+                   255 * (pos.y / ofGetHeight()) + whiteness,
+                   255 * (pos.x / ofGetWidth()) + whiteness,
+                   width*20); //30);
     }
     if(number == 2){
-       ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
-                  200 + whiteness,
-                  255 * (pos.x / ofGetWidth()/1.1 + whiteness),
-                  width*40); //30);
+       ofSetColor(255  * (pos.y / ofGetHeight()) + whiteness,
+                  100 * (pos.x / ofGetWidth()) + whiteness,
+                  255,
+                  width*20); //30);
+        //cout<<pos.x / ofGetWidth() +whiteness<<endl;
     }
     if(number == 3){
-        ofSetColor(255 * (pos.y / ofGetHeight() + whiteness),
-                   255 * (pos.x / ofGetWidth()/1.1 + whiteness),
-                   255 + whiteness,
-                   width*40); //30 );
+        ofSetColor(100 * (pos.x / ofGetWidth()) + whiteness,
+                   255 * (pos.y / ofGetHeight()) + whiteness,
+                   //50+pos.x / ofGetWidth() + whiteness,
+                   //50+ (pos.y / ofGetHeight()) + whiteness,
+                   255,
+                   width*20); //30 );
+        //cout<<pos.y / ofGetWidth() +whiteness<<endl;
     }
     
     //ofSetColor(255, 255 * (pos.y / ofGetHeight()), 255 * (pos.y / ofGetWidth()), 30);

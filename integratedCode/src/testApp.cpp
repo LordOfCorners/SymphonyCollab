@@ -17,74 +17,18 @@ void testApp::setup(){
     
     
     mReceiver.setup(PORT);
+    
+    syphon.setName("Breath");
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
     
+    getOfc();
     //    updateLines();
-    updateOrbitsAndParticles();
+   updateOrbitsAndParticles();
     updateWiFly();
-    
-    
-    //OCS
-    
-    //Hide old messages
-    for (int i =0; i < NUMOFSTRINGS; i++){
-        if( timers[i] < ofGetElapsedTimef()){
-            msg_strings[i] = "";
-        }
-    }
-    
-    while( mReceiver.hasWaitingMessages()){
-        
-        ofxOscMessage m;
-        mReceiver.getNextMessage(&m);
-        
-        if(m.getAddress() == "/Channel01/AudioAnalysis"){
-            amplitude[0] = m.getArgAsFloat(0);
-            pitch[0] = m.getArgAsFloat(1);
-            attack[0] = m.getArgAsFloat(2);
-        }
-        
-        if(m.getAddress() == "/Channel02/AudioAnalysis"){
-            amplitude[1] = m.getArgAsFloat(0);
-            pitch[1] = m.getArgAsFloat(1);
-            attack[1] = m.getArgAsFloat(2);
-        }
-        
-        if(m.getAddress() == "/Channel03/AudioAnalysis"){
-            amplitude[2] = m.getArgAsFloat(0);
-            pitch[2] = m.getArgAsFloat(1);
-            attack[2] = m.getArgAsFloat(2);
-        }
-        
-        //FFT values
-        if(m.getAddress() == "/Channel01/FFT"){
-            for (int i=0; i<17; i++){
-                FFTavg[0][i] = m.getArgAsFloat(i);
-            }
-        }
-        
-        if(m.getAddress() == "/Channel02/FFT"){
-            for (int i=0; i<17; i++){
-                FFTavg[1][i] = m.getArgAsFloat(i);
-            }
-        }
-        
-        if(m.getAddress() == "/Channel03/FFT"){
-            for (int i=0; i<17; i++){
-                FFTavg[2][i] = m.getArgAsFloat(i);
-                cout<< i << ": "<< FFTavg[2][i] << endl;
-            }
-            
-            
-        }
-        
-    }
-    
-    
     
 }
 
@@ -96,8 +40,10 @@ void testApp::draw(){
     ofRect(0, 0, ofGetWindowWidth(),ofGetWindowHeight());
     
     //    drawLines();
-    //    drawWiFly();
+       drawWiFly();
     drawOrbitsAndParticles();
+    
+    syphon.publishScreen();
 }
 
 
@@ -286,10 +232,10 @@ void testApp::setupOrbitsAndParticles() {
 
 //--------------------------------------------------------------
 void testApp::addParticle(float dia){
-    
+    cout << "try to add particle" << endl;
     Particle p( pos, vel, acc, _size, dia, particleColor);
     particleList.push_back(p);
-    
+    cout << "particle list size = " << particleList.size()  << endl;
     //    rotDia = setOfOrbits[i].dia;
 
 }
@@ -314,35 +260,70 @@ void testApp::updateOrbitsAndParticles() {
     
     
     //----------------------------------FFT STUFF----------------------------------//
-    
-    for (int i = 0; i < 17; i++){
-        
 
+    
+    //This creates more particles according to the volume on each frequency
+    for( int i = 0; i < 17; i++){
         
+        //cout << "fft band " << i << ": " << FFTavg[0][i] << endl;
         
-        speed[i] = ofMap(FFTavg[0][i],0, 24, 0, 10, true);
-        
-        rotSpeed[i] = speed[i];
-        rotSpeed[i] *= 0.8;
-//        rotSpeed[i] = fmod(rotSpeed[i], 360);
-        
-        particleList[i].update(xMapped, rotSpeed[i]);
-        
-//        cout << FFTanalyzer.averages[i] << endl;
-        
-//        spin[i] += ofMap(FFTanalyzer.averages[i] * 0.005, 0, 0.2, 0, 8);
-//		spin[i] *= 0.8;
-//		spin[i] = fmax(spin[i], 0);
-//		
-//		// increase our current angle by the amount of spin
-//		// wrap around 360 so our angle var doesn't get huge
-//		theta[i] += spin[i];
-//		theta[i] = fmod(theta[i], 360);
-        
-        
-        
-        
+       if( FFTavg[0][i] > 5){
+           cout << "adding particle to fft band " << i << ": " << FFTavg[0][i] << endl;
+       addParticle(diameterList[i]);
+        }
     }
+    
+    
+    
+    
+    for (vector < Particle >::iterator it = particleList.begin(); it != particleList.end(); it++) {
+                if( it->bIsDead){
+
+                    particleList.erase(it);
+        
+                };
+    };
+        for (int i =0; i < 17; i++) {
+            speed[i] = ofMap(FFTavg[0][i],0, 24, 0, 10, true);
+            rotSpeed[i] = speed[i];
+            rotSpeed[i] *= 0.8;
+        }
+    
+    for (vector < Particle >::iterator it = particleList.begin(); it != particleList.end(); it++) {
+        for (int i = 0; i<diameterList.size(); i++) {
+            if (it->offset == diameterList[i]) {
+                it->update(xMapped, rotSpeed[i]);
+            };
+        };
+        
+    };
+    
+//    vector< Particle>::iterator it;
+//    int i = 0;
+//    for( it = particleList.begin(); it != particleList.end();){
+//        
+//        if( it->bIsDead){
+//            
+//            it = particleList.erase(it);
+//            
+//        }else{
+//            
+//            speed[i] = ofMap(FFTavg[0][i],0, 24, 0, 10, true);
+//            
+//            rotSpeed[i] = speed[i];
+//            rotSpeed[i] = 10;
+//            rotSpeed[i] *= 0.8;
+//            //        rotSpeed[i] = fmod(rotSpeed[i], 360);
+//            
+//            particleList[i].update(xMapped, rotSpeed[i]);
+//            
+//            it->update(xMapped, rotSpeed[i]);
+//            it++;
+//            
+//        }
+//        
+//        i++;
+//    }
     
     
     //    vector<Particle>::iterator it;
@@ -352,8 +333,8 @@ void testApp::updateOrbitsAndParticles() {
     //    }
     
     
-    
-}
+    }
+
 
 //--------------------------------------------------------------
 void testApp::drawOrbitsAndParticles(){
@@ -378,7 +359,7 @@ void testApp::drawOrbitsAndParticles(){
     for( it = particleList.begin(); it != particleList.end(); it++){
         
         it->draw();
-        ofDrawBitmapString(ofToString(rotSpeed[i]), 180, i * 20);
+//        ofDrawBitmapString(ofToString(rotSpeed[i]), 180, i * 20);
         
         //This index goes at the end so that when it loops for the first time it takes 0 as a value and not one
         i++;
@@ -388,8 +369,8 @@ void testApp::drawOrbitsAndParticles(){
     
  
     mFbo.draw(0,0);
-//    mFbo.draw(-ofGetWindowWidth()/3, 0);
-//    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
+    mFbo.draw(-ofGetWindowWidth()/3, 0);
+    mFbo.draw(ofGetWindowWidth()/ 3 , 0);
 
     
     
@@ -507,4 +488,81 @@ void testApp::calibrateWiFly() {
         sensorMin2  = x2;
     }
     //    }
+}
+
+void testApp::getOfc(){
+    
+    //OCS
+    
+    //Hide old messages
+//    for (int i =0; i < NUMOFSTRINGS; i++){
+//        if( timers[i] < ofGetElapsedTimef()){
+//            msg_strings[i] = "";
+//        }
+//    }
+    
+    while( mReceiver.hasWaitingMessages()){
+        
+        ofxOscMessage m;
+        mReceiver.getNextMessage(&m);
+        
+        if(m.getAddress() == "/Channel01/AudioAnalysis"){
+            amplitude[0] = m.getArgAsFloat(0);
+            pitch[0] = m.getArgAsFloat(1);
+            attack[0] = m.getArgAsFloat(2);
+        }
+        
+        if(m.getAddress() == "/Channel02/AudioAnalysis"){
+            amplitude[1] = m.getArgAsFloat(0);
+            pitch[1] = m.getArgAsFloat(1);
+            attack[1] = m.getArgAsFloat(2);
+        }
+        
+        if(m.getAddress() == "/Channel03/AudioAnalysis"){
+            amplitude[2] = m.getArgAsFloat(0);
+            pitch[2] = m.getArgAsFloat(1);
+            attack[2] = m.getArgAsFloat(2);
+        }
+        
+        //FFT values
+//        if(m.getAddress() == "/Channel01/FFT"){
+//            for (int i=0; i<17; i++){
+//                if( i < 1){
+//                    FFTavg[0][i] = m.getArgAsInt32(i);
+//                } else {
+//                    FFTavg[0][i] = m.getArgAsFloat(i);
+//                }
+//                cout << "channel value " << i << ": " << FFTavg[0][i] << endl;
+//            }
+//        }
+        
+        if(m.getAddress()=="/Channel01/FFT"){
+            Channel01_FFT_size = m.getArgAsInt32(0);
+            for( int i = 1; i < 18; i++){
+                FFTavg[0][i] = m.getArgAsFloat(i);
+                cout << "channel value " << i << ": " << FFTavg[0][i] << endl;
+
+            }
+            
+        }
+        
+        
+        if(m.getAddress() == "/Channel02/FFT"){
+            for (int i=0; i<17; i++){
+                //FFTavg[1][i] = m.getArgAsFloat(i);
+            }
+        }
+        
+        if(m.getAddress() == "/Channel03/FFT"){
+            for (int i=0; i<17; i++){
+                //FFTavg[2][i] = m.getArgAsFloat(i);
+                //                cout<< i << ": "<< FFTavg[2][i] << endl;
+            }
+            
+            
+        }
+        
+    }
+    
+    
 }

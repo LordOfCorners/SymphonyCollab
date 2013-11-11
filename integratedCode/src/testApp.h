@@ -8,6 +8,7 @@
 #include "Orbit.h"
 #include "ofxNetwork.h"
 #include "ofxOsc.h"
+#include "ofxSyphon.h"
 
 #define BUFFER_SIZE 512
 #define NUMDANCERS 3
@@ -105,11 +106,16 @@ public:
     //---------------------------------------------------------------
     //OCS
     
+    void getOfc();
     ofxOscReceiver mReceiver;
     int current_msg_string;
     string msg_strings[NUMOFSTRINGS];
     float timers[NUMOFSTRINGS];
-    float amplitude[3], pitch[3], FFTavg[3][17], attack[3];
+    float amplitude[3], pitch[3], attack[3];
+    float FFTavg[3][17];
+    int Channel01_FFT_size;
+    
+    ofxSyphonServer syphon;
 };
 
 #endif

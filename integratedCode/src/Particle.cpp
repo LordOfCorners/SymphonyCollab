@@ -19,6 +19,10 @@ Particle::Particle( ofVec2f _pos, ofVec2f _vel, ofVec2f _acc, float _size, float
     
     rotSpeed = ofRandom(0.5, 1.0);
     angle = 0;
+    
+    age = 0;
+    lifespan = floor( ofRandom(60,100) );
+    
 }
 
 
@@ -28,6 +32,8 @@ void Particle::update(float _breathing, float _rotSpeed){
     
     angle += 0.9;
     angle +=  _rotSpeed;
+    
+    
     
 //    float posCirx, posCiry;
     
@@ -50,6 +56,14 @@ void Particle::update(float _breathing, float _rotSpeed){
     pos += vel;
     vel += acc; 
     acc.set(0);
+    
+    age++;
+    if( age > lifespan){
+        bIsDead = true;
+    }
+    
+    float agePct = 1.0 - ((float)age / (float)lifespan);
+    size = agePct * 3.0;
     
     
 }
