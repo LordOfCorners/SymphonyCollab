@@ -2,17 +2,19 @@
 #define _TEST_APP
 
 #include "ofMain.h"
-#include "Line.h"
-#include "Dancer.h"
 #include "Particle.h"
 #include "Orbit.h"
 #include "ofxNetwork.h"
 #include "ofxOsc.h"
+#include "ofxSyphon.h"
 
-#define BUFFER_SIZE 512
-#define NUMDANCERS 3
+
 #define PORT 12345
 #define NUMOFSTRINGS 20
+
+
+
+
 
 class testApp : public ofBaseApp {
 	
@@ -37,10 +39,6 @@ public:
     void updateFFT();
     void drawFFT();
     
-    void setupLines();
-    void updateLines();
-    void drawLines();
-    
     void setupOrbitsAndParticles();
     void updateOrbitsAndParticles();
     void drawOrbitsAndParticles();
@@ -50,19 +48,7 @@ public:
     void drawWiFly();
     void calibrateWiFly();
     
-    
-    //--------------------------------------------------------------
-    // LINES
-    
-    // One dancer per instrument (at least right now).
-    
-    float breath;
-    float breathRad; // Temporarily simulate breathing.
-    
-    bool noiseBreath;
-    
-    vector< Dancer > dancerList;
-    
+       
     //--------------------------------------------------------------
     // ORBITS & PARTICLES
     
@@ -82,7 +68,7 @@ public:
     ofColor particleColor;
     
     //Draw each different sets of orbits and particles on a different FBO
-//    ofFbo mFbo, mFbo2, mFbo3;
+    ofFbo mFbo, mFbo2, mFbo3;
     
     //--------------------------------------------------------------
     // WIFLY
@@ -91,13 +77,18 @@ public:
     ofxUDPManager udpConnection2;
     ofxUDPManager udpConnection3;
     
-    float x,x2, x3,xMapped, xMapped2, xMapped3;
-    float sensorMin = 1023;
-    float sensorMin2 = 1023;
-    float sensorMin3 = 1023;
-    float sensorMax = 0;
-    float sensorMax2 = 0;
-    float sensorMax3 = 0;
+//    float x,x2, x3,xMapped, xMapped2, xMapped3;
+    float x[3], xMapped[3], sensorMin[3], sensorMax[3], oldXMapped[3];
+//    float sensorMin;
+//    float sensorMin2;
+//    float sensorMin3;
+//    float sensorMax;
+//    float sensorMax2;
+//    float sensorMax3;
+    
+//    float oldXMapped;
+    vector < float> breathingData;
+    float newX[3], sum[3];
     
     //--------------------------------------------------------------
     //
@@ -105,12 +96,23 @@ public:
     //---------------------------------------------------------------
     //OCS
     
+    void getOfc();
     ofxOscReceiver mReceiver;
     int current_msg_string;
     string msg_strings[NUMOFSTRINGS];
     float timers[NUMOFSTRINGS];
-    float amplitude[3], pitch[3], FFTavg[3][17], attack[3];
-};
+    float amplitude[3], pitch[3], attack[3];
+    float FFTavg[3][17];
+    int Channel01_FFT_size;
+    float max[17];
+    
+    ofxSyphonServer syphon;
 
+    
+    //---------------silly test----------------------
+    
+    
+    
+};
 #endif
 
