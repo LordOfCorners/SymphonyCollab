@@ -28,7 +28,6 @@ void Dancer::addLine( ofVec2f _pos ) {
     
     // This function creates an instance of the Line class, sets it up with current values, and adds it to the vector.
     Line tmp;
-    //tmp.setup( _pos, breath, angle );
     tmp.setup( _pos, thisBreath, angle );
     lineList.push_back( tmp );
 
@@ -41,7 +40,6 @@ void Dancer::update( float _breath, float _amplitude ) {
     //breath = _breath;
     amplitude = _amplitude;
     
-    //cout<< "breath: "<<thisBreath<<endl;
     
     //breath = breath/10000.f; // .07 - .08
     
@@ -107,8 +105,7 @@ void Dancer::update( float _breath, float _amplitude ) {
 }
 
 void Dancer::draw() {
-    
-    // Draw the lines.
+
     for ( int i = 0; i < lineList.size(); i++ ) {
         lineList[i].draw(amplitude, dancerNumber);
     }

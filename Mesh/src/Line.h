@@ -12,7 +12,7 @@ public:
     void setup( ofVec2f _pos, float _length, float _angle );
     // Color can change.
     void update(  );
-    void draw( float _amp, int _number);
+    void draw( float _amplitude, int _number);
     
     ofVec2f pos;
     float length, angle;

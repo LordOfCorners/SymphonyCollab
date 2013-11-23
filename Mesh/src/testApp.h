@@ -46,11 +46,9 @@ public:
     // LINES
     
     float breath[3];
-    float mappedBreath[3];
+    int mappedBreath[3];
     bool fakeBreath;
-//    float breathRad; // Temporarily simulate breathing.
-//    bool noiseBreath;
-    
+
     vector< Dancer > dancerListOne;
     vector< Dancer > dancerListTwo;
     vector< Dancer > dancerListThree;
@@ -68,6 +66,8 @@ public:
 //    float sensorMin2 = 1023;;
     float sensorMax[3];// = 0;
     
+    float xMapped[3], oldXmapped[3];
+    
     bool calibrating;
 //    float sensorMax2 = 0;
     
@@ -82,6 +82,8 @@ public:
     float FFTavg[3][17];
     
     ofxSyphonServer syphon;
+    
+    string channel;
     
 };
 

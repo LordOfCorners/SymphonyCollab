@@ -13,12 +13,13 @@ void testApp::setup(){
     setupWiFly();
     mReceiver.setup(12345);
     
+    syphon.setName("Breath_Release");
     
     fakeBreath = false;
     for(int i=0; i<3; i++){
-        sensorMin[i] = 690;
-        sensorMax[i] = 810;
-        breath[i] = 710;
+        sensorMin[i] = 1000;
+        sensorMax[i] = 400;
+        breath[i] = 500;
     }
     calibrating = false;
 }
@@ -29,9 +30,8 @@ void testApp::update(){
     
 
     updateWiFly();
-    
-    if(calibrating) calibrateWiFly();
-    else updateLines();
+    calibrateWiFly();
+    updateLines();
     
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
     
@@ -40,6 +40,7 @@ void testApp::update(){
         ofxOscMessage m;
         
         mReceiver.getNextMessage(&m);
+        
         
         if(m.getAddress() == "/Channel01/AudioAnalysis"){
             amplitude[0] = m.getArgAsFloat(0);
@@ -81,12 +82,15 @@ void testApp::update(){
             }
         }
     }
+//    
+//    for( int i = 0; i < 3; i++){
+//        
+//        breath[i] = xMapped[i];
+//    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
-
     
     if(calibrating){
         ofSetColor(255);
@@ -99,40 +103,73 @@ void testApp::draw(){
     }
     
     syphon.publishScreen();
-}
+    
+    ofSetColor(255);
 
+    string thisMsg = ofToString(sensorMax[0]);
+    ofDrawBitmapString("sensorMax 1: "+thisMsg, 300, 50);
+    thisMsg = ofToString(sensorMin[0]);
+    ofDrawBitmapString("sensorMin 1: "+thisMsg, 300, 75);
+    thisMsg = ofToString(amplitude[0]);
+    ofDrawBitmapString("amplitude 1: "+thisMsg, 300, 100);
+    thisMsg = ofToString(breath[0]);
+    ofDrawBitmapString("breath 1: "+thisMsg, 300, 125);
+    
+    thisMsg = ofToString(sensorMax[1]);
+    ofDrawBitmapString("sensorMax 2: "+thisMsg, 600, 50);
+    thisMsg = ofToString(sensorMin[1]);
+    ofDrawBitmapString("sensorMin 2: "+thisMsg, 600, 75);
+    thisMsg = ofToString(amplitude[1]);
+    ofDrawBitmapString("amplitude 2: "+thisMsg, 600, 100);
+    thisMsg = ofToString(breath[1]);
+    ofDrawBitmapString("breath 2: "+thisMsg, 600, 125);
+    
+    
+    thisMsg = ofToString(sensorMax[2]);
+    ofDrawBitmapString("sensorMax 3: "+thisMsg, 900, 50);
+    thisMsg = ofToString(sensorMin[2]);
+    ofDrawBitmapString("sensorMin 3: "+thisMsg, 900, 75);
+    thisMsg = ofToString(amplitude[2]);
+    ofDrawBitmapString("amplitude 3: "+thisMsg, 900, 100);
+    thisMsg = ofToString(breath[2]);
+    ofDrawBitmapString("breath 3: "+thisMsg, 900, 125);
+    
+
+    
+    
+}
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
     switch ( key ) {
-            // Reset everything with 'r' (debug).
+// Reset everything with 'r' (debug).
         case 'r':
         case 'R':
             setup();
             break;
-            
-            //-------------LINES-------------
-            
-            // Toggle "fillIn" mode on and off.
+
         case '1':
             for ( int i = 0; i < dancerListOne.size(); i++ ){
                 dancerListOne[ i ].fillIn = !dancerListOne[ i ].fillIn;
             }
             break;
-            // Toggle "noiseBreath" mode on and off.
-//        case '2':
-//            if ( key == '2' ) {
-//                noiseBreath = !noiseBreath;
-//            }
-//            break;
-        case 'b':
+ 
+        case 'a':
             fakeBreath = true;
             breath[0] = 800;
-            breath[1] = 800;
-            breath[2] = 800;
-            
             break;
+            
+        case 's':
+            fakeBreath = true;
+            breath[1] = 800;
+            break;
+            
+        case 'd':
+            fakeBreath = true;
+            breath[2] = 800;
+            break;
+            
         case 'c':
             //calibrateWiFly();
             calibrating = !calibrating;
@@ -171,51 +208,32 @@ void testApp::setupLines() {
     for ( int i = 0; i < dancerListTwo.size(); i++) {
         dancerListTwo[ i ].lineList.clear();
     }
-    dancerListOne.clear();
+    dancerListTwo.clear();
     
     for ( int i = 0; i < dancerListThree.size(); i++) {
         dancerListThree[ i ].lineList.clear();
     }
-    dancerListOne.clear();
-    
-//    ofSetCircleResolution(100);
-    
-    // May want to change this to a gradient or something else.
-    //    ofBackground( 0 );
-    
-//    breath = 0;
-//    breathRad = 50;
-    //noiseBreath = true;
+    dancerListThree.clear();
     
     // Create Dancers, feed in a pos and vel, and add them to the vector.
     for ( int i = 0; i < NUMDANCERSONE; i++ ) {
-        Dancer instrumentOne( ofVec2f( (ofGetScreenWidth()/2)-300, 540 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 1 );
+        Dancer instrumentOne( ofVec2f( (ofGetWidth()/2)-600, 700 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 1 );
         dancerListOne.push_back( instrumentOne );
     }
     
     for ( int i = 0; i < NUMDANCERSTWO; i++ ) {
-        Dancer instrumentTwo( ofVec2f( ofGetScreenWidth()/2, 540 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 2 );
-        dancerListThree.push_back( instrumentTwo );
+        Dancer instrumentTwo( ofVec2f( ofGetWidth()/2+75, 600 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 2 );
+        dancerListTwo.push_back( instrumentTwo );
     }
     
     for ( int i = 0; i < NUMDANCERSTHREE; i++ ) {
-        Dancer instrumentThree( ofVec2f( (ofGetScreenWidth()/2)+300, 540 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 3 );
+        Dancer instrumentThree( ofVec2f( (ofGetWidth()/2)+700, 640 ),  ofVec2f( ofRandom( -5, 5 ), ofRandom( -0.5, 0.5 ) ), 3 );
         dancerListThree.push_back( instrumentThree );
     }
 }
 
 //--------------------------------------------------------------
 void testApp::updateLines() {
-    
-    // When we have real breathing data we won't need this, but for the time being, let's fake it.
-//    float waveSpeed = 1;
-//    if ( !noiseBreath ) {
-//        breath = sin( ofGetElapsedTimef() * waveSpeed) * breathRad;
-//    } else {
-//        breath = ofNoise( sin( ofGetElapsedTimef() * waveSpeed ) ) * breathRad;
-//        cout<<breath<<endl;
-//    }
-//
   
     if(fakeBreath){
         for (int i=0; i<3; i++){
@@ -231,8 +249,12 @@ void testApp::updateLines() {
     for(int i=0; i<3; i++){
         
         amplitude[i] = amplitude[i] * 10 + 1; // map amplitude to 0 - 50
-        mappedBreath[i] = ofMap(breath[i], sensorMin[i], sensorMax[i], 25.0f, 100.0f); //map breath to 0.1, -0.1
+//        cout<<"breath to map: "<< breath[i]<<endl;
+//        cout<<"sensorMin: "<< sensorMin[i]<<endl;
+        mappedBreath[i] = ofMap(breath[i], sensorMin[i], sensorMax[i], 0, 100); //map breath to 0.1, -0.1
+       
     }
+//     cout << "BREATH MAPPED :"<<mappedBreath[0]<<endl;
     
     // Pass in the data and update the Dancers.
     for ( int i = 0; i < dancerListOne.size(); i++ ) {
@@ -246,20 +268,6 @@ void testApp::updateLines() {
     for ( int i = 0; i < dancerListThree.size(); i++ ) {
         dancerListThree[ i ].update( mappedBreath[2], amplitude[2]);
     }
-    
-    // check size
-//    cout << "listone.size: "<< dancerListOne.size() << endl;
-//    if (dancerListOne.size() > 500){
-//        dancerListOne.pop_back();
-//    }
-//    if (dancerListTwo.size() > 500){
-//        dancerListTwo.pop_back();
-//    }
-//    if (dancerListThree.size() > 500){
-//        dancerListThree.pop_back();
-//    }
-    
-
 }
 
 //--------------------------------------------------------------
@@ -308,12 +316,14 @@ void testApp::updateWiFly() {
 	udpConnection.Receive(udpMessage,100000);
 	string message=udpMessage;
 	if(message!=""){
+//        cout << "MESSAGE: "<<message << endl;
 		vector<string> strPoints = ofSplitString(message,"[/p]");
         vector<string> point = ofSplitString(strPoints[0],"|");
         if( point.size() == 1 ){
             x[0]=atof(point[0].c_str());
             cout<<"RECEIVED WIFLY #1: "<<x[0] <<endl;
             breath[0] = x[0];
+            //cout << "MESSAGE1: "<<breath[0] << endl;
         }
 	}
     
@@ -329,6 +339,7 @@ void testApp::updateWiFly() {
             x[1]=atof(point2[0].c_str());
             cout<<"RECEIVED WIFLY #2: "<<x[1] <<endl;
             breath[1] = x[1];
+            //cout << "MESSAGE2: "<< breath[1] << endl;
         }
 	}
     
@@ -344,9 +355,12 @@ void testApp::updateWiFly() {
             x[2]=atof(point3[0].c_str());
             cout<<"RECEIVED WIFLY #3: "<<x[2] <<endl;
             breath[2] = x[2];
+            //cout << "MESSAGE3: "<<breath[2] << endl;
         }
 	}
     
+<<<<<<< HEAD
+=======
     //Connection 1 mapped values
     //float pct = 0.1f;
 //float oldXMapped = xMapped - 1;
@@ -357,6 +371,7 @@ void testApp::updateWiFly() {
     //    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
     //    calibrateWiFly();
     
+>>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
 }
 
 //--------------------------------------------------------------
@@ -380,7 +395,7 @@ void testApp::calibrateWiFly() {
         }
         
         //record the minium sensor value
-        if( x[i] < sensorMin[i]) {
+        if( x[i] < sensorMin[i] && x[i] > 400) {
             sensorMin[i]  = x[i];
         }
     }
