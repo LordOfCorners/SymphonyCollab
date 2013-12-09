@@ -61,6 +61,8 @@ void testApp::update(){
     newX[i] = sum[i];
     }
     
+    imageCounter++;
+    
 }
 
 //--------------------------------------------------------------
@@ -86,17 +88,19 @@ void testApp::draw(){
     syphon.publishScreen();
     
     ofSetColor(255);
-    ofDrawBitmapString("sensorMin 1: "+ofToString(sensorMin[1]), 50, 50);
-    ofDrawBitmapString("sensorMax 1: "+ofToString(sensorMax[1]), 50, 75);
-    ofDrawBitmapString("xmapped 1: "+ofToString(xMapped[1]), 50, 100);
+//    ofDrawBitmapString("sensorMin 1: "+ofToString(sensorMin[1]), 50, 50);
+//    ofDrawBitmapString("sensorMax 1: "+ofToString(sensorMax[1]), 50, 75);
+//    ofDrawBitmapString("xmapped 1: "+ofToString(xMapped[1]), 50, 100);
+//    
+//    ofDrawBitmapString("sensorMin 0: "+ofToString(sensorMin[0]), 350, 50);
+//    ofDrawBitmapString("sensorMax 0: "+ofToString(sensorMax[0]), 350, 75);
+//    ofDrawBitmapString("xmapped 0: "+ofToString(xMapped[0]), 350, 100);
+//    
+//    ofDrawBitmapString("sensorMin 2: "+ofToString(sensorMin[2]), 650, 50);
+//    ofDrawBitmapString("sensorMax 2: "+ofToString(sensorMax[2]), 650, 75);
+//    ofDrawBitmapString("xmapped 2: "+ofToString(xMapped[2]), 650, 100);
     
-    ofDrawBitmapString("sensorMin 0: "+ofToString(sensorMin[0]), 350, 50);
-    ofDrawBitmapString("sensorMax 0: "+ofToString(sensorMax[0]), 350, 75);
-    ofDrawBitmapString("xmapped 0: "+ofToString(xMapped[0]), 350, 100);
-    
-    ofDrawBitmapString("sensorMin 2: "+ofToString(sensorMin[2]), 650, 50);
-    ofDrawBitmapString("sensorMax 2: "+ofToString(sensorMax[2]), 650, 75);
-    ofDrawBitmapString("xmapped 2: "+ofToString(xMapped[2]), 650, 100);
+    ofSaveScreen(ofToString(imageCounter)+".png");
 }
 
 

@@ -109,6 +109,8 @@ public:
     float max[17];
     
     ofxSyphonServer syphon;
+    
+    float imageCounter;
 
 };
 #endif
