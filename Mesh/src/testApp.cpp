@@ -359,19 +359,7 @@ void testApp::updateWiFly() {
         }
 	}
     
-<<<<<<< HEAD
-=======
-    //Connection 1 mapped values
-    //float pct = 0.1f;
-//float oldXMapped = xMapped - 1;
-    //Affecting the last two values of the map function determines the output of the breathing in respect to the orbits and particles traveling
-    
-    //    xMapped2 = ofMap(x2, sensorMin2, sensorMax2, 255, 0);
-    
-    //    cout << x << " | " << sensorMin << " | " << sensorMax <<  " | " << xMapped << endl;
-    //    calibrateWiFly();
-    
->>>>>>> 141cf61acd2246c8c47145334110642a567d13e7
+
 }
 
 //--------------------------------------------------------------
